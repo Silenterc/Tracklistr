@@ -14,8 +14,8 @@
             filePath = "DjTracklistApp/API/APIHandler/SpotifyAPIHandler.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
             landmarkName = "makeRequest(url:method:body:accessToken:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "DjTracklistApp/API/APIHandler/SpotifyAPIHandler.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "makeRequest(url:method:body:accessToken:)"
             landmarkType = "7">
          </BreakpointContent>

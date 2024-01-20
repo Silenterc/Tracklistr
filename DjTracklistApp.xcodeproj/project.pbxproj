@@ -31,6 +31,8 @@
 		422A751A2B5C065400CD9E76 /* APIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A75182B5C065400CD9E76 /* APIConstant.swift */; };
 		422A751D2B5C4AAF00CD9E76 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A751C2B5C4AAF00CD9E76 /* Track.swift */; };
 		422A751E2B5C4AAF00CD9E76 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A751C2B5C4AAF00CD9E76 /* Track.swift */; };
+		422A75222B5C6A7E00CD9E76 /* SpotifyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A75212B5C6A7E00CD9E76 /* SpotifyService.swift */; };
+		422A75232B5C6A7E00CD9E76 /* SpotifyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A75212B5C6A7E00CD9E76 /* SpotifyService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,7 @@
 		422A75182B5C065400CD9E76 /* APIConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstant.swift; sourceTree = "<group>"; };
 		422A751C2B5C4AAF00CD9E76 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		422A751F2B5C685700CD9E76 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		422A75212B5C6A7E00CD9E76 /* SpotifyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +126,7 @@
 		422A74D32B5BDFB900CD9E76 /* DjTracklistApp */ = {
 			isa = PBXGroup;
 			children = (
+				422A75202B5C6A6000CD9E76 /* Services */,
 				422A751B2B5C449E00CD9E76 /* Models */,
 				422A75152B5BFE0600CD9E76 /* Info.plist */,
 				422A75002B5BE13000CD9E76 /* API */,
@@ -204,6 +208,14 @@
 				422A751C2B5C4AAF00CD9E76 /* Track.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		422A75202B5C6A6000CD9E76 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				422A75212B5C6A7E00CD9E76 /* SpotifyService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -346,6 +358,7 @@
 				422A75132B5BFC9500CD9E76 /* Authorization.swift in Sources */,
 				422A75022B5BE16600CD9E76 /* APIHandler.swift in Sources */,
 				422A75192B5C065400CD9E76 /* APIConstant.swift in Sources */,
+				422A75222B5C6A7E00CD9E76 /* SpotifyService.swift in Sources */,
 				422A75082B5BEC7C00CD9E76 /* AccessToken.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -354,6 +367,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				422A75232B5C6A7E00CD9E76 /* SpotifyService.swift in Sources */,
 				422A751A2B5C065400CD9E76 /* APIConstant.swift in Sources */,
 				422A74E82B5BDFCC00CD9E76 /* DjTracklistAppTests.swift in Sources */,
 				422A75112B5BF61500CD9E76 /* SpotifyTokenHandler.swift in Sources */,

@@ -9,8 +9,6 @@ import Foundation
 // Makes requests to the Spotify API
 class SpotifyAPIHandler : APIHandler {
     
-    // We only need one instance of our handler throughout the app
-    static let shared = SpotifyAPIHandler()
     // Performs a full API request including managing Access Tokens
     func request<T: Codable>(url: URL, method: String = "GET", body: Data? = nil) async throws -> T {
         // First we check whether we have some access token or none and get it
