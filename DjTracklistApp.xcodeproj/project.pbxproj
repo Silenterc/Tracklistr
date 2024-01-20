@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		422A74D52B5BDFB900CD9E76 /* DjTracklistAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A74D42B5BDFB900CD9E76 /* DjTracklistAppApp.swift */; };
+		422A74D52B5BDFB900CD9E76 /* DjTracklistApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A74D42B5BDFB900CD9E76 /* DjTracklistApp.swift */; };
 		422A74D72B5BDFB900CD9E76 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A74D62B5BDFB900CD9E76 /* ContentView.swift */; };
 		422A74D92B5BDFB900CD9E76 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A74D82B5BDFB900CD9E76 /* Item.swift */; };
 		422A74DB2B5BDFCB00CD9E76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 422A74DA2B5BDFCB00CD9E76 /* Assets.xcassets */; };
@@ -15,6 +15,22 @@
 		422A74E82B5BDFCC00CD9E76 /* DjTracklistAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A74E72B5BDFCC00CD9E76 /* DjTracklistAppTests.swift */; };
 		422A74F22B5BDFCC00CD9E76 /* DjTracklistAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A74F12B5BDFCC00CD9E76 /* DjTracklistAppUITests.swift */; };
 		422A74F42B5BDFCC00CD9E76 /* DjTracklistAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A74F32B5BDFCC00CD9E76 /* DjTracklistAppUITestsLaunchTests.swift */; };
+		422A75022B5BE16600CD9E76 /* APIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A75012B5BE16600CD9E76 /* APIHandler.swift */; };
+		422A75032B5BE16600CD9E76 /* APIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A75012B5BE16600CD9E76 /* APIHandler.swift */; };
+		422A75052B5BE3C300CD9E76 /* SpotifyAPIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A75042B5BE3C300CD9E76 /* SpotifyAPIHandler.swift */; };
+		422A75062B5BE3C300CD9E76 /* SpotifyAPIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A75042B5BE3C300CD9E76 /* SpotifyAPIHandler.swift */; };
+		422A75082B5BEC7C00CD9E76 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A75072B5BEC7C00CD9E76 /* AccessToken.swift */; };
+		422A75092B5BEC7C00CD9E76 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A75072B5BEC7C00CD9E76 /* AccessToken.swift */; };
+		422A750C2B5BF2F800CD9E76 /* AccessTokenHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A750B2B5BF2F800CD9E76 /* AccessTokenHandler.swift */; };
+		422A750D2B5BF2F800CD9E76 /* AccessTokenHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A750B2B5BF2F800CD9E76 /* AccessTokenHandler.swift */; };
+		422A75102B5BF61500CD9E76 /* SpotifyTokenHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A750F2B5BF61500CD9E76 /* SpotifyTokenHandler.swift */; };
+		422A75112B5BF61500CD9E76 /* SpotifyTokenHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A750F2B5BF61500CD9E76 /* SpotifyTokenHandler.swift */; };
+		422A75132B5BFC9500CD9E76 /* Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A75122B5BFC9500CD9E76 /* Authorization.swift */; };
+		422A75142B5BFC9500CD9E76 /* Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A75122B5BFC9500CD9E76 /* Authorization.swift */; };
+		422A75192B5C065400CD9E76 /* APIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A75182B5C065400CD9E76 /* APIConstant.swift */; };
+		422A751A2B5C065400CD9E76 /* APIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A75182B5C065400CD9E76 /* APIConstant.swift */; };
+		422A751D2B5C4AAF00CD9E76 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A751C2B5C4AAF00CD9E76 /* Track.swift */; };
+		422A751E2B5C4AAF00CD9E76 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A751C2B5C4AAF00CD9E76 /* Track.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +52,7 @@
 
 /* Begin PBXFileReference section */
 		422A74D12B5BDFB900CD9E76 /* DjTracklistApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DjTracklistApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		422A74D42B5BDFB900CD9E76 /* DjTracklistAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DjTracklistAppApp.swift; sourceTree = "<group>"; };
+		422A74D42B5BDFB900CD9E76 /* DjTracklistApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DjTracklistApp.swift; sourceTree = "<group>"; };
 		422A74D62B5BDFB900CD9E76 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		422A74D82B5BDFB900CD9E76 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		422A74DA2B5BDFCB00CD9E76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -46,6 +62,16 @@
 		422A74ED2B5BDFCC00CD9E76 /* DjTracklistAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DjTracklistAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		422A74F12B5BDFCC00CD9E76 /* DjTracklistAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DjTracklistAppUITests.swift; sourceTree = "<group>"; };
 		422A74F32B5BDFCC00CD9E76 /* DjTracklistAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DjTracklistAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		422A75012B5BE16600CD9E76 /* APIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHandler.swift; sourceTree = "<group>"; };
+		422A75042B5BE3C300CD9E76 /* SpotifyAPIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyAPIHandler.swift; sourceTree = "<group>"; };
+		422A75072B5BEC7C00CD9E76 /* AccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
+		422A750A2B5BEE7800CD9E76 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		422A750B2B5BF2F800CD9E76 /* AccessTokenHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenHandler.swift; sourceTree = "<group>"; };
+		422A750F2B5BF61500CD9E76 /* SpotifyTokenHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyTokenHandler.swift; sourceTree = "<group>"; };
+		422A75122B5BFC9500CD9E76 /* Authorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authorization.swift; sourceTree = "<group>"; };
+		422A75152B5BFE0600CD9E76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		422A75182B5C065400CD9E76 /* APIConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstant.swift; sourceTree = "<group>"; };
+		422A751C2B5C4AAF00CD9E76 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +102,7 @@
 		422A74C82B5BDFB900CD9E76 = {
 			isa = PBXGroup;
 			children = (
+				422A750A2B5BEE7800CD9E76 /* Config.xcconfig */,
 				422A74D32B5BDFB900CD9E76 /* DjTracklistApp */,
 				422A74E62B5BDFCC00CD9E76 /* DjTracklistAppTests */,
 				422A74F02B5BDFCC00CD9E76 /* DjTracklistAppUITests */,
@@ -96,7 +123,10 @@
 		422A74D32B5BDFB900CD9E76 /* DjTracklistApp */ = {
 			isa = PBXGroup;
 			children = (
-				422A74D42B5BDFB900CD9E76 /* DjTracklistAppApp.swift */,
+				422A751B2B5C449E00CD9E76 /* Models */,
+				422A75152B5BFE0600CD9E76 /* Info.plist */,
+				422A75002B5BE13000CD9E76 /* API */,
+				422A74D42B5BDFB900CD9E76 /* DjTracklistApp.swift */,
 				422A74D62B5BDFB900CD9E76 /* ContentView.swift */,
 				422A74D82B5BDFB900CD9E76 /* Item.swift */,
 				422A74DA2B5BDFCB00CD9E76 /* Assets.xcassets */,
@@ -128,6 +158,52 @@
 				422A74F32B5BDFCC00CD9E76 /* DjTracklistAppUITestsLaunchTests.swift */,
 			);
 			path = DjTracklistAppUITests;
+			sourceTree = "<group>";
+		};
+		422A75002B5BE13000CD9E76 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				422A75172B5C054800CD9E76 /* APIConstants */,
+				422A75162B5C053300CD9E76 /* APIHandler */,
+				422A750E2B5BF5E600CD9E76 /* TokenHandler */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		422A750E2B5BF5E600CD9E76 /* TokenHandler */ = {
+			isa = PBXGroup;
+			children = (
+				422A75072B5BEC7C00CD9E76 /* AccessToken.swift */,
+				422A750B2B5BF2F800CD9E76 /* AccessTokenHandler.swift */,
+				422A750F2B5BF61500CD9E76 /* SpotifyTokenHandler.swift */,
+				422A75122B5BFC9500CD9E76 /* Authorization.swift */,
+			);
+			path = TokenHandler;
+			sourceTree = "<group>";
+		};
+		422A75162B5C053300CD9E76 /* APIHandler */ = {
+			isa = PBXGroup;
+			children = (
+				422A75012B5BE16600CD9E76 /* APIHandler.swift */,
+				422A75042B5BE3C300CD9E76 /* SpotifyAPIHandler.swift */,
+			);
+			path = APIHandler;
+			sourceTree = "<group>";
+		};
+		422A75172B5C054800CD9E76 /* APIConstants */ = {
+			isa = PBXGroup;
+			children = (
+				422A75182B5C065400CD9E76 /* APIConstant.swift */,
+			);
+			path = APIConstants;
+			sourceTree = "<group>";
+		};
+		422A751B2B5C449E00CD9E76 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				422A751C2B5C4AAF00CD9E76 /* Track.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,9 +336,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				422A75052B5BE3C300CD9E76 /* SpotifyAPIHandler.swift in Sources */,
+				422A751D2B5C4AAF00CD9E76 /* Track.swift in Sources */,
+				422A75102B5BF61500CD9E76 /* SpotifyTokenHandler.swift in Sources */,
 				422A74D72B5BDFB900CD9E76 /* ContentView.swift in Sources */,
 				422A74D92B5BDFB900CD9E76 /* Item.swift in Sources */,
-				422A74D52B5BDFB900CD9E76 /* DjTracklistAppApp.swift in Sources */,
+				422A750C2B5BF2F800CD9E76 /* AccessTokenHandler.swift in Sources */,
+				422A74D52B5BDFB900CD9E76 /* DjTracklistApp.swift in Sources */,
+				422A75132B5BFC9500CD9E76 /* Authorization.swift in Sources */,
+				422A75022B5BE16600CD9E76 /* APIHandler.swift in Sources */,
+				422A75192B5C065400CD9E76 /* APIConstant.swift in Sources */,
+				422A75082B5BEC7C00CD9E76 /* AccessToken.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,7 +354,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				422A751A2B5C065400CD9E76 /* APIConstant.swift in Sources */,
 				422A74E82B5BDFCC00CD9E76 /* DjTracklistAppTests.swift in Sources */,
+				422A75112B5BF61500CD9E76 /* SpotifyTokenHandler.swift in Sources */,
+				422A75062B5BE3C300CD9E76 /* SpotifyAPIHandler.swift in Sources */,
+				422A75032B5BE16600CD9E76 /* APIHandler.swift in Sources */,
+				422A751E2B5C4AAF00CD9E76 /* Track.swift in Sources */,
+				422A750D2B5BF2F800CD9E76 /* AccessTokenHandler.swift in Sources */,
+				422A75142B5BFC9500CD9E76 /* Authorization.swift in Sources */,
+				422A75092B5BEC7C00CD9E76 /* AccessToken.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +393,7 @@
 /* Begin XCBuildConfiguration section */
 		422A74F52B5BDFCC00CD9E76 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 422A750A2B5BEE7800CD9E76 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -364,6 +457,7 @@
 		};
 		422A74F62B5BDFCC00CD9E76 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 422A750A2B5BEE7800CD9E76 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -428,6 +522,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"DjTracklistApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DjTracklistApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -456,6 +551,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"DjTracklistApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DjTracklistApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

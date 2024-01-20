@@ -1,0 +1,12 @@
+//
+//  Config.xcconfig
+//  DjTracklistApp
+//
+//  Created by Lukas Zima on 20.01.2024.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+CLIENT_ID = b4ed26c9e4d24d8d906a7bbd77afe114
+CLIENT_SECRET = 73e079d1a2ae4b6dba97c5b456de94b5
