@@ -65,13 +65,13 @@
 		422A75012B5BE16600CD9E76 /* APIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHandler.swift; sourceTree = "<group>"; };
 		422A75042B5BE3C300CD9E76 /* SpotifyAPIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyAPIHandler.swift; sourceTree = "<group>"; };
 		422A75072B5BEC7C00CD9E76 /* AccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
-		422A750A2B5BEE7800CD9E76 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		422A750B2B5BF2F800CD9E76 /* AccessTokenHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenHandler.swift; sourceTree = "<group>"; };
 		422A750F2B5BF61500CD9E76 /* SpotifyTokenHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyTokenHandler.swift; sourceTree = "<group>"; };
 		422A75122B5BFC9500CD9E76 /* Authorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authorization.swift; sourceTree = "<group>"; };
 		422A75152B5BFE0600CD9E76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		422A75182B5C065400CD9E76 /* APIConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstant.swift; sourceTree = "<group>"; };
 		422A751C2B5C4AAF00CD9E76 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		422A751F2B5C685700CD9E76 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +102,7 @@
 		422A74C82B5BDFB900CD9E76 = {
 			isa = PBXGroup;
 			children = (
-				422A750A2B5BEE7800CD9E76 /* Config.xcconfig */,
+				422A751F2B5C685700CD9E76 /* Config.xcconfig */,
 				422A74D32B5BDFB900CD9E76 /* DjTracklistApp */,
 				422A74E62B5BDFCC00CD9E76 /* DjTracklistAppTests */,
 				422A74F02B5BDFCC00CD9E76 /* DjTracklistAppUITests */,
@@ -393,7 +393,6 @@
 /* Begin XCBuildConfiguration section */
 		422A74F52B5BDFCC00CD9E76 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 422A750A2B5BEE7800CD9E76 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -457,7 +456,6 @@
 		};
 		422A74F62B5BDFCC00CD9E76 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 422A750A2B5BEE7800CD9E76 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
