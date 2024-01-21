@@ -18,12 +18,22 @@ class SpotifyService {
         try await apiHandler.request(url: APIConstants.Spotify.searchTrack(id: id).url)
     }
     
+    func getTrackWithFeatures(id: String) async throws -> Track {
+        var track = try await getTrack(id: id)
+        let trackFeatures: AudioFeatures = try await apiHandler.request(url: APIConstants.Spotify.audioFeatures(id: id).url)
+        track.audioFeatures = trackFeatures
+        return track
+        
+    }
+    
     func searchTracks(query: String, types: [SearchType] = [.track], limit: Int = 10) async throws -> [Track] {
         let typesString = types.map { $0.rawValue }.joined(separator: ",")
         let queryItems = [URLQueryItem(name: "q", value: query),
                           URLQueryItem(name: "type", value: typesString),
                           URLQueryItem(name: "limit", value: String(limit))]
-        return try await apiHandler.request(url: APIConstants.Spotify.searchTracks.url.appending(queryItems: queryItems))
+        // Handle returning only the [Track] because the API returns more info
+        let searchResult: SearchResult = try await apiHandler.request(url: APIConstants.Spotify.searchTracks.url.appending(queryItems: queryItems))
+        return searchResult.tracks?.items ?? []
     }
 }
 

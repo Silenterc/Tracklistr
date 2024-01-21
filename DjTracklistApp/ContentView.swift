@@ -19,16 +19,6 @@ struct ContentView: View {
                 } else {
                     Text("Loading...")
                         .padding()
-                        .onAppear {
-                            Task {
-                                do {
-                                    track = try await SpotifyAPIHandler.shared.request(url: APIConstants.Spotify.searchTrack(id: "5sRnIWpoK4o28zdLf5mz1e").url)
-                                    
-                                } catch {
-                                    print("Error: \(error)")
-                                }
-                            }
-                        }
                 }
             }
         }

@@ -7,33 +7,145 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6E8B8E13-6FB9-410C-BE5A-FCBEDFDF8353"
+            uuid = "2DFA529C-AABF-4FA9-ADB7-A40BC221D143"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DjTracklistApp/API/APIHandler/SpotifyAPIHandler.swift"
+            filePath = "DjTracklistApp/API/TokenHandler/SpotifyTokenHandler.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "makeRequest(url:method:body:accessToken:)"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "requestNewAccessToken()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2DFA529C-AABF-4FA9-ADB7-A40BC221D143 - 527509e0c92162eb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for DjTracklistApp.SpotifyTokenHandler.requestNewAccessToken() async throws -&gt; DjTracklistApp.AccessToken"
+                  moduleName = "DjTracklistApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/silenter/Desktop/DjTracklistApp/DjTracklistApp/API/TokenHandler/SpotifyTokenHandler.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "2201">
+               </Location>
+               <Location
+                  uuid = "2DFA529C-AABF-4FA9-ADB7-A40BC221D143 - 6f59e7fe8ab8c66b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for DjTracklistAppTests.SpotifyTokenHandler.requestNewAccessToken() async throws -&gt; DjTracklistAppTests.AccessToken"
+                  moduleName = "DjTracklistAppTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/silenter/Desktop/DjTracklistApp/DjTracklistApp/API/TokenHandler/SpotifyTokenHandler.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "2201">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "3D049F94-5D1B-47AD-9573-73792C4B160A"
+            uuid = "32E34208-AF94-48A2-B120-51C59773B23F"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DjTracklistApp/API/APIHandler/SpotifyAPIHandler.swift"
+            filePath = "DjTracklistAppTests/Services/SpotifyServiceTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "testExample()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "32E34208-AF94-48A2-B120-51C59773B23F - d278686a6122b0e1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for DjTracklistAppTests.SpotifyServiceTests.testExample() async throws -&gt; ()"
+                  moduleName = "DjTracklistAppTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/silenter/Desktop/DjTracklistApp/DjTracklistAppTests/Services/SpotifyServiceTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "173">
+               </Location>
+               <Location
+                  uuid = "32E34208-AF94-48A2-B120-51C59773B23F - 68e5f46e9d06aa2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (DjTracklistAppTests.Track) -&gt; () in DjTracklistAppTests.SpotifyServiceTests.testExample() async throws -&gt; ()"
+                  moduleName = "DjTracklistAppTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/silenter/Desktop/DjTracklistApp/DjTracklistAppTests/Services/SpotifyServiceTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "40">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3A977AC6-44F5-4238-AC5A-BE13DC4A1872"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DjTracklistApp/Services/SpotifyService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "36"
             endingLineNumber = "36"
-            landmarkName = "makeRequest(url:method:body:accessToken:)"
+            landmarkName = "searchTracks(query:types:limit:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3A977AC6-44F5-4238-AC5A-BE13DC4A1872 - 6aba6db1e70b3c86"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for DjTracklistApp.SpotifyService.searchTracks(query: Swift.String, types: Swift.Array&lt;DjTracklistApp.SearchType&gt;, limit: Swift.Int) async throws -&gt; Swift.Array&lt;DjTracklistApp.Track&gt;"
+                  moduleName = "DjTracklistApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/silenter/Desktop/DjTracklistApp/DjTracklistApp/Services/SpotifyService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "307">
+               </Location>
+               <Location
+                  uuid = "3A977AC6-44F5-4238-AC5A-BE13DC4A1872 - bc12dffe9b387088"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for DjTracklistAppTests.SpotifyService.searchTracks(query: Swift.String, types: Swift.Array&lt;DjTracklistAppTests.SearchType&gt;, limit: Swift.Int) async throws -&gt; Swift.Array&lt;DjTracklistAppTests.Track&gt;"
+                  moduleName = "DjTracklistAppTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/silenter/Desktop/DjTracklistApp/DjTracklistApp/Services/SpotifyService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "307">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

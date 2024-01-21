@@ -8,6 +8,14 @@
 import Foundation
 // Handler of the Spotify API Access Token according to the client credentials Authorization Flow
 class SpotifyTokenHandler : AccessTokenHandler {
+    
+    let urlSession: URLSessionProtocol
+    
+    init(urlSession: URLSessionProtocol = URLSession.shared) {
+        self.urlSession = urlSession
+    }
+    
+    
     // We only need a singleton instance of this Handler
     static let shared = SpotifyTokenHandler()
     //Currently assigned Access Token
@@ -21,13 +29,12 @@ class SpotifyTokenHandler : AccessTokenHandler {
         urlRequest.allHTTPHeaderFields = [
             "Authorization" : SpotifyAuthorization.shared.encodedKeyArgument,
             "Content-Type" : APIConstants.Spotify.contentType]
-        
         var httpBody = URLComponents()
         httpBody.queryItems = [URLQueryItem(name: "grant_type", value: "client_credentials")]
         urlRequest.httpBody = httpBody.query?.data(using: .utf8)
         urlRequest.httpMethod = "POST"
        
-        let (data, response) = try await URLSession.shared.data(for: urlRequest)
+        let (data, response) = try await urlSession.data(for: urlRequest)
         
         if let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) {
             // Successful call

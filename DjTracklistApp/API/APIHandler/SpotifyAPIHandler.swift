@@ -8,7 +8,11 @@
 import Foundation
 // Makes requests to the Spotify API
 class SpotifyAPIHandler : APIHandler {
+    let urlSession: URLSessionProtocol
     
+    init(urlSession: URLSessionProtocol = URLSession.shared) {
+        self.urlSession = urlSession
+    }
     // Performs a full API request including managing Access Tokens
     func request<T: Codable>(url: URL, method: String = "GET", body: Data? = nil) async throws -> T {
         // First we check whether we have some access token or none and get it
@@ -28,7 +32,7 @@ class SpotifyAPIHandler : APIHandler {
         request.httpBody = body
         request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
 
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let (data, response) = try await urlSession.data(for: request)
         guard let httpResponse = response as? HTTPURLResponse else {
             throw APIError.requestFailed
         }

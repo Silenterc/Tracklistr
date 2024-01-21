@@ -20,11 +20,13 @@ enum APIConstants {
         static let contentType = "application/x-www-form-urlencoded"
         case searchTracks
         case searchTrack(id: String)
+        case audioFeatures(id: String)
         // To conform to the RawRepresentable protocol, because with it the code is prettier
         var rawValue: String {
             switch self {
             case .searchTracks: return "search"
             case .searchTrack(let id): return "tracks/\(id)"
+            case .audioFeatures(let id): return "audio-features/\(id)"
             }
         }
     }
