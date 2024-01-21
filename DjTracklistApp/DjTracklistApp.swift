@@ -12,9 +12,10 @@ import SwiftData
 struct DjTracklistApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            AppTrack.self,
+            Tracklist.self
         ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
 
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])
@@ -25,7 +26,7 @@ struct DjTracklistApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MixOverviewView(modelContext: sharedModelContainer.mainContext)
         }
         .modelContainer(sharedModelContainer)
     }

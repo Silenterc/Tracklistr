@@ -7,15 +7,15 @@
 
 import Foundation
 
-// Protocol for URLSession operations, will make testing the API handlers easier
+/// Protocol for URLSession operations, will make testing the API handlers easier
 protocol URLSessionProtocol {
     func data(for request: URLRequest) async throws -> (Data, URLResponse)
 }
 
-// The real URLSession
+/// The real URLSession
 extension URLSession: URLSessionProtocol {}
 
-// Mock implementation for testing
+/// Mock implementation for testing
 class MockURLSession: URLSessionProtocol {
     var data: Data?
     var response: URLResponse?
