@@ -19,12 +19,12 @@ class AppTrack: Identifiable {
     let originalDuration: Int
     let bpm: Int?
     
-    let currentDuration: Int
-    let startTime: Int
-    let endTime: Int
-    let onDeck: Int
+    var currentDuration: Int
+    var startTime: Int
+    var endTime: Int
+    var deck: Deck?
     
-    init(id: UUID, externalId: String, name: String, artistNames: [String], albumName: String, imageUrl: URL, originalDuration: Int, bpm: Int?, currentDuration: Int, startTime: Int, endTime: Int, onDeck: Int) {
+    init(id: UUID, externalId: String, name: String, artistNames: [String], albumName: String, imageUrl: URL, originalDuration: Int, bpm: Int?, currentDuration: Int, startTime: Int, endTime: Int, deck: Deck? = nil) {
         self.id = id
         self.externalId = externalId
         self.name = name
@@ -36,9 +36,40 @@ class AppTrack: Identifiable {
         self.currentDuration = currentDuration
         self.startTime = startTime
         self.endTime = endTime
-        self.onDeck = onDeck
+        self.deck = deck
+    }
+}
+
+extension AppTrack {
+    static func mockSolarSystemTrack() -> AppTrack {
+        return AppTrack(
+            id: UUID(),
+            externalId: "solar_system_sub_focus",
+            name: "Solar System",
+            artistNames: ["Sub Focus"],
+            albumName: "Solar System",
+            imageUrl: URL(string: "https://i.scdn.co/image/ab67616d0000b273e629cab6558cb496b60e2178")!,
+            originalDuration: 240,
+            bpm: 174,
+            currentDuration: 0,
+            startTime: 0,
+            endTime: 120
+        )
     }
     
-    
-    
+    static func mockSolarDevotionTrack() -> AppTrack {
+        return AppTrack(
+            id: UUID(),
+            externalId: "solar_system_sub_focus",
+            name: "Solar System",
+            artistNames: ["Sub Focus"],
+            albumName: "Solar System",
+            imageUrl: URL(string: "https://i.scdn.co/image/ab67616d0000b273e629cab6558cb496b60e2178")!,
+            originalDuration: 240,
+            bpm: 174,
+            currentDuration: 0,
+            startTime: 0,
+            endTime: 120
+        )
+    }
 }

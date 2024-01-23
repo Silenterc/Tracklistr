@@ -18,7 +18,6 @@ struct MixOverviewView: View {
     // We need an initializer for injecting the database Context into our VM
     init(modelContext: ModelContext) {
         let viewModel = MixOverviewVM(databaseContext: modelContext)
-        //self.viewModel = viewModel
         _viewModel = State(initialValue: viewModel)
     }
     var body: some View {

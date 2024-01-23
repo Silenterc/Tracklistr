@@ -22,12 +22,16 @@ class MixOverviewVM {
         self.databaseContext = databaseContext
     }
     
-    func fetchPlaylists() {
+    func fetchTracklists() {
         do {
             let descriptor = FetchDescriptor<Tracklist>(sortBy: [SortDescriptor(\.editedAt)])
             tracklists = try databaseContext.fetch(descriptor)
         } catch {
             print("Fetch failed")
         }
+    }
+    
+    func insertTracklist(tracklist: Tracklist) {
+        databaseContext.insert(tracklist)
     }
 }

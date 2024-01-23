@@ -12,7 +12,6 @@ import SwiftData
 struct DjTracklistApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            AppTrack.self,
             Tracklist.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)

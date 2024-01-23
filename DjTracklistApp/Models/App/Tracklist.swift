@@ -11,15 +11,17 @@ import SwiftData
 @Model
 class Tracklist {
     @Attribute(.unique) let id: UUID
-    @Relationship(deleteRule: .cascade) var tracks: [AppTrack]
+    @Relationship(deleteRule: .cascade, inverse: \Deck.tracklist) var decks: [Deck]
     var name: String
     var editedAt: Date
+    var bpm: Int
     
-    init(id: UUID, tracks: [AppTrack], name: String, editedAt: Date) {
+    init(id: UUID, decks: [Deck], name: String, editedAt: Date, bpm: Int) {
         self.id = id
-        self.tracks = tracks
+        self.decks = decks
         self.name = name
         self.editedAt = editedAt
+        self.bpm = bpm
     }
     
 }
@@ -29,13 +31,13 @@ extension Tracklist {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd HH:mm"
         let date = formatter.date(from: "2023/11/29 21:00")!
-        return Tracklist(id: UUID(), tracks: [], name: "Silence 10", editedAt: date)
+        return Tracklist(id: UUID(), decks: [], name: "Silence 10", editedAt: date, bpm: 175)
     }
     
     static func mockTracklist2() -> Tracklist {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd HH:mm"
         let date = formatter.date(from: "2023/12/24 16:00")!
-        return Tracklist(id: UUID(), tracks: [], name: "Silence 11", editedAt: date)
+        return Tracklist(id: UUID(), decks: [], name: "Silence 11", editedAt: date, bpm: 174)
     }
 }
