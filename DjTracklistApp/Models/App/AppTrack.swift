@@ -49,27 +49,27 @@ extension AppTrack {
             artistNames: ["Sub Focus"],
             albumName: "Solar System",
             imageUrl: URL(string: "https://i.scdn.co/image/ab67616d0000b273e629cab6558cb496b60e2178")!,
-            originalDuration: 240,
+            originalDuration: 288,
             bpm: 174,
             currentDuration: 0,
             startTime: 0,
-            endTime: 120
+            endTime: 132
         )
     }
     
-    static func mockSolarDevotionTrack() -> AppTrack {
+    static func mockDevotionTrack() -> AppTrack {
         return AppTrack(
             id: UUID(),
-            externalId: "solar_system_sub_focus",
-            name: "Solar System",
-            artistNames: ["Sub Focus"],
-            albumName: "Solar System",
-            imageUrl: URL(string: "https://i.scdn.co/image/ab67616d0000b273e629cab6558cb496b60e2178")!,
-            originalDuration: 240,
+            externalId: "devotion",
+            name: "Devotion",
+            artistNames: ["Dimension", "Cameron Haynes"],
+            albumName: "Devotion",
+            imageUrl: URL(string: "https://i.scdn.co/image/ab67616d0000b273a5903731fb2c73f61a99bd4a")!,
+            originalDuration: 190,
             bpm: 174,
             currentDuration: 0,
             startTime: 0,
-            endTime: 120
+            endTime: 132
         )
     }
 }

@@ -26,4 +26,7 @@ extension Deck {
     static func mockDeck1() -> Deck {
         Deck(id: UUID(),tracks: [AppTrack.mockSolarSystemTrack(), AppTrack.mockDevotionTrack()])
     }
+    static func mockDeck2() -> Deck {
+        Deck(id: UUID(),tracks: [AppTrack.mockDevotionTrack(), AppTrack.mockSolarSystemTrack()])
+    }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TrackCell: View {
-    var track: AppTrack
+    @State var track: AppTrack
     @State private var width: CGFloat = 192
     @State private var height: CGFloat = 62
     
@@ -25,17 +25,17 @@ struct TrackCell: View {
                                 .font(.custom("Roboto-Regular", fixedSize: 12))
                                 .truncationMode(.tail)
                             
-                            Text(track.artistNames[0])
+                            Text(track.artistNames.joined(separator: ","))
                                 .font(.custom("Roboto-Light", fixedSize: 8))
                                 .truncationMode(.tail)
                         }
                     }
                     HStack {
-                        timeInfo(bars: 0, timeInSeconds: 0)
+                        timeInfo(timeInSeconds: track.startTime / 1000)
                         
                         Spacer()
 
-                        timeInfo(bars: 96, timeInSeconds: 132)
+                        timeInfo(timeInSeconds: track.endTime / 1000)
                         
                         
                     }
@@ -61,10 +61,12 @@ struct TrackCell: View {
             .cornerRadius(10)
         
     }
-    
-    private func timeInfo(bars: Int, timeInSeconds: Int) -> some View {
+
+    private func timeInfo(timeInSeconds: Int) -> some View {
         VStack (alignment: .trailing){
-            barsText(bars: bars)
+            // BPM MUST BE THE SAME AS FOR THE PLAYLIST
+            barsText(bars: timeInSeconds.getBars(
+                bpm: Double(track.bpm!), timeUnit: .seconds))
             timeText(timeInSeconds: timeInSeconds)
         }
     }

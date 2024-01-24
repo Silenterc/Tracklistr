@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TimelineView: View {
+struct TimeIndicationView: View {
     var spacing: CGFloat = 8
     @State var bars: Int
     
@@ -16,11 +16,12 @@ struct TimelineView: View {
     }
     
     var body: some View {
-        HStack {
-            ForEach(0 ..< sixteenBars, id: \.self){_ in
+        LazyHStack {
+            ForEach(0..<sixteenBars, id: \.self) {_ in
                 makeSixteenBars()
             }
         }
+        .frame(height: 28)
     }
     
     private func makeSixteenBars() -> some View {
@@ -39,5 +40,5 @@ struct TimelineView: View {
 }
 
 #Preview {
-    TimelineView(bars: 60.getBars(bpm: 174, timeUnit: .minutes)) // Hour
+    TimeIndicationView(bars: 60.getBars(bpm: 174, timeUnit: .minutes)) // Hour
 }

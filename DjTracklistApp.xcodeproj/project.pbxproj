@@ -70,7 +70,7 @@
 		422A756F2B60233800CD9E76 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 422A75622B60233800CD9E76 /* Roboto-Italic.ttf */; };
 		422A75702B60233800CD9E76 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 422A75632B60233800CD9E76 /* Roboto-Bold.ttf */; };
 		422A75722B6035B600CD9E76 /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A75712B6035B600CD9E76 /* TrackCell.swift */; };
-		422A75742B60392400CD9E76 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A75732B60392400CD9E76 /* TimelineView.swift */; };
+		422A75742B60392400CD9E76 /* TimeIndicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A75732B60392400CD9E76 /* TimeIndicationView.swift */; };
 		422A75762B603AE000CD9E76 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A75752B603AE000CD9E76 /* Extensions.swift */; };
 		422A75772B6048E000CD9E76 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A75752B603AE000CD9E76 /* Extensions.swift */; };
 /* End PBXBuildFile section */
@@ -144,7 +144,7 @@
 		422A75622B60233800CD9E76 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
 		422A75632B60233800CD9E76 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		422A75712B6035B600CD9E76 /* TrackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCell.swift; sourceTree = "<group>"; };
-		422A75732B60392400CD9E76 /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
+		422A75732B60392400CD9E76 /* TimeIndicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIndicationView.swift; sourceTree = "<group>"; };
 		422A75752B603AE000CD9E76 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -359,7 +359,7 @@
 				422A754E2B6005CB00CD9E76 /* TracklistView.swift */,
 				422A75502B6005FD00CD9E76 /* TracklistVM.swift */,
 				422A75712B6035B600CD9E76 /* TrackCell.swift */,
-				422A75732B60392400CD9E76 /* TimelineView.swift */,
+				422A75732B60392400CD9E76 /* TimeIndicationView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -552,7 +552,7 @@
 				422A75312B5D49BE00CD9E76 /* Album.swift in Sources */,
 				422A753A2B5D7F1000CD9E76 /* MusicAPITrack.swift in Sources */,
 				422A75452B5DA7FE00CD9E76 /* Tracklist.swift in Sources */,
-				422A75742B60392400CD9E76 /* TimelineView.swift in Sources */,
+				422A75742B60392400CD9E76 /* TimeIndicationView.swift in Sources */,
 				422A75512B6005FD00CD9E76 /* TracklistVM.swift in Sources */,
 				422A75762B603AE000CD9E76 /* Extensions.swift in Sources */,
 			);

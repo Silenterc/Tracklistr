@@ -20,38 +20,71 @@ struct TracklistView: View {
     
     
     var body: some View {
-        HStack {
-            
-            VStack {
-                ForEach(viewModel.tracklist.decks) { deck in
-                    LazyHStack {
-                        
+        
+        ZStack {
+            HStack {
+                VStack(spacing: 0) {
+                    ForEach(viewModel.tracklist.decks) { deck in
+                        VStack{
+                            LazyHStack {
+                                ForEach(deck.tracks) { track in
+                                    VStack{
+                                        //Spacer()
+                                        TrackCell(track: track)
+                                        //Spacer()
+                                    }
+                                }
+                            }
+                            if (deck != viewModel.tracklist.decks.last) {
+                                TimeIndicationView(bars: 10.getBars(bpm: Double(viewModel.tracklist.bpm), timeUnit: .minutes))
+                            } else {
+                                Rectangle()
+                                    .frame(height: 28)
+                                    .frame(maxWidth: .infinity)
+                                    .opacity(0)
+                            }
+                        }
+                        Spacer()
                     }
                     
                     
                     
-                    
                 }
+                .frame(alignment: .center)
+                .offset(x: 0, y: 22)
                 
                 
+                Rectangle()
+                    .fill(.white)
+                    .frame(width: 30)
             }
-            
-            Rectangle()
-                .fill(.white)
-                .frame(width: 30)
+            VStack{
+                
+//                ForEach(0 ..< (viewModel.tracklist.decks.count == 1 ? 1 : (viewModel.tracklist.decks.count - 1)),
+//                        id: \.self) { num in
+//                    Spacer()
+//                    TimeIndicationView(bars: 10.getBars(bpm: Double(viewModel.tracklist.bpm), timeUnit: .minutes))
+//                    if (num == viewModel.tracklist.decks.count - 2) {
+//                        Spacer()
+//                    }
+//
+//                }
+            }
         }
-        
-        
+        .ignoresSafeArea(.all, edges: .bottom)
+        .background(.white)
     }
 }
 
 
 
 #Preview(traits: .landscapeLeft) {
-    TracklistView(
-        modelContext: try! ModelContainer(
-        for: Tracklist.self,
-        configurations: ModelConfiguration(isStoredInMemoryOnly: true)).mainContext,
-        tracklist: .mockTracklist1())
+    let config = ModelConfiguration(isStoredInMemoryOnly: true)
+    let container = try! ModelContainer(for: Tracklist.self, configurations: config)
+    let tracklist = Tracklist.mockTracklist1()
+    container.mainContext.insert(tracklist)
+    
+    return TracklistView(modelContext: container.mainContext,
+                  tracklist: tracklist)
      
 }

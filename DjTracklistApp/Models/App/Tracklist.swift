@@ -31,13 +31,13 @@ extension Tracklist {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd HH:mm"
         let date = formatter.date(from: "2023/11/29 21:00")!
-        return Tracklist(id: UUID(), decks: [], name: "Silence 10", editedAt: date, bpm: 175)
+        return Tracklist(id: UUID(), decks: [Deck.mockDeck1(), Deck.mockDeck2(), Deck.mockDeck1(), Deck.mockDeck1()], name: "Silence 10", editedAt: date, bpm: 175)
     }
     
     static func mockTracklist2() -> Tracklist {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd HH:mm"
         let date = formatter.date(from: "2023/12/24 16:00")!
-        return Tracklist(id: UUID(), decks: [], name: "Silence 11", editedAt: date, bpm: 174)
+        return Tracklist(id: UUID(), decks: [Deck.mockDeck1(), Deck.mockDeck2()], name: "Silence 11", editedAt: date, bpm: 174)
     }
 }
