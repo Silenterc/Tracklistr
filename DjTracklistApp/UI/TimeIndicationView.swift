@@ -16,12 +16,14 @@ struct TimeIndicationView: View {
     }
     
     var body: some View {
-        LazyHStack {
+        HStack {
             ForEach(0..<sixteenBars, id: \.self) {_ in
                 makeSixteenBars()
             }
+            Spacer()
         }
         .frame(height: 28)
+        .frame(maxWidth: .infinity)
     }
     
     private func makeSixteenBars() -> some View {
@@ -34,7 +36,7 @@ struct TimeIndicationView: View {
     }
     private func makeIndicator(height: CGFloat) -> some View {
         Rectangle()
-            .fill(.orange)
+            .fill(.timelineIndicator)
             .frame(width: 1, height: height)
     }
 }

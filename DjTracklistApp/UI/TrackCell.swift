@@ -6,12 +6,11 @@
 //
 
 import SwiftUI
-
+import SwiftData
 struct TrackCell: View {
     @State var track: AppTrack
     @State private var width: CGFloat = 192
     @State private var height: CGFloat = 62
-    
     var body: some View {
             HStack {
                 VStack(alignment: .leading) {
@@ -31,12 +30,11 @@ struct TrackCell: View {
                         }
                     }
                     HStack {
-                        timeInfo(timeInSeconds: track.startTime / 1000)
+                        timeInfo(timeInBars: track.startTimeBars)
                         
                         Spacer()
 
-                        timeInfo(timeInSeconds: track.endTime / 1000)
-                        
+                        timeInfo(timeInBars: track.endTimeBars)
                         
                     }
                     
@@ -47,27 +45,26 @@ struct TrackCell: View {
                     .fill(.ultraThickMaterial)
                     .frame(width: 10, height: height)
                     .gesture(
-                        DragGesture()
-                            .onChanged({ value in
-                                width = width + value.translation.width
-                            })
-                        
-                        
-                        
+                        LongPressGesture()
+                            .sequenced(before: DragGesture()
+                                .onChanged({ value in
+                                    let change = value.translation.width
+                                    let newWidth = width + change
+                                    width = newWidth >= 0 ? newWidth : 0
+                            }))
                     )
             }
             .frame(width: width, height: height)
-            .background(Color.gray)
+            .background(Color.cellBackground)
             .cornerRadius(10)
         
     }
 
-    private func timeInfo(timeInSeconds: Int) -> some View {
+    private func timeInfo(timeInBars: Int) -> some View {
         VStack (alignment: .trailing){
             // BPM MUST BE THE SAME AS FOR THE PLAYLIST
-            barsText(bars: timeInSeconds.getBars(
-                bpm: Double(track.bpm!), timeUnit: .seconds))
-            timeText(timeInSeconds: timeInSeconds)
+            barsText(bars: timeInBars)
+            timeText(bars: timeInBars)
         }
     }
     
@@ -77,7 +74,8 @@ struct TrackCell: View {
             .font(.custom("Roboto-Regular", fixedSize: 8))
     }
     
-    private func timeText(timeInSeconds: Int) -> Text {
+    private func timeText(bars: Int) -> Text {
+        let timeInSeconds = Double(bars) * (60.0/track.bpm!) * 4.0
         let timeInterval = TimeInterval(timeInSeconds)
             
         let formatter = DateComponentsFormatter()
@@ -99,5 +97,12 @@ struct TrackCell: View {
 }
 
 #Preview {
-    TrackCell(track: AppTrack.mockSolarSystemTrack())
+    let config = ModelConfiguration(isStoredInMemoryOnly: true)
+    let container = try! ModelContainer(for: Tracklist.self, configurations: config)
+    let track = AppTrack.mockSolarSystemTrack()
+    container.mainContext.insert(track)
+
+    return TrackCell(track: track).modelContainer(container)
 }
+
+

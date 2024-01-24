@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-class AppTrack: Identifiable {
+final class AppTrack: Identifiable {
     @Attribute(.unique) let id:UUID
     let externalId: String
     let name: String
@@ -17,14 +17,16 @@ class AppTrack: Identifiable {
     let albumName: String
     let imageUrl: URL
     let originalDuration: Int
-    let bpm: Int?
+    let bpm: Double?
     
-    var currentDuration: Int
-    var startTime: Int
-    var endTime: Int
+    var startTimeBars: Int = 0
+    var endTimeBars: Int = 0
+    var currentDuration: Int {
+        endTimeBars - startTimeBars
+    }
     var deck: Deck?
     
-    init(id: UUID, externalId: String, name: String, artistNames: [String], albumName: String, imageUrl: URL, originalDuration: Int, bpm: Int?, currentDuration: Int, startTime: Int, endTime: Int, deck: Deck? = nil) {
+    init(id: UUID, externalId: String, name: String, artistNames: [String], albumName: String, imageUrl: URL, originalDuration: Int, bpm: Double?, startTimeBars: Int, endTimeBars: Int, deck: Deck? = nil) {
         self.id = id
         self.externalId = externalId
         self.name = name
@@ -33,9 +35,8 @@ class AppTrack: Identifiable {
         self.imageUrl = imageUrl
         self.originalDuration = originalDuration
         self.bpm = bpm
-        self.currentDuration = currentDuration
-        self.startTime = startTime
-        self.endTime = endTime
+        self.startTimeBars = startTimeBars
+        self.endTimeBars = endTimeBars
         self.deck = deck
     }
 }
@@ -49,11 +50,10 @@ extension AppTrack {
             artistNames: ["Sub Focus"],
             albumName: "Solar System",
             imageUrl: URL(string: "https://i.scdn.co/image/ab67616d0000b273e629cab6558cb496b60e2178")!,
-            originalDuration: 288,
+            originalDuration: 288000,
             bpm: 174,
-            currentDuration: 0,
-            startTime: 0,
-            endTime: 132
+            startTimeBars: 0,
+            endTimeBars: 92
         )
     }
     
@@ -65,11 +65,10 @@ extension AppTrack {
             artistNames: ["Dimension", "Cameron Haynes"],
             albumName: "Devotion",
             imageUrl: URL(string: "https://i.scdn.co/image/ab67616d0000b273a5903731fb2c73f61a99bd4a")!,
-            originalDuration: 190,
+            originalDuration: 190000,
             bpm: 174,
-            currentDuration: 0,
-            startTime: 0,
-            endTime: 132
+            startTimeBars: 0,
+            endTimeBars: 92
         )
     }
 }

@@ -8,24 +8,29 @@
 import SwiftUI
 import SwiftData
 
+let tracklist = Tracklist.mockTracklist1()
+@MainActor
+let sharedModelContainer: ModelContainer = {
+    let schema = Schema([
+        Tracklist.self,
+    ])
+    let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
+    do {
+        let container = try ModelContainer(for:schema, configurations: [modelConfiguration])
+        container.mainContext.insert(tracklist)
+        return container
+    } catch {
+        fatalError("Error initializing")
+    }
+    
+}()
 @main
+@MainActor
 struct DjTracklistApp: App {
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Tracklist.self
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
-
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
-
     var body: some Scene {
         WindowGroup {
-            MixOverviewView(modelContext: sharedModelContainer.mainContext)
+            //MixOverviewView(modelContext: sharedModelContainer.mainContext)
+            TracklistView(modelContext: sharedModelContainer.mainContext, tracklistID: tracklist.id)
         }
         .modelContainer(sharedModelContainer)
     }
