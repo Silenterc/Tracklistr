@@ -17,9 +17,11 @@ class MixOverviewVM {
     // Middle man between our VM and SwiftData, used for all Database operations
     var databaseContext: ModelContext
     
-    init(databaseContext: ModelContext, tracklists: [Tracklist] = [.mockTracklist1(), .mockTracklist2()]) {
+    init(databaseContext: ModelContext, tracklists: [Tracklist] = []) {
         self.tracklists = tracklists
         self.databaseContext = databaseContext
+        fetchTracklists()
+   
     }
     
     func fetchTracklists() {

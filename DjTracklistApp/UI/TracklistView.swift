@@ -25,11 +25,11 @@ struct TracklistView: View {
                 HStack {
                     ScrollView(.horizontal){
                         VStack(alignment: .leading, spacing: 0) {
-                            ForEach(tracklist.decks) { deck in
+                            ForEach(tracklist.decks!) { deck in
                                 VStack(alignment: .leading){
                                  
                                     LazyHStack {
-                                        ForEach(deck.tracks) { track in
+                                        ForEach(deck.tracks!) { track in
                                             
                                                 //Spacer()
                                                 TrackCell(viewModel: .init(track: track, width: 192, height: 62))
@@ -38,7 +38,7 @@ struct TracklistView: View {
                                             
                                         }
                                     }
-                                    if (deck != tracklist.decks.last) {
+                                    if (deck != tracklist.decks!.last) {
                                         TimeIndicationView(bars: 10.getBars(bpm: Double(viewModel.tracklist!.bpm), timeUnit: .minutes))
     
                                     } else {

@@ -21,7 +21,7 @@ struct MixOverviewView: View {
         _viewModel = State(initialValue: viewModel)
     }
     var body: some View {
-        NavigationView {
+        NavigationStack{
             VStack {
                 ScrollView {
                     LazyVStack(spacing: 20) {
@@ -36,6 +36,9 @@ struct MixOverviewView: View {
                         }
                     }
                     .padding()
+                }
+                .onAppear{
+                    viewModel.fetchTracklists()
                 }
             }
             .navigationTitle("Mix Overview")

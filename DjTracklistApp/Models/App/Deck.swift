@@ -11,15 +11,26 @@ import SwiftData
 @Model
 class Deck {
     @Attribute(.unique) let id: UUID
-    @Relationship(deleteRule: .cascade, inverse: \AppTrack.deck) var tracks: [AppTrack]
+    @Relationship(deleteRule: .cascade, inverse: \AppTrack.deck) var tracks: [AppTrack]?
     var tracklist: Tracklist?
     
-    init(id: UUID, tracks: [AppTrack], tracklist: Tracklist? = nil) {
+    init(id: UUID, tracks: [AppTrack]? = [], tracklist: Tracklist? = nil) {
         self.id = id
         self.tracks = tracks
         self.tracklist = tracklist
+//        if let tlist = tracklist {
+//            setTracklist(tracklist: tlist)
+//        }
+        //setTracks(tracks:tracks)
     }
     
+    func setTracks(tracks: [AppTrack]) {
+        self.tracks = tracks
+    }
+    
+    func setTracklist(tracklist: Tracklist) {
+        self.tracklist = tracklist
+    }
 }
 
 extension Deck {

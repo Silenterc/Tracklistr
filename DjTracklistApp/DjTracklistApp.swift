@@ -13,6 +13,8 @@ let tracklist = Tracklist.mockTracklist1()
 let sharedModelContainer: ModelContainer = {
     let schema = Schema([
         Tracklist.self,
+        Deck.self,
+        AppTrack.self
     ])
     let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
     do {
@@ -29,9 +31,9 @@ let sharedModelContainer: ModelContainer = {
 struct DjTracklistApp: App {
     var body: some Scene {
         WindowGroup {
-            //MixOverviewView(modelContext: sharedModelContainer.mainContext)
+            MixOverviewView(modelContext: sharedModelContainer.mainContext)
             //TracklistView(modelContext: sharedModelContainer.mainContext, tracklistID: tracklist.id)
-            TracklistInfoView(modelContext: sharedModelContainer.mainContext)
+            //TracklistInfoView(modelContext: sharedModelContainer.mainContext)
         }
         .modelContainer(sharedModelContainer)
     }
