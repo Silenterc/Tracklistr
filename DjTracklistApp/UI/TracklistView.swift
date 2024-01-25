@@ -12,7 +12,7 @@ struct TracklistView: View {
     @State var viewModel: TracklistVM
     
     init(modelContext: ModelContext, tracklistID: UUID) {
-        let viewModel = TracklistVM(databaseContext: modelContext, tracklistID: tracklistID)
+        let viewModel = TracklistVM(tracklistService: TracklistService(databaseContext: modelContext), tracklistID: tracklistID)
         _viewModel = State(initialValue: viewModel)
     }
     
@@ -23,7 +23,7 @@ struct TracklistView: View {
         if let tracklist = viewModel.tracklist {
             ZStack {
                 HStack {
-                    ScrollView(.horizontal){
+                    ScrollView(.horizontal, showsIndicators: false){
                         VStack(alignment: .leading, spacing: 0) {
                             ForEach(tracklist.decks!) { deck in
                                 VStack(alignment: .leading){
@@ -39,7 +39,7 @@ struct TracklistView: View {
                                         }
                                     }
                                     if (deck != tracklist.decks!.last) {
-                                        TimeIndicationView(bars: 10.getBars(bpm: Double(viewModel.tracklist!.bpm), timeUnit: .minutes))
+                                        TimeIndicationView(bars: (viewModel.tracklist?.durationMinutes.getBars(bpm: viewModel.tracklist!.bpm, timeUnit: .minutes))!)
     
                                     } else {
                                         Rectangle()
@@ -70,12 +70,15 @@ struct TracklistView: View {
                         .fill(.white)
                         .frame(width: 30)
                 }
+                
             }
             .ignoresSafeArea(.all, edges: .bottom)
             .background(.black)
             .frame(maxWidth: .infinity)
+            .navigationBarBackButtonHidden()
         }
     }
+        
 }
 
 

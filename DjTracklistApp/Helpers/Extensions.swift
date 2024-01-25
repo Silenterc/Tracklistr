@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-
+/// Represents different time units used in the App
 enum TimeUnit {
     case milliseconds
     case seconds
@@ -15,12 +15,16 @@ enum TimeUnit {
 }
 
 extension Int {
+    /// Returns the amount of bars that self is as the given time unit
+    /// - Parameter bpm: Beats Per Minute - for what bpm should the bars be calculated
+    /// - Parameter timeUnit: The unit of time that self represents
+    ///  - Parameter timeSignature: The time signature for which the bars amount should be calculated, is 4 in most songs -> 4 beats in a bar
     func getBars(bpm: Double, timeUnit: TimeUnit, timeSignature: Int = 4) -> Int {
-        
+        // Bars get calculated with the formula: Bars = (AmountOfMinutes * Beats Per Minute)/Time Signature
         switch (timeUnit) {
-        case .milliseconds: return Int(Double(self) / ((60000.0/bpm) * Double(timeSignature)))
-        case .seconds: return Int(Double(self) / ((60.0/bpm) * Double(timeSignature)))
-        case .minutes: return Int(Double(self) / ((1.0/bpm) * Double(timeSignature)))
+        case .milliseconds: return Int((Double(self) * bpm) / (Double(timeSignature) * 60000.0))
+        case .seconds: return Int((Double(self) * bpm) / (Double(timeSignature) * 60.0))
+        case .minutes: return Int((Double(self) * bpm) / Double(timeSignature))
         }
         
     }

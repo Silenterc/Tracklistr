@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftData
-
+/// ViewModel for the TrackCell
 @Observable
 class TrackCellVM {
     var track: AppTrack

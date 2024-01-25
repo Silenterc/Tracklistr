@@ -29,7 +29,7 @@ struct MixOverviewView: View {
                             TracklistCell(viewModel: viewModel, name: "Start a new set")
                         }
                         ForEach(viewModel.tracklists) { tracklist in
-                            NavigationLink(destination: EmptyView()) {
+                            NavigationLink(destination: TracklistView(modelContext: viewModel.databaseContext, tracklistID: tracklist.id)) {
                                 
                                 TracklistCell(viewModel: viewModel, name: tracklist.name, editedAt: tracklist.editedAt)
                             }

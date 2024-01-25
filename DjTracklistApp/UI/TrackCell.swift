@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+/// View representing a Track which is placed on the TracklistView
 struct TrackCell: View {
     @State var viewModel: TrackCellVM
     var body: some View {
@@ -52,7 +53,7 @@ struct TrackCell: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         
     }
-    
+    /// Bar on the right side of the track cell, which can be dragged horizontally to make the cell bigger or smaller
     private func resizeBarRight() -> some View {
         Rectangle()
             .fill(.ultraThickMaterial)
@@ -65,7 +66,7 @@ struct TrackCell: View {
                     }))
             )
     }
-    
+    /// Bar on the left side of the track cell, which can be dragged horizontally to make the cell bigger or smaller
     private func resizeBarLeft() -> some View {
         Rectangle()
             .fill(.ultraThickMaterial)
@@ -79,7 +80,7 @@ struct TrackCell: View {
             )
     }
     
-
+    /// Information about the current duration of the track
     private func timeInfo(timeInBars: Int) -> some View {
         VStack (alignment: .trailing){
             // BPM MUST BE THE SAME AS FOR THE PLAYLIST
@@ -88,12 +89,12 @@ struct TrackCell: View {
         }
     }
     
-    
+    /// Information about the current curation of the track in bars
     private func barsText(bars: Int) -> Text {
         Text("\(bars)" + (bars == 1 ? " bar" : " bars"))
             .font(.custom("Roboto-Regular", fixedSize: 8))
     }
-    
+    /// Information about the current duration of the track in mm:ss
     private func timeText(bars: Int) -> Text {
         let timeInSeconds = Double(bars) * (60.0/viewModel.track.bpm!) * 4.0
         let timeInterval = TimeInterval(timeInSeconds)

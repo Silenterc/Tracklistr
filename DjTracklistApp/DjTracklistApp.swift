@@ -27,7 +27,7 @@ let sharedModelContainer: ModelContainer = {
     
 }()
 @main
-@MainActor
+//@MainActor
 struct DjTracklistApp: App {
     var body: some Scene {
         WindowGroup {

@@ -12,25 +12,22 @@ import SwiftData
 class TracklistVM {
     
     // Middle man between our VM and SwiftData, used for all Database operations
-    var databaseContext: ModelContext
+    var tracklistService: TracklistService
     var tracklistID: UUID
     var tracklist: Tracklist?
     
-    init(databaseContext: ModelContext, tracklistID: UUID) {
-        self.databaseContext = databaseContext
+    init(tracklistService: TracklistService, tracklistID: UUID) {
+        self.tracklistService = tracklistService
         self.tracklistID = tracklistID
         fetchTracklist()
     }
     
     func fetchTracklist() {
         do {
-            let descriptor = FetchDescriptor<Tracklist>(predicate: #Predicate<Tracklist> {
-                tlist in tlist.id == tracklistID
-            })
+            tracklist = try tracklistService.fetchTracklist(id: tracklistID)
             
-            tracklist = try databaseContext.fetch(descriptor)[0]
         } catch {
-            fatalError("Fetch Failed")
+            // TODO
         }
     }
     

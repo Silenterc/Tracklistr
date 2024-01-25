@@ -7,6 +7,9 @@
 
 import SwiftUI
 import SwiftData
+/**
+ View which lets the user edit the data of either an existing tracklist or a new one
+ */
 struct TracklistInfoView: View {
     @State var viewModel: TracklistInfoVM
     init(modelContext: ModelContext, tracklistID: UUID? = nil) {
@@ -17,8 +20,9 @@ struct TracklistInfoView: View {
     
     var body: some View {
         NavigationStack{
-            VStack{
+            ScrollView{
                 VStack(alignment: .leading, spacing: 16) {
+                    // TODO CUSTOM TEXTS FOR ROBOTO
                     Text("Name:")
                         .font(.custom(UIConstants.Font.regular, fixedSize: 18))
                     TextField("Enter name", text: $viewModel.currentName)
@@ -58,15 +62,11 @@ struct TracklistInfoView: View {
                         Spacer()
                         Button(viewModel.toBeCreated ? "Create" : "Save") {
                             viewModel.updateTracklist()
+                            viewModel.goToTracklistView = true
                         }
                         .font(.custom(UIConstants.Font.regular, fixedSize: 18))
                         .disabled(viewModel.isCreateButtonDisabled)
                         
-
-                       
-                            
-                        
-                
                     }
                     .padding(.top, 20)
                     .padding(.horizontal, 50)
@@ -77,6 +77,9 @@ struct TracklistInfoView: View {
                 Spacer()
             }
             .padding(.top, 40)
+        }
+        .navigationDestination(isPresented: $viewModel.goToTracklistView) {
+            TracklistView(modelContext: viewModel.tracklistService.databaseContext, tracklistID: viewModel.tracklist.id)
         }
     }
 }
