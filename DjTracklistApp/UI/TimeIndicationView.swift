@@ -16,9 +16,10 @@ struct TimeIndicationView: View {
     }
     
     var body: some View {
-        HStack {
+        HStack(spacing: 0) {
             ForEach(0..<sixteenBars, id: \.self) {_ in
                 makeSixteenBars()
+                    
             }
             Spacer()
         }
@@ -27,17 +28,18 @@ struct TimeIndicationView: View {
     }
     
     private func makeSixteenBars() -> some View {
-        HStack {
-            makeIndicator(height: 28)
-            makeIndicator(height: 14)
-            makeIndicator(height: 14)
-            makeIndicator(height: 14)
+        HStack(spacing: UIConstants.Indicator.spacing) {
+            makeIndicator(height: UIConstants.Indicator.Big.height)
+            makeIndicator(height: UIConstants.Indicator.Small.height)
+            makeIndicator(height: UIConstants.Indicator.Small.height)
+            makeIndicator(height: UIConstants.Indicator.Small.height)
         }
+        .frame(width: 32, alignment: Alignment.leading)
     }
     private func makeIndicator(height: CGFloat) -> some View {
         Rectangle()
             .fill(.timelineIndicator)
-            .frame(width: 1, height: height)
+            .frame(width: UIConstants.Indicator.width, height: height)
     }
 }
 

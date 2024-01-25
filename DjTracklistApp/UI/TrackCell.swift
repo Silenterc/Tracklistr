@@ -8,11 +8,11 @@
 import SwiftUI
 import SwiftData
 struct TrackCell: View {
-    @State var track: AppTrack
-    @State private var width: CGFloat = 192
-    @State private var height: CGFloat = 62
+    @State var viewModel: TrackCellVM
     var body: some View {
+        VStack(){
             HStack {
+                resizeBarLeft()
                 VStack(alignment: .leading) {
                     HStack(alignment: .top, spacing: 3) {
                         Image(systemName: "play.square.fill")
@@ -20,45 +20,65 @@ struct TrackCell: View {
                             .frame(width: 31, height: 31)
                             .cornerRadius(10)
                         VStack(alignment: .leading){
-                            Text(track.name)
-                                .font(.custom("Roboto-Regular", fixedSize: 12))
+                            Text(viewModel.track.name)
+                                .font(.custom(UIConstants.Font.regular, fixedSize: 12))
                                 .truncationMode(.tail)
                             
-                            Text(track.artistNames.joined(separator: ","))
-                                .font(.custom("Roboto-Light", fixedSize: 8))
+                            Text(viewModel.track.artistNames.joined(separator: ","))
+                                .font(.custom(UIConstants.Font.light, fixedSize: 8))
                                 .truncationMode(.tail)
                         }
                     }
                     HStack {
-                        timeInfo(timeInBars: track.startTimeBars)
+                        timeInfo(timeInBars: viewModel.track.startTimeBars)
                         
                         Spacer()
-
-                        timeInfo(timeInBars: track.endTimeBars)
+                        
+                        timeInfo(timeInBars: viewModel.track.endTimeBars)
                         
                     }
                     
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .padding(6)
-                Rectangle()
-                    .fill(.ultraThickMaterial)
-                    .frame(width: 10, height: height)
-                    .gesture(
-                        LongPressGesture()
-                            .sequenced(before: DragGesture()
-                                .onChanged({ value in
-                                    let change = value.translation.width
-                                    let newWidth = width + change
-                                    width = newWidth >= 0 ? newWidth : 0
-                            }))
-                    )
+                resizeBarRight()
             }
-            .frame(width: width, height: height)
+            .frame(width: viewModel.width, height: viewModel.height, alignment: .leading)
+            
             .background(Color.cellBackground)
             .cornerRadius(10)
+        }
+        //NEED TO SOMEHOW PLAY WITH THE ALIGNMENT HERE SO ITS LEADING WHEN FROM THE LEFT AND TRAILING WHEN FROM THE RIGHT AND ALSO NEED TO KEEP THE WIDTH OF THE VIEW THE SAME UNTIL THE RESIZE COMPLETES AND THEN SOMEHOW CALCULATE THE OFFSET AND PLACE IT TO THE LEFT OR RIGHT SO IT STAYS IN THE SAME PLACE
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         
     }
+    
+    private func resizeBarRight() -> some View {
+        Rectangle()
+            .fill(.ultraThickMaterial)
+            .frame(width: 10, height: viewModel.height)
+            .gesture(
+                LongPressGesture()
+                    .sequenced(before: DragGesture()
+                        .onChanged({ value in
+                            viewModel.changeWidth(change: value.translation.width)
+                    }))
+            )
+    }
+    
+    private func resizeBarLeft() -> some View {
+        Rectangle()
+            .fill(.ultraThickMaterial)
+            .frame(width: 10, height: viewModel.height)
+            .gesture(
+                LongPressGesture()
+                    .sequenced(before: DragGesture()
+                        .onChanged({ value in
+                            viewModel.changeWidth(change: -value.translation.width)
+                    }))
+            )
+    }
+    
 
     private func timeInfo(timeInBars: Int) -> some View {
         VStack (alignment: .trailing){
@@ -75,7 +95,7 @@ struct TrackCell: View {
     }
     
     private func timeText(bars: Int) -> Text {
-        let timeInSeconds = Double(bars) * (60.0/track.bpm!) * 4.0
+        let timeInSeconds = Double(bars) * (60.0/viewModel.track.bpm!) * 4.0
         let timeInterval = TimeInterval(timeInSeconds)
             
         let formatter = DateComponentsFormatter()
@@ -102,7 +122,7 @@ struct TrackCell: View {
     let track = AppTrack.mockSolarSystemTrack()
     container.mainContext.insert(track)
 
-    return TrackCell(track: track).modelContainer(container)
+    return TrackCell(viewModel: .init(track: track, width: 192, height: 62)).modelContainer(container)
 }
 
 

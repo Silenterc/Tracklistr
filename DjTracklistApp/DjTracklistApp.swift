@@ -30,7 +30,8 @@ struct DjTracklistApp: App {
     var body: some Scene {
         WindowGroup {
             //MixOverviewView(modelContext: sharedModelContainer.mainContext)
-            TracklistView(modelContext: sharedModelContainer.mainContext, tracklistID: tracklist.id)
+            //TracklistView(modelContext: sharedModelContainer.mainContext, tracklistID: tracklist.id)
+            TracklistInfoView(modelContext: sharedModelContainer.mainContext)
         }
         .modelContainer(sharedModelContainer)
     }

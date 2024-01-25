@@ -25,7 +25,7 @@ struct MixOverviewView: View {
             VStack {
                 ScrollView {
                     LazyVStack(spacing: 20) {
-                        NavigationLink(destination: EmptyView()){
+                        NavigationLink(destination: TracklistInfoView(modelContext: viewModel.databaseContext)){
                             TracklistCell(viewModel: viewModel, name: "Start a new set")
                         }
                         ForEach(viewModel.tracklists) { tracklist in
@@ -56,10 +56,11 @@ extension MixOverviewView {
             HStack {
                 VStack(alignment: .leading) {
                     Text(name)
-                        .font(.headline)
+                        .font(.custom(UIConstants.Font.medium, fixedSize: 18))
+                        
                     if let date = editedAt{
                         Text("Date: \(date))")
-                            .font(.subheadline)
+                            .font(.custom(UIConstants.Font.light, fixedSize: 16))
                             .foregroundColor(.gray)
                     }
                     

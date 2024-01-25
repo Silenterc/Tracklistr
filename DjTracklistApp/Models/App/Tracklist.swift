@@ -14,9 +14,9 @@ class Tracklist {
     @Relationship(deleteRule: .cascade, inverse: \Deck.tracklist) var decks: [Deck]
     var name: String
     var editedAt: Date
-    var bpm: Int
+    var bpm: Double
     
-    init(id: UUID, decks: [Deck], name: String, editedAt: Date, bpm: Int) {
+    init(id: UUID, decks: [Deck], name: String, editedAt: Date, bpm: Double) {
         self.id = id
         self.decks = decks
         self.name = name

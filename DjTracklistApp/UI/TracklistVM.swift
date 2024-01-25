@@ -28,9 +28,6 @@ class TracklistVM {
                 tlist in tlist.id == tracklistID
             })
             
-            let descriptor1 = FetchDescriptor<Tracklist>()
-            let tracklists = try databaseContext.fetch(descriptor1)
-            
             tracklist = try databaseContext.fetch(descriptor)[0]
         } catch {
             fatalError("Fetch Failed")

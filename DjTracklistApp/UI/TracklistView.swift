@@ -27,14 +27,15 @@ struct TracklistView: View {
                         VStack(alignment: .leading, spacing: 0) {
                             ForEach(tracklist.decks) { deck in
                                 VStack(alignment: .leading){
+                                 
                                     LazyHStack {
                                         ForEach(deck.tracks) { track in
-                                            VStack{
+                                            
                                                 //Spacer()
-                                                TrackCell(track: track)
+                                                TrackCell(viewModel: .init(track: track, width: 192, height: 62))
                                                 
                                                 //Spacer()
-                                            }
+                                            
                                         }
                                     }
                                     if (deck != tracklist.decks.last) {
@@ -60,6 +61,8 @@ struct TracklistView: View {
                         //.frame(alignment: .center)
                         .offset(x: 0, y: 22)
                     }
+                    .scrollTargetBehavior(.viewAligned)
+                   
                     
                     
                     
