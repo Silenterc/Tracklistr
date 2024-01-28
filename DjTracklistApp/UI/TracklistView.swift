@@ -25,11 +25,11 @@ struct TracklistView: View {
                 HStack {
                     ScrollView(.horizontal, showsIndicators: false){
                         VStack(alignment: .leading, spacing: 0) {
-                            ForEach(tracklist.decks!) { deck in
+                            ForEach(tracklist.players!) { player in
                                 VStack(alignment: .leading){
                                  
                                     LazyHStack {
-                                        ForEach(deck.tracks!) { track in
+                                        ForEach(player.tracks!) { track in
                                             
                                                 //Spacer()
                                                 TrackCell(viewModel: .init(track: track, width: 192, height: 62))
@@ -38,7 +38,7 @@ struct TracklistView: View {
                                             
                                         }
                                     }
-                                    if (deck != tracklist.decks!.last) {
+                                    if (player != tracklist.players!.last) {
                                         TimeIndicationView(bars: (viewModel.tracklist?.durationMinutes.getBars(bpm: viewModel.tracklist!.bpm, timeUnit: .minutes))!)
     
                                     } else {
@@ -63,12 +63,10 @@ struct TracklistView: View {
                     }
                     .scrollTargetBehavior(.viewAligned)
                    
-                    
-                    
-                    
-                    Rectangle()
-                        .fill(.white)
-                        .frame(width: 30)
+                    TrackAddBar(tracklist: tracklist)
+//                    Rectangle()
+//                        .fill(.white)
+//                        .frame(width: 30)
                 }
                 
             }
@@ -76,8 +74,45 @@ struct TracklistView: View {
             .background(.black)
             .frame(maxWidth: .infinity)
             .navigationBarBackButtonHidden()
+            
         }
     }
+    
+    func TrackAddBar(tracklist: Tracklist) -> some View {
+        VStack {
+            ForEach(tracklist.players!) { player in
+                Spacer()
+                Button {
+                    viewModel.playerToBeAdded = player
+                    viewModel.isAddSheetPresented.toggle()
+                } label: {
+                    Image(systemName: "plus.app")
+                        .resizable()
+                        .tint(Color.cellBackground)
+                        .frame(width: 25, height: 25)
+                }
+                Spacer()
+                
+            }
+        }
+        .background(.black)
+        .frame(width: 30)
+        .sheet(isPresented: $viewModel.isAddSheetPresented) {
+            VStack {
+                HStack {
+                    Spacer()
+                    Button("Cancel", role: .cancel) {
+                        viewModel.isAddSheetPresented.toggle()
+                    }
+                }
+                Spacer()
+                AddTrackView(player: viewModel.playerToBeAdded!)
+                Spacer()
+            }
+            .padding(24)
+        }
+    }
+        
         
 }
 

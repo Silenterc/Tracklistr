@@ -12,7 +12,7 @@ struct TrackCell: View {
     @State var viewModel: TrackCellVM
     var body: some View {
         VStack(){
-            HStack {
+            HStack(spacing: 0) {
                 resizeBarLeft()
                 VStack(alignment: .leading) {
                     HStack(alignment: .top, spacing: 3) {

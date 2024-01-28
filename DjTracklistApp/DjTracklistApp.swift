@@ -13,7 +13,7 @@ let tracklist = Tracklist.mockTracklist1()
 let sharedModelContainer: ModelContainer = {
     let schema = Schema([
         Tracklist.self,
-        Deck.self,
+        Player.self,
         AppTrack.self
     ])
     let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
@@ -27,7 +27,6 @@ let sharedModelContainer: ModelContainer = {
     
 }()
 @main
-//@MainActor
 struct DjTracklistApp: App {
     var body: some Scene {
         WindowGroup {

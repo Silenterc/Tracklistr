@@ -7,29 +7,30 @@
 
 import Foundation
 import SwiftData
-
+/// Class representing a tracklist
 @Model
 class Tracklist {
     @Attribute(.unique) let id: UUID
-    @Relationship(deleteRule: .cascade, inverse: \Deck.tracklist) var decks: [Deck]?
+    /// The players that are present for this tracklist, will be usually 4
+    @Relationship(deleteRule: .cascade, inverse: \Player.tracklist) var players: [Player]?
+    /// Name of the Tracklist
     var name: String
+    /// When was it last edited
     var editedAt: Date
+    /// The Beats Per Minute of the tracklist, all the songs in the tracklist will need to have the same BPM
     var bpm: Double
+    /// The duration of the whole tracklist, in minutes
     var durationMinutes: Int
     
-    init(id: UUID, decks: [Deck]? = [], name: String, editedAt: Date, bpm: Double, durationMinutes: Int) {
+    init(id: UUID, players: [Player]? = [], name: String, editedAt: Date, bpm: Double, durationMinutes: Int) {
         self.id = id
-        self.decks = decks
+        self.players = players
         self.name = name
         self.editedAt = editedAt
         self.bpm = bpm
         self.durationMinutes = durationMinutes
-        //setDecks(decks: decks)
     }
-    
-    func setDecks(decks: [Deck]) {
-        self.decks = decks
-    }
+   
     
 }
 
@@ -38,13 +39,13 @@ extension Tracklist {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd HH:mm"
         let date = formatter.date(from: "2023/11/29 21:00")!
-        return Tracklist(id: UUID(), decks: [Deck.mockDeck1(), Deck.mockDeck2(), Deck.mockDeck1(), Deck.mockDeck1()], name: "Silence 10", editedAt: date, bpm: 175, durationMinutes: 60)
+        return Tracklist(id: UUID(), players: [Player.mockPlayer1(), Player.mockPlayer2(), Player.mockPlayer1(), Player.mockPlayer1()], name: "Silence 10", editedAt: date, bpm: 175, durationMinutes: 60)
     }
     
     static func mockTracklist2() -> Tracklist {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd HH:mm"
         let date = formatter.date(from: "2023/12/24 16:00")!
-        return Tracklist(id: UUID(), decks: [Deck.mockDeck1(), Deck.mockDeck2()], name: "Silence 11", editedAt: date, bpm: 174, durationMinutes: 45)
+        return Tracklist(id: UUID(), players: [Player.mockPlayer1(), Player.mockPlayer2()], name: "Silence 11", editedAt: date, bpm: 174, durationMinutes: 45)
     }
 }

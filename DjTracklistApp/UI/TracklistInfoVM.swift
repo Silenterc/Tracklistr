@@ -64,10 +64,10 @@ class TracklistInfoVM {
         // Right now we only support 4 decks so they get added here and also we have created a new Tracklist so it gets added to the db
         if (toBeCreated) {
             tracklistService.insertTracklist(tracklist: tracklist)
-            tracklist.decks!.append(Deck(id: UUID(), tracklist: tracklist))
-            tracklist.decks!.append(Deck(id: UUID(), tracklist: tracklist))
-            tracklist.decks!.append(Deck(id: UUID(), tracklist: tracklist))
-            tracklist.decks!.append(Deck(id: UUID(), tracklist: tracklist))
+            tracklist.players!.append(Player(id: UUID(), tracklist: tracklist))
+            tracklist.players!.append(Player(id: UUID(), tracklist: tracklist))
+            tracklist.players!.append(Player(id: UUID(), tracklist: tracklist))
+            tracklist.players!.append(Player(id: UUID(), tracklist: tracklist))
         }
         
         

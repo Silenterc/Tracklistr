@@ -7,26 +7,38 @@
 
 import Foundation
 import SwiftData
-
+/// Class representing one track/song  in the App's tracklist
 @Model
 final class AppTrack: Identifiable {
     @Attribute(.unique) let id:UUID
+    /// Id of this track from the API it was taken from , is empty for custom song
     let externalId: String
+    /// Name of the track
     let name: String
+    /// Artist names for the track
     let artistNames: [String]
+    /// Name of the album that this track belongs to
     let albumName: String
+    /// URL with the cover art image
     let imageUrl: URL
+    /// The full duration of the song
     let originalDuration: Int
+    /// Beats Per Minute of the song
     let bpm: Double?
-    
+    /// Specific point in the duration of the track, where it should start from
+    /// f.e.: I want to play the track already 16 bars in, not from the start
     var startTimeBars: Int = 0
+    /// Specific point in the duration of the track, where it should end at
+    /// f.e.: I want to stop playing the track 64 bars in, not at the end
     var endTimeBars: Int = 0
+    /// Current duration of the track
     var currentDuration: Int {
         endTimeBars - startTimeBars
     }
-    var deck: Deck?
+    /// The player to which this track belongs to
+    var player: Player?
     
-    init(id: UUID, externalId: String, name: String, artistNames: [String], albumName: String, imageUrl: URL, originalDuration: Int, bpm: Double?, startTimeBars: Int, endTimeBars: Int, deck: Deck? = nil) {
+    init(id: UUID, externalId: String, name: String, artistNames: [String], albumName: String, imageUrl: URL, originalDuration: Int, bpm: Double?, startTimeBars: Int, endTimeBars: Int, player: Player? = nil) {
         self.id = id
         self.externalId = externalId
         self.name = name
@@ -37,7 +49,7 @@ final class AppTrack: Identifiable {
         self.bpm = bpm
         self.startTimeBars = startTimeBars
         self.endTimeBars = endTimeBars
-        self.deck = deck
+        self.player = player
     }
 }
 

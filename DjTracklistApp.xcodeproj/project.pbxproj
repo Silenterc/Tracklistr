@@ -56,7 +56,7 @@
 		422A754D2B5DAC2000CD9E76 /* MixOverviewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A754B2B5DAC2000CD9E76 /* MixOverviewVM.swift */; };
 		422A754F2B6005CB00CD9E76 /* TracklistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A754E2B6005CB00CD9E76 /* TracklistView.swift */; };
 		422A75512B6005FD00CD9E76 /* TracklistVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A75502B6005FD00CD9E76 /* TracklistVM.swift */; };
-		422A75532B60078900CD9E76 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A75522B60078900CD9E76 /* Deck.swift */; };
+		422A75532B60078900CD9E76 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A75522B60078900CD9E76 /* Player.swift */; };
 		422A75642B60233800CD9E76 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 422A75572B60233700CD9E76 /* Roboto-Thin.ttf */; };
 		422A75652B60233800CD9E76 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 422A75582B60233800CD9E76 /* Roboto-Light.ttf */; };
 		422A75662B60233800CD9E76 /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 422A75592B60233800CD9E76 /* Roboto-BoldItalic.ttf */; };
@@ -74,6 +74,8 @@
 		422A75742B60392400CD9E76 /* TimeIndicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A75732B60392400CD9E76 /* TimeIndicationView.swift */; };
 		422A75762B603AE000CD9E76 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A75752B603AE000CD9E76 /* Extensions.swift */; };
 		422A75772B6048E000CD9E76 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A75752B603AE000CD9E76 /* Extensions.swift */; };
+		429FF00F2B668FA00093AB75 /* AddTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429FF00E2B668FA00093AB75 /* AddTrackView.swift */; };
+		429FF0112B668FCA0093AB75 /* AddTrackVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429FF0102B668FCA0093AB75 /* AddTrackVM.swift */; };
 		42A571C62B619E7C0041907E /* TrackCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A571C52B619E7C0041907E /* TrackCellVM.swift */; };
 		42A571C82B61A1EA0041907E /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A571C72B61A1EA0041907E /* UIConstants.swift */; };
 		42A571CA2B6297BA0041907E /* TracklistInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A571C92B6297BA0041907E /* TracklistInfoView.swift */; };
@@ -136,7 +138,7 @@
 		422A754B2B5DAC2000CD9E76 /* MixOverviewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixOverviewVM.swift; sourceTree = "<group>"; };
 		422A754E2B6005CB00CD9E76 /* TracklistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracklistView.swift; sourceTree = "<group>"; };
 		422A75502B6005FD00CD9E76 /* TracklistVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracklistVM.swift; sourceTree = "<group>"; };
-		422A75522B60078900CD9E76 /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
+		422A75522B60078900CD9E76 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		422A75572B60233700CD9E76 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		422A75582B60233800CD9E76 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		422A75592B60233800CD9E76 /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -153,6 +155,8 @@
 		422A75712B6035B600CD9E76 /* TrackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCell.swift; sourceTree = "<group>"; };
 		422A75732B60392400CD9E76 /* TimeIndicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIndicationView.swift; sourceTree = "<group>"; };
 		422A75752B603AE000CD9E76 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		429FF00E2B668FA00093AB75 /* AddTrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTrackView.swift; sourceTree = "<group>"; };
+		429FF0102B668FCA0093AB75 /* AddTrackVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTrackVM.swift; sourceTree = "<group>"; };
 		42A571C52B619E7C0041907E /* TrackCellVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCellVM.swift; sourceTree = "<group>"; };
 		42A571C72B61A1EA0041907E /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
 		42A571C92B6297BA0041907E /* TracklistInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracklistInfoView.swift; sourceTree = "<group>"; };
@@ -344,7 +348,7 @@
 				422A753E2B5D829800CD9E76 /* AppTrack.swift */,
 				422A75412B5D846100CD9E76 /* Bar.swift */,
 				422A75442B5DA7FE00CD9E76 /* Tracklist.swift */,
-				422A75522B60078900CD9E76 /* Deck.swift */,
+				422A75522B60078900CD9E76 /* Player.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -378,6 +382,8 @@
 				422A75732B60392400CD9E76 /* TimeIndicationView.swift */,
 				42A571C92B6297BA0041907E /* TracklistInfoView.swift */,
 				42A571CB2B6297CC0041907E /* TracklistInfoVM.swift */,
+				429FF00E2B668FA00093AB75 /* AddTrackView.swift */,
+				429FF0102B668FCA0093AB75 /* AddTrackVM.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -550,12 +556,13 @@
 				422A75052B5BE3C300CD9E76 /* SpotifyAPIHandler.swift in Sources */,
 				42A571CA2B6297BA0041907E /* TracklistInfoView.swift in Sources */,
 				422A751D2B5C4AAF00CD9E76 /* Track.swift in Sources */,
+				429FF00F2B668FA00093AB75 /* AddTrackView.swift in Sources */,
 				422A75102B5BF61500CD9E76 /* SpotifyTokenHandler.swift in Sources */,
 				422A74D72B5BDFB900CD9E76 /* ContentView.swift in Sources */,
 				422A74D92B5BDFB900CD9E76 /* Item.swift in Sources */,
 				422A754C2B5DAC2000CD9E76 /* MixOverviewVM.swift in Sources */,
 				422A75722B6035B600CD9E76 /* TrackCell.swift in Sources */,
-				422A75532B60078900CD9E76 /* Deck.swift in Sources */,
+				422A75532B60078900CD9E76 /* Player.swift in Sources */,
 				422A750C2B5BF2F800CD9E76 /* AccessTokenHandler.swift in Sources */,
 				422A752E2B5D49A400CD9E76 /* Artist.swift in Sources */,
 				422A74D52B5BDFB900CD9E76 /* DjTracklistApp.swift in Sources */,
@@ -566,6 +573,7 @@
 				42A571C62B619E7C0041907E /* TrackCellVM.swift in Sources */,
 				422A75132B5BFC9500CD9E76 /* Authorization.swift in Sources */,
 				42A571C82B61A1EA0041907E /* UIConstants.swift in Sources */,
+				429FF0112B668FCA0093AB75 /* AddTrackVM.swift in Sources */,
 				422A75022B5BE16600CD9E76 /* APIHandler.swift in Sources */,
 				422A75192B5C065400CD9E76 /* APIConstant.swift in Sources */,
 				422A75352B5D518800CD9E76 /* URLSessionProtocol.swift in Sources */,

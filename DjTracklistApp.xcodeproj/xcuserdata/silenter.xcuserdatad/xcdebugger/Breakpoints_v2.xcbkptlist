@@ -222,8 +222,8 @@
             filePath = "DjTracklistApp/UI/TracklistVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
             landmarkName = "fetchTracklist()"
             landmarkType = "7">
          </BreakpointContent>
@@ -301,8 +301,8 @@
             filePath = "DjTracklistApp/UI/TracklistVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
             landmarkName = "init(tracklistService:tracklistID:)"
             landmarkType = "7">
             <Locations>
@@ -397,8 +397,8 @@
             filePath = "DjTracklistApp/UI/TracklistVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
             landmarkName = "fetchTracklist()"
             landmarkType = "7">
          </BreakpointContent>
