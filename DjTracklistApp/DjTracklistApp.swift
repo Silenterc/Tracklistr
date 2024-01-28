@@ -14,7 +14,7 @@ let sharedModelContainer: ModelContainer = {
     let schema = Schema([
         Tracklist.self,
         Player.self,
-        AppTrack.self
+        Track.self
     ])
     let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
     do {

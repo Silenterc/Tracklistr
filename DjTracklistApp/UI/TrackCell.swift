@@ -31,11 +31,11 @@ struct TrackCell: View {
                         }
                     }
                     HStack {
-                        timeInfo(timeInBars: viewModel.track.startTimeBars)
+                        timeInfo(timeInBars: viewModel.track.startTimeBars!)
                         
                         Spacer()
                         
-                        timeInfo(timeInBars: viewModel.track.endTimeBars)
+                        timeInfo(timeInBars: viewModel.track.endTimeBars!)
                         
                     }
                     
@@ -96,7 +96,7 @@ struct TrackCell: View {
     }
     /// Information about the current duration of the track in mm:ss
     private func timeText(bars: Int) -> Text {
-        let timeInSeconds = Double(bars) * (60.0/viewModel.track.bpm!) * 4.0
+        let timeInSeconds = Double(bars) * (60.0/Double(viewModel.track.bpm!)) * 4.0
         let timeInterval = TimeInterval(timeInSeconds)
             
         let formatter = DateComponentsFormatter()
@@ -120,7 +120,7 @@ struct TrackCell: View {
 #Preview {
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
     let container = try! ModelContainer(for: Tracklist.self, configurations: config)
-    let track = AppTrack.mockSolarSystemTrack()
+    let track = Track.mockSolarSystemTrack()
     container.mainContext.insert(track)
 
     return TrackCell(viewModel: .init(track: track, width: 192, height: 62)).modelContainer(container)

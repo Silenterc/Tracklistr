@@ -17,7 +17,7 @@ class SearchObject: Codable{
 }
 
 class TracksObject : SearchObject {
-    let items: [Track]
+    let items: [SpotifyTrack]
     
     enum CodingKeys: String, CodingKey {
             case items
@@ -25,7 +25,7 @@ class TracksObject : SearchObject {
     
     required init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
-            self.items = try container.decodeIfPresent([Track].self, forKey: .items) ?? []
+            self.items = try container.decodeIfPresent([SpotifyTrack].self, forKey: .items) ?? []
             try super.init(from: decoder)
         }
 }

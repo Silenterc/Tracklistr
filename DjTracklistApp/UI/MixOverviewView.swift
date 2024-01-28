@@ -21,7 +21,7 @@ struct MixOverviewView: View {
         _viewModel = State(initialValue: viewModel)
     }
     var body: some View {
-        NavigationStack{
+        NavigationStack {
             VStack {
                 ScrollView {
                     LazyVStack(spacing: 20) {
@@ -82,6 +82,6 @@ extension MixOverviewView {
 #Preview {
     MixOverviewView(
         modelContext: try! ModelContainer(
-            for: AppTrack.self, Tracklist.self,
+            for: Track.self, Tracklist.self,
             configurations: ModelConfiguration(isStoredInMemoryOnly: true)).mainContext)
 }

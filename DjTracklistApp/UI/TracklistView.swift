@@ -21,61 +21,63 @@ struct TracklistView: View {
     
     var body: some View {
         if let tracklist = viewModel.tracklist {
-            ZStack {
-                HStack {
-                    ScrollView(.horizontal, showsIndicators: false){
-                        VStack(alignment: .leading, spacing: 0) {
-                            ForEach(tracklist.players!) { player in
-                                VStack(alignment: .leading){
-                                 
-                                    LazyHStack {
-                                        ForEach(player.tracks!) { track in
-                                            
+            
+                ZStack {
+                    HStack {
+                        ScrollView(.horizontal, showsIndicators: false){
+                            VStack(alignment: .leading, spacing: 0) {
+                                ForEach(tracklist.players!) { player in
+                                    VStack(alignment: .leading){
+                                        
+                                        LazyHStack {
+                                            ForEach(player.tracks!) { track in
+                                                
                                                 //Spacer()
                                                 TrackCell(viewModel: .init(track: track, width: 192, height: 62))
                                                 
                                                 //Spacer()
+                                                
+                                            }
+                                        }
+                                        if (player != tracklist.players!.last) {
+                                            TimeIndicationView(bars: (viewModel.tracklist?.durationMinutes.getBars(bpm: viewModel.tracklist!.bpm, timeUnit: .minutes))!)
+                                            
+                                        } else {
+                                            Rectangle()
+                                                .frame(height: 28)
+                                                .frame(maxWidth: .infinity)
+                                                .opacity(0)
                                             
                                         }
                                     }
-                                    if (player != tracklist.players!.last) {
-                                        TimeIndicationView(bars: (viewModel.tracklist?.durationMinutes.getBars(bpm: viewModel.tracklist!.bpm, timeUnit: .minutes))!)
-    
-                                    } else {
-                                        Rectangle()
-                                            .frame(height: 28)
-                                            .frame(maxWidth: .infinity)
-                                            .opacity(0)
-                                            
-                                    }
+                                    .frame(maxWidth: .infinity)
+                                    
+                                    Spacer()
                                 }
-                                .frame(maxWidth: .infinity)
-                           
-                                Spacer()
+                                
+                                
+                                
                             }
-                            
-                            
-                            
+                            .frame(maxWidth: .infinity)
+                            //.frame(alignment: .center)
+                            .offset(x: 0, y: 22)
                         }
-                        .frame(maxWidth: .infinity)
-                        //.frame(alignment: .center)
-                        .offset(x: 0, y: 22)
+                        .scrollTargetBehavior(.viewAligned)
+                        
+                        TrackAddBar(tracklist: tracklist)
+                        //                    Rectangle()
+                        //                        .fill(.white)
+                        //                        .frame(width: 30)
                     }
-                    .scrollTargetBehavior(.viewAligned)
-                   
-                    TrackAddBar(tracklist: tracklist)
-//                    Rectangle()
-//                        .fill(.white)
-//                        .frame(width: 30)
+                    
                 }
+                .ignoresSafeArea(.all, edges: .bottom)
+                .background(.black)
+                .frame(maxWidth: .infinity)
+                .navigationBarBackButtonHidden()
                 
             }
-            .ignoresSafeArea(.all, edges: .bottom)
-            .background(.black)
-            .frame(maxWidth: .infinity)
-            .navigationBarBackButtonHidden()
-            
-        }
+        
     }
     
     func TrackAddBar(tracklist: Tracklist) -> some View {
@@ -97,19 +99,11 @@ struct TracklistView: View {
         }
         .background(.black)
         .frame(width: 30)
-        .sheet(isPresented: $viewModel.isAddSheetPresented) {
-            VStack {
-                HStack {
-                    Spacer()
-                    Button("Cancel", role: .cancel) {
-                        viewModel.isAddSheetPresented.toggle()
-                    }
-                }
-                Spacer()
-                AddTrackView(player: viewModel.playerToBeAdded!)
-                Spacer()
-            }
-            .padding(24)
+        .navigationDestination(isPresented: $viewModel.isAddSheetPresented) {
+         
+            AddTrackView(player: viewModel.playerToBeAdded)
+            Spacer()
+            
         }
     }
         
@@ -124,7 +118,7 @@ struct TracklistView: View {
     let tracklist = Tracklist.mockTracklist1()
     container.mainContext.insert(tracklist)
     
-    return TracklistView(modelContext: container.mainContext,
-                         tracklistID: tracklist.id)
+    return NavigationStack{TracklistView(modelContext: container.mainContext,
+                                         tracklistID: tracklist.id)}
      
 }

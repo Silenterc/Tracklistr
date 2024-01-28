@@ -12,11 +12,11 @@ import SwiftData
 class Player {
     @Attribute(.unique) let id: UUID
     /// The tracks present of this player
-    @Relationship(deleteRule: .cascade, inverse: \AppTrack.player) var tracks: [AppTrack]?
+    @Relationship(deleteRule: .cascade, inverse: \Track.player) var tracks: [Track]?
     /// The tracklist that this player belongs to
     var tracklist: Tracklist?
     
-    init(id: UUID, tracks: [AppTrack]? = [], tracklist: Tracklist? = nil) {
+    init(id: UUID, tracks: [Track]? = [], tracklist: Tracklist? = nil) {
         self.id = id
         self.tracks = tracks
         self.tracklist = tracklist
@@ -26,9 +26,9 @@ class Player {
 
 extension Player {
     static func mockPlayer1() -> Player {
-        Player(id: UUID(),tracks: [AppTrack.mockSolarSystemTrack(), AppTrack.mockDevotionTrack(), AppTrack.mockDevotionTrack(), AppTrack.mockSolarSystemTrack()])
+        Player(id: UUID(),tracks: [Track.mockSolarSystemTrack(), Track.mockDevotionTrack(), Track.mockDevotionTrack(), Track.mockSolarSystemTrack()])
     }
     static func mockPlayer2() -> Player {
-        Player(id: UUID(),tracks: [AppTrack.mockDevotionTrack(), AppTrack.mockSolarSystemTrack()])
+        Player(id: UUID(),tracks: [Track.mockDevotionTrack(), Track.mockSolarSystemTrack()])
     }
 }

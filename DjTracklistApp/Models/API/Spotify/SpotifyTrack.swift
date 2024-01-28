@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Track: Codable, Identifiable {
+struct SpotifyTrack: Codable, Identifiable {
     let id: String
     let name: String
     let duration_ms: Int

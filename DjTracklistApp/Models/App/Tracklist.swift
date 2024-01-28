@@ -18,11 +18,11 @@ class Tracklist {
     /// When was it last edited
     var editedAt: Date
     /// The Beats Per Minute of the tracklist, all the songs in the tracklist will need to have the same BPM
-    var bpm: Double
+    var bpm: Float
     /// The duration of the whole tracklist, in minutes
     var durationMinutes: Int
     
-    init(id: UUID, players: [Player]? = [], name: String, editedAt: Date, bpm: Double, durationMinutes: Int) {
+    init(id: UUID, players: [Player]? = [], name: String, editedAt: Date, bpm: Float, durationMinutes: Int) {
         self.id = id
         self.players = players
         self.name = name

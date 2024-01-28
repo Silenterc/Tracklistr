@@ -26,7 +26,7 @@ class TracklistInfoVM {
     /// The amount of decks/players during the set
     var decksCount = 4
     /// Currently chosen bpm  by the user
-    var currentBpm: Double?
+    var currentBpm: Float?
     /// Currently chosen duration in minutes by the user
     var currentDurationMinutes: Int?
     /// Currently chosen name of the palylist

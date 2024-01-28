@@ -10,11 +10,11 @@ import SwiftData
 /// ViewModel for the TrackCell
 @Observable
 class TrackCellVM {
-    var track: AppTrack
+    var track: Track
     var width: CGFloat
     var height: CGFloat
     
-    init(track: AppTrack, width: CGFloat, height: CGFloat) {
+    init(track: Track, width: CGFloat, height: CGFloat) {
         self.track = track
         self.width = width
         self.height = height
