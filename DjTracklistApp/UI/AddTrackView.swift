@@ -9,13 +9,14 @@ import SwiftUI
 import SwiftData
 struct AddTrackView: View {
     @State var viewModel: AddTrackVM
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     init(player: Player?) {
         let viewModel = AddTrackVM(player: player)
         _viewModel = State(initialValue: viewModel)
     }
     var body: some View {
-        
+
         VStack(alignment: .center) {
             
             HStack {
@@ -36,6 +37,9 @@ struct AddTrackView: View {
                         inputSelectionCell(image: Image("Spotify"), text: "Find via Spotify")
                     })
                     .tint(.black)
+                    .navigationDestination(isPresented: $viewModel.spotifyTapped) {
+                        searchTrackView()
+                    }
                     
                     Button(action: {
                         viewModel.musicApiTapped = true
@@ -43,6 +47,9 @@ struct AddTrackView: View {
                         inputSelectionCell(image: musicApi, text: "Find via all services")
                     })
                     .tint(.black)
+                    .navigationDestination(isPresented: $viewModel.musicApiTapped) {
+                        EmptyView()
+                    }
                     
                     
                 }
@@ -55,6 +62,9 @@ struct AddTrackView: View {
                         inputSelectionCell(image: plus, text: "Add your own")
                     })
                     .tint(.black)
+                    .navigationDestination(isPresented: $viewModel.manualTapped) {
+                        EmptyView()
+                    }
                     
                 }
             }
@@ -62,24 +72,12 @@ struct AddTrackView: View {
             
         }
         .frame(width: 400)
-        .navigationDestination(isPresented: $viewModel.spotifyTapped) {
-            searchTrackView()
-        }
-        .navigationDestination(isPresented: $viewModel.musicApiTapped) {
-            EmptyView()
-        }
-        .navigationDestination(isPresented: $viewModel.manualTapped) {
-            EmptyView()
-        }
-        // DOES NOT WORK
-        .navigationDestination(for: Track.self) { track in
-            Text("Huh")
-        }
         
     }
+    
     func searchTrackView() -> some View {
         VStack {
-            HStack {
+            HStack() {
                 TextField("Track name (required)", text: $viewModel.searchName)
                     .textFieldStyle(.roundedBorder)
                 
@@ -96,16 +94,19 @@ struct AddTrackView: View {
             }
             .padding(16)
             List(viewModel.tracks, id: \.id) { track in
-                NavigationLink(value: track) {
+                NavigationLink(destination: EmptyView()) {
                     searchedTrackCell(track: track)
                 }
+                .padding(12)
             }
         }
+        .padding(4)
     }
+    
     
     func searchedTrackCell(track: Track) -> some View {
         GeometryReader { geometry in
-            HStack {
+            HStack() {
                 AsyncImage(url: track.imageUrl) { image in
                     image.resizable()
                 } placeholder: {
@@ -114,6 +115,7 @@ struct AddTrackView: View {
                 .aspectRatio(1, contentMode: .fit)
                 .frame(width: 50, height: 50)
                 
+                
                 Text(track.name)
                     .font(.custom(UIConstants.Font.regular, size: 18))
                     .frame(width: geometry.size.width * 0.5, alignment: .leading)
@@ -121,13 +123,11 @@ struct AddTrackView: View {
                 
                 Text(track.artistNames.joined(separator: ","))
                     .font(.custom(UIConstants.Font.regular, size: 18))
-                
-                
             }
+            .frame(height: geometry.size.height)
         }
-        
-        
     }
+    
     
     func inputSelectionCell(image: some View, text: String) -> some View {
         VStack {
@@ -141,6 +141,7 @@ struct AddTrackView: View {
         .frame(width: 150)
     }
 }
+
 
 #Preview {
     let config = ModelConfiguration(isStoredInMemoryOnly: true)

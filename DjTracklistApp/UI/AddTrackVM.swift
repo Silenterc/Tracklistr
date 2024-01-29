@@ -18,6 +18,7 @@ class AddTrackVM {
     var manualTapped: Bool = false
     var searchName: String = ""
     var searchArtists: String = ""
+    var textLen: CGFloat = .zero
     
     init(player: Player?) {
         self.player = player

@@ -29,3 +29,25 @@ extension Int {
         
     }
 }
+
+extension View {
+    func useSize(onChange: @escaping (CGSize) -> Void) -> some View {
+        background (
+            GeometryReader { geometry in
+                Color.clear
+                    .preference(key: GeoSizePrefKey.self, value: geometry.size)
+            }
+        )
+        .onPreferenceChange(GeoSizePrefKey.self, perform: onChange)
+        
+    }
+}
+
+struct GeoSizePrefKey: PreferenceKey {
+    static var defaultValue: CGSize = .zero
+    static func reduce(value: inout CGSize, nextValue: () -> CGSize) {
+        value = nextValue()
+    }
+}
+    
+
