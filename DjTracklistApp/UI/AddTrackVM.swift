@@ -27,7 +27,6 @@ class AddTrackVM {
     func searchTracks() async {
         
             do {
-                print("Here")
                 tracks = try await apiService?.searchTracks(nameQuery: searchName, artistsQuery: searchArtists) ?? []
             } catch {
                 print(error)

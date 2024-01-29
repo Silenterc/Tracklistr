@@ -16,8 +16,6 @@ class TracklistVM {
     var tracklistID: UUID
     var tracklist: Tracklist?
     
-    var isAddSheetPresented: Bool = false
-    var playerToBeAdded: Player?
     init(tracklistService: TracklistService, tracklistID: UUID) {
         self.tracklistService = tracklistService
         self.tracklistID = tracklistID

@@ -75,7 +75,8 @@
 		422A75762B603AE000CD9E76 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A75752B603AE000CD9E76 /* Extensions.swift */; };
 		422A75772B6048E000CD9E76 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A75752B603AE000CD9E76 /* Extensions.swift */; };
 		4251D9222B67FAF400CB7CA4 /* TrackDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4251D9212B67FAF400CB7CA4 /* TrackDetailView.swift */; };
-		4251D9242B68026400CB7CA4 /* NavigationViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4251D9232B68026400CB7CA4 /* NavigationViews.swift */; };
+		4251D9242B68026400CB7CA4 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4251D9232B68026400CB7CA4 /* NavigationRouter.swift */; };
+		4251D9262B68443F00CB7CA4 /* TrackDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4251D9252B68443F00CB7CA4 /* TrackDetailVM.swift */; };
 		429FF00F2B668FA00093AB75 /* AddTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429FF00E2B668FA00093AB75 /* AddTrackView.swift */; };
 		429FF0112B668FCA0093AB75 /* AddTrackVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429FF0102B668FCA0093AB75 /* AddTrackVM.swift */; };
 		429FF0132B66B43B0093AB75 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429FF0122B66B43B0093AB75 /* ApiService.swift */; };
@@ -159,7 +160,8 @@
 		422A75732B60392400CD9E76 /* TimeIndicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIndicationView.swift; sourceTree = "<group>"; };
 		422A75752B603AE000CD9E76 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4251D9212B67FAF400CB7CA4 /* TrackDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDetailView.swift; sourceTree = "<group>"; };
-		4251D9232B68026400CB7CA4 /* NavigationViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViews.swift; sourceTree = "<group>"; };
+		4251D9232B68026400CB7CA4 /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
+		4251D9252B68443F00CB7CA4 /* TrackDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDetailVM.swift; sourceTree = "<group>"; };
 		429FF00E2B668FA00093AB75 /* AddTrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTrackView.swift; sourceTree = "<group>"; };
 		429FF0102B668FCA0093AB75 /* AddTrackVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTrackVM.swift; sourceTree = "<group>"; };
 		429FF0122B66B43B0093AB75 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
@@ -334,7 +336,7 @@
 				422A75342B5D518800CD9E76 /* URLSessionProtocol.swift */,
 				422A75752B603AE000CD9E76 /* Extensions.swift */,
 				42A571C72B61A1EA0041907E /* UIConstants.swift */,
-				4251D9232B68026400CB7CA4 /* NavigationViews.swift */,
+				4251D9232B68026400CB7CA4 /* NavigationRouter.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -393,6 +395,7 @@
 				429FF00E2B668FA00093AB75 /* AddTrackView.swift */,
 				429FF0102B668FCA0093AB75 /* AddTrackVM.swift */,
 				4251D9212B67FAF400CB7CA4 /* TrackDetailView.swift */,
+				4251D9252B68443F00CB7CA4 /* TrackDetailVM.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -568,6 +571,7 @@
 				429FF00F2B668FA00093AB75 /* AddTrackView.swift in Sources */,
 				422A75102B5BF61500CD9E76 /* SpotifyTokenHandler.swift in Sources */,
 				422A74D72B5BDFB900CD9E76 /* ContentView.swift in Sources */,
+				4251D9262B68443F00CB7CA4 /* TrackDetailVM.swift in Sources */,
 				422A74D92B5BDFB900CD9E76 /* Item.swift in Sources */,
 				422A754C2B5DAC2000CD9E76 /* MixOverviewVM.swift in Sources */,
 				422A75722B6035B600CD9E76 /* TrackCell.swift in Sources */,
@@ -583,7 +587,7 @@
 				42A571CC2B6297CC0041907E /* TracklistInfoVM.swift in Sources */,
 				42A571C62B619E7C0041907E /* TrackCellVM.swift in Sources */,
 				422A75132B5BFC9500CD9E76 /* Authorization.swift in Sources */,
-				4251D9242B68026400CB7CA4 /* NavigationViews.swift in Sources */,
+				4251D9242B68026400CB7CA4 /* NavigationRouter.swift in Sources */,
 				42A571C82B61A1EA0041907E /* UIConstants.swift in Sources */,
 				429FF0112B668FCA0093AB75 /* AddTrackVM.swift in Sources */,
 				422A75022B5BE16600CD9E76 /* APIHandler.swift in Sources */,

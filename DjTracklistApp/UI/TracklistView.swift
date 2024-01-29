@@ -10,7 +10,7 @@ import SwiftData
 
 struct TracklistView: View {
     @State var viewModel: TracklistVM
-    
+    @EnvironmentObject var router: NavigationRouter
     init(modelContext: ModelContext, tracklistID: UUID) {
         let viewModel = TracklistVM(tracklistService: TracklistService(databaseContext: modelContext), tracklistID: tracklistID)
         _viewModel = State(initialValue: viewModel)
@@ -21,14 +21,12 @@ struct TracklistView: View {
     
     var body: some View {
         if let tracklist = viewModel.tracklist {
-            
                 ZStack {
                     HStack {
                         ScrollView(.horizontal, showsIndicators: false){
                             VStack(alignment: .leading, spacing: 0) {
                                 ForEach(tracklist.players!) { player in
                                     VStack(alignment: .leading){
-                                        
                                         LazyHStack {
                                             ForEach(player.tracks!) { track in
                                                 
@@ -85,8 +83,7 @@ struct TracklistView: View {
             ForEach(tracklist.players!) { player in
                 Spacer()
                 Button {
-                    viewModel.playerToBeAdded = player
-                    viewModel.isAddSheetPresented.toggle()
+                    router.navigateTo(destination: .addTrackView(player: player))
                 } label: {
                     Image(systemName: "plus.app")
                         .resizable()
@@ -99,12 +96,6 @@ struct TracklistView: View {
         }
         .background(.black)
         .frame(width: 30)
-        .navigationDestination(isPresented: $viewModel.isAddSheetPresented) {
-         
-            AddTrackView(player: viewModel.playerToBeAdded)
-            Spacer()
-            
-        }
     }
         
         
@@ -117,8 +108,13 @@ struct TracklistView: View {
     let container = try! ModelContainer(for: Tracklist.self, configurations: config)
     let tracklist = Tracklist.mockTracklist1()
     container.mainContext.insert(tracklist)
-    
-    return NavigationStack{TracklistView(modelContext: container.mainContext,
-                                         tracklistID: tracklist.id)}
+    @ObservedObject var router = NavigationRouter(modelContext: container.mainContext)
+    return NavigationStack(path: $router.path) {
+        TracklistView(modelContext: container.mainContext, tracklistID: tracklist.id)
+            .navigationDestination(for: NavigationRouter.Destination.self) { destination in
+                router.defineViews(for: destination)
+            }
+    }
+    .environmentObject(router)
      
 }

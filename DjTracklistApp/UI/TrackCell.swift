@@ -16,8 +16,12 @@ struct TrackCell: View {
                 resizeBarLeft()
                 VStack(alignment: .leading) {
                     HStack(alignment: .top, spacing: 3) {
-                        Image(systemName: "play.square.fill")
-                            .resizable()
+                        AsyncImage(url: viewModel.track.imageUrl) {
+                            image in
+                            image.resizable()
+                        } placeholder: {
+                            ProgressView()
+                        }
                             .frame(width: 31, height: 31)
                             .cornerRadius(10)
                         VStack(alignment: .leading){

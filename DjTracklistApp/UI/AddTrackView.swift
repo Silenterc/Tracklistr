@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 struct AddTrackView: View {
     @State var viewModel: AddTrackVM
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @EnvironmentObject var router: NavigationRouter
     
     init(player: Player?) {
         let viewModel = AddTrackVM(player: player)
@@ -69,7 +69,7 @@ struct AddTrackView: View {
                 }
             }
             
-            
+            Spacer()
         }
         .frame(width: 400)
         
@@ -94,7 +94,7 @@ struct AddTrackView: View {
             }
             .padding(16)
             List(viewModel.tracks, id: \.id) { track in
-                NavigationLink(destination: EmptyView()) {
+                NavigationLink(destination: TrackDetailView(track: track, player: viewModel.player!)) {
                     searchedTrackCell(track: track)
                 }
                 .padding(12)
@@ -146,5 +146,12 @@ struct AddTrackView: View {
 #Preview {
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
     let container = try! ModelContainer(for: Tracklist.self, configurations: config)
-    return NavigationStack{AddTrackView(player: Player.mockPlayer1())}
+    @ObservedObject var router = NavigationRouter(modelContext: container.mainContext)
+    return NavigationStack(path: $router.path) {
+        AddTrackView(player: Player.mockPlayer1())
+            .navigationDestination(for: NavigationRouter.Destination.self) { destination in
+                router.defineViews(for: destination)
+            }
+    }
+    .environmentObject(router)
 }

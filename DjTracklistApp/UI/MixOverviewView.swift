@@ -11,9 +11,10 @@ import SwiftData
  View presenting the User's created mixes.
  */
 struct MixOverviewView: View {
-
-   // @Environment(\.modelContext) var modelContext
+    
+    //@State var path = NavigationPath()
     @State var viewModel: MixOverviewVM
+    @EnvironmentObject var router: NavigationRouter
     
     // We need an initializer for injecting the database Context into our VM
     init(modelContext: ModelContext) {
@@ -21,28 +22,35 @@ struct MixOverviewView: View {
         _viewModel = State(initialValue: viewModel)
     }
     var body: some View {
-        NavigationStack {
-            VStack {
-                ScrollView {
-                    LazyVStack(spacing: 20) {
-                        NavigationLink(destination: TracklistInfoView(modelContext: viewModel.databaseContext)){
-                            TracklistCell(viewModel: viewModel, name: "Start a new set")
-                        }
-                        ForEach(viewModel.tracklists) { tracklist in
-                            NavigationLink(destination: TracklistView(modelContext: viewModel.databaseContext, tracklistID: tracklist.id)) {
-                                
-                                TracklistCell(viewModel: viewModel, name: tracklist.name, editedAt: tracklist.editedAt)
-                            }
+        
+        VStack {
+            ScrollView {
+                LazyVStack(spacing: 20) {
+                    Button {
+                        router.navigateTo(destination: .tracklistInfoView())
+                    } label: {
+                        TracklistCell(viewModel: viewModel, name: "Start a new set")
+                    }
+                    ForEach(viewModel.tracklists) { tracklist in
+                        Button {
+                            router.navigateTo(destination: .tracklistView(tracklistID: tracklist.id))
+                        } label: {
+                            TracklistCell(viewModel: viewModel, name: tracklist.name, editedAt: tracklist.editedAt)
                         }
                     }
-                    .padding()
                 }
-                .onAppear{
-                    viewModel.fetchTracklists()
-                }
+                .padding()
             }
-            .navigationTitle("Mix Overview")
+            .onAppear{
+                viewModel.fetchTracklists()
+            }
         }
+        .navigationTitle("Mix Overview")
+        .navigationDestination(for: NavigationRouter.Destination.self) { destination in
+            router.defineViews(for: destination)
+        }
+        
+        
     }
 }
 
@@ -60,7 +68,7 @@ extension MixOverviewView {
                 VStack(alignment: .leading) {
                     Text(name)
                         .font(.custom(UIConstants.Font.medium, fixedSize: 18))
-                        
+                    
                     if let date = editedAt{
                         Text("Date: \(date))")
                             .font(.custom(UIConstants.Font.light, fixedSize: 16))
@@ -78,10 +86,16 @@ extension MixOverviewView {
     }
     
 }
-
 #Preview {
-    MixOverviewView(
-        modelContext: try! ModelContainer(
-            for: Track.self, Tracklist.self,
-            configurations: ModelConfiguration(isStoredInMemoryOnly: true)).mainContext)
+    let config = ModelConfiguration(isStoredInMemoryOnly: true)
+    let container = try! ModelContainer(for: Tracklist.self, configurations: config)
+    @ObservedObject var router = NavigationRouter(modelContext: container.mainContext)
+    return NavigationStack(path: $router.path) {
+        MixOverviewView(modelContext: container.mainContext)
+            .navigationDestination(for: NavigationRouter.Destination.self) { destination in
+                router.defineViews(for: destination)
+            }
+    }
+    .environmentObject(router)
+    
 }

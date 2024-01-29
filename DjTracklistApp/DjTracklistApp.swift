@@ -28,12 +28,19 @@ let sharedModelContainer: ModelContainer = {
 }()
 @main
 struct DjTracklistApp: App {
+    @ObservedObject var router: NavigationRouter = NavigationRouter(modelContext: sharedModelContainer.mainContext)
     var body: some Scene {
         WindowGroup {
-            MixOverviewView(modelContext: sharedModelContainer.mainContext)
-            //TracklistView(modelContext: sharedModelContainer.mainContext, tracklistID: tracklist.id)
-            //TracklistInfoView(modelContext: sharedModelContainer.mainContext)
+            NavigationStack(path: $router.path) {
+                MixOverviewView(modelContext: sharedModelContainer.mainContext)
+                    .navigationDestination(for: NavigationRouter.Destination.self) { dest in
+                        router.defineViews(for: dest)
+                    }
+                //TracklistView(modelContext: sharedModelContainer.mainContext, tracklistID: tracklist.id)
+                //TracklistInfoView(modelContext: sharedModelContainer.mainContext)
+                .modelContainer(sharedModelContainer)
+            }
+            .environmentObject(router)
         }
-        .modelContainer(sharedModelContainer)
     }
 }
