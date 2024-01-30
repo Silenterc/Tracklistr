@@ -61,8 +61,9 @@ struct TracklistView: View {
                             .offset(x: 0, y: 22)
                         }
                         .scrollTargetBehavior(.viewAligned)
-                        
+                   
                         TrackAddBar(tracklist: tracklist)
+                        
                         //                    Rectangle()
                         //                        .fill(.white)
                         //                        .frame(width: 30)

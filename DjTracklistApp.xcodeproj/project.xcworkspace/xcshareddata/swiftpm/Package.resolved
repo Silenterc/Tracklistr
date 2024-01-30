@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "asyncdownsamplingimage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/fummicc1/AsyncDownSamplingImage.git",
+      "state" : {
+        "revision" : "9b7e3a84e829a1ba251b48979da41231175c70d1",
+        "version" : "1.0.0"
+      }
+    }
+  ],
+  "version" : 2
+}

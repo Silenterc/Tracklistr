@@ -20,6 +20,7 @@ class TracklistVM {
         self.tracklistService = tracklistService
         self.tracklistID = tracklistID
         fetchTracklist()
+        print("Here")
     }
     
     func fetchTracklist() {

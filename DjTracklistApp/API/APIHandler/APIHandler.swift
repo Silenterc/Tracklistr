@@ -6,12 +6,6 @@
 //
 
 import Foundation
-enum APIError: Error {
-        case invalidURL
-        case requestFailed
-        case decodingFailed
-        case accessKeyFailure
-    }
 // Responsible for making requests to an API
 protocol APIHandler {
     

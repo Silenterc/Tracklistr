@@ -14,17 +14,17 @@ final class Track: Identifiable {
     /// Id of this track from the API it was taken from , is empty for custom song
     let externalId: String
     /// Name of the track
-    let name: String
+    var name: String
     /// Artist names for the track
-    let artistNames: [String]
+    var artistNames: [String]
     /// Name of the album that this track belongs to
-    let albumName: String
+    var albumName: String
     /// URL with the cover art image
     let imageUrl: URL?
     /// The full duration of the song in milliseconds
-    let originalDuration: Int
+    var originalDuration: Int
     /// Beats Per Minute of the song
-    let bpm: Float?
+    var bpm: Float?
     /// Specific point in the duration of the track, where it should start from
     /// f.e.: I want to play the track already 16 bars in, not from the start
     var startTimeBars: Int? = 0

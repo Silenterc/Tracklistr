@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import AsyncDownSamplingImage
 /// View representing a Track which is placed on the TracklistView
 struct TrackCell: View {
     @State var viewModel: TrackCellVM
@@ -16,14 +17,22 @@ struct TrackCell: View {
                 resizeBarLeft()
                 VStack(alignment: .leading) {
                     HStack(alignment: .top, spacing: 3) {
-                        AsyncImage(url: viewModel.track.imageUrl) {
-                            image in
-                            image.resizable()
-                        } placeholder: {
-                            ProgressView()
+                        LazyVStack {
+                            // Used AsyncDownSamplingImage library: https://github.com/fummicc1/AsyncDownSamplingImage.git
+                            AsyncDownSamplingImage(url: viewModel.track.imageUrl, downsampleSize: CGSize(width: 100, height: 100)){
+                                image in
+                                image.resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 32, height: 32)
+                            } placeholder: {
+                                ProgressView()
+                            } fail: { error in
+                                EmptyView()
+                                
+                            }
                         }
-                            .frame(width: 31, height: 31)
-                            .cornerRadius(10)
+                        .frame(width: 32, height: 32)
+                        .cornerRadius(10)
                         VStack(alignment: .leading){
                             Text(viewModel.track.name)
                                 .font(.custom(UIConstants.Font.regular, fixedSize: 12))

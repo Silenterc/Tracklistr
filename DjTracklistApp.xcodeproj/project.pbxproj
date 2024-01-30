@@ -77,6 +77,8 @@
 		4251D9222B67FAF400CB7CA4 /* TrackDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4251D9212B67FAF400CB7CA4 /* TrackDetailView.swift */; };
 		4251D9242B68026400CB7CA4 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4251D9232B68026400CB7CA4 /* NavigationRouter.swift */; };
 		4251D9262B68443F00CB7CA4 /* TrackDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4251D9252B68443F00CB7CA4 /* TrackDetailVM.swift */; };
+		4251D9292B6907B800CB7CA4 /* AsyncDownSamplingImage in Frameworks */ = {isa = PBXBuildFile; productRef = 4251D9282B6907B800CB7CA4 /* AsyncDownSamplingImage */; };
+		4251D92B2B6932DA00CB7CA4 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4251D92A2B6932DA00CB7CA4 /* Errors.swift */; };
 		429FF00F2B668FA00093AB75 /* AddTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429FF00E2B668FA00093AB75 /* AddTrackView.swift */; };
 		429FF0112B668FCA0093AB75 /* AddTrackVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429FF0102B668FCA0093AB75 /* AddTrackVM.swift */; };
 		429FF0132B66B43B0093AB75 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429FF0122B66B43B0093AB75 /* ApiService.swift */; };
@@ -162,6 +164,7 @@
 		4251D9212B67FAF400CB7CA4 /* TrackDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDetailView.swift; sourceTree = "<group>"; };
 		4251D9232B68026400CB7CA4 /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
 		4251D9252B68443F00CB7CA4 /* TrackDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDetailVM.swift; sourceTree = "<group>"; };
+		4251D92A2B6932DA00CB7CA4 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		429FF00E2B668FA00093AB75 /* AddTrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTrackView.swift; sourceTree = "<group>"; };
 		429FF0102B668FCA0093AB75 /* AddTrackVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTrackVM.swift; sourceTree = "<group>"; };
 		429FF0122B66B43B0093AB75 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
@@ -177,6 +180,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4251D9292B6907B800CB7CA4 /* AsyncDownSamplingImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,6 +341,7 @@
 				422A75752B603AE000CD9E76 /* Extensions.swift */,
 				42A571C72B61A1EA0041907E /* UIConstants.swift */,
 				4251D9232B68026400CB7CA4 /* NavigationRouter.swift */,
+				4251D92A2B6932DA00CB7CA4 /* Errors.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -436,6 +441,9 @@
 			dependencies = (
 			);
 			name = DjTracklistApp;
+			packageProductDependencies = (
+				4251D9282B6907B800CB7CA4 /* AsyncDownSamplingImage */,
+			);
 			productName = DjTracklistApp;
 			productReference = 422A74D12B5BDFB900CD9E76 /* DjTracklistApp.app */;
 			productType = "com.apple.product-type.application";
@@ -508,6 +516,9 @@
 				Base,
 			);
 			mainGroup = 422A74C82B5BDFB900CD9E76;
+			packageReferences = (
+				4251D9272B6907B800CB7CA4 /* XCRemoteSwiftPackageReference "AsyncDownSamplingImage" */,
+			);
 			productRefGroup = 422A74D22B5BDFB900CD9E76 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -600,6 +611,7 @@
 				422A75312B5D49BE00CD9E76 /* Album.swift in Sources */,
 				422A753A2B5D7F1000CD9E76 /* MusicAPITrack.swift in Sources */,
 				422A75452B5DA7FE00CD9E76 /* Tracklist.swift in Sources */,
+				4251D92B2B6932DA00CB7CA4 /* Errors.swift in Sources */,
 				422A75742B60392400CD9E76 /* TimeIndicationView.swift in Sources */,
 				422A75512B6005FD00CD9E76 /* TracklistVM.swift in Sources */,
 				422A75762B603AE000CD9E76 /* Extensions.swift in Sources */,
@@ -953,6 +965,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4251D9272B6907B800CB7CA4 /* XCRemoteSwiftPackageReference "AsyncDownSamplingImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/fummicc1/AsyncDownSamplingImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4251D9282B6907B800CB7CA4 /* AsyncDownSamplingImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4251D9272B6907B800CB7CA4 /* XCRemoteSwiftPackageReference "AsyncDownSamplingImage" */;
+			productName = AsyncDownSamplingImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 422A74C92B5BDFB900CD9E76 /* Project object */;
 }

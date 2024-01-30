@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import AsyncDownSamplingImage
 struct AddTrackView: View {
     @State var viewModel: AddTrackVM
     @EnvironmentObject var router: NavigationRouter
@@ -107,13 +108,26 @@ struct AddTrackView: View {
     func searchedTrackCell(track: Track) -> some View {
         GeometryReader { geometry in
             HStack() {
-                AsyncImage(url: track.imageUrl) { image in
+                AsyncDownSamplingImage(url: track.imageUrl, downsampleSize: CGSize(width: 100, height: 100)){
+                    image in
                     image.resizable()
+                        .aspectRatio(contentMode: .fit)
                 } placeholder: {
                     ProgressView()
+                } fail: { error in
+                    EmptyView()
+                    
                 }
                 .aspectRatio(1, contentMode: .fit)
                 .frame(width: 50, height: 50)
+                
+//                AsyncImage(url: track.imageUrl) { image in
+//                    image.resizable()
+//                } placeholder: {
+//                    ProgressView()
+//                }
+//                .aspectRatio(1, contentMode: .fit)
+//                .frame(width: 50, height: 50)
                 
                 
                 Text(track.name)
