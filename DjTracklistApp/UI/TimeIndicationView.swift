@@ -11,9 +11,9 @@ struct TimeIndicationView: View {
     /// Space between the Indicators
     var spacing: CGFloat = 8
     /// For how many bars should this View be generated
-    @State var bars: Int
+    @State var bars: UInt
     /// For how many phrases should this View be generated, where a phrase  is 16 Bars
-    var sixteenBars: Int {
+    var sixteenBars: UInt {
         bars/16
     }
     
@@ -48,5 +48,5 @@ struct TimeIndicationView: View {
 }
 
 #Preview {
-    TimeIndicationView(bars: 60.getBars(bpm: 174, timeUnit: .minutes)) // Hour
+    TimeIndicationView(bars: UInt(60).getBars(bpm: 174, timeUnit: .minutes)) // Hour
 }

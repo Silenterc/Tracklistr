@@ -28,7 +28,7 @@ class TracklistInfoVM {
     /// Currently chosen bpm  by the user
     var currentBpm: Float?
     /// Currently chosen duration in minutes by the user
-    var currentDurationMinutes: Int?
+    var currentDurationMinutes: UInt?
     /// Currently chosen name of the palylist
     var currentName: String = ""
     /// For navigation purposes, signals whether we are ready to navigate to TracklistView

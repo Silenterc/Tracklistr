@@ -22,17 +22,17 @@ final class Track: Identifiable {
     /// URL with the cover art image
     let imageUrl: URL?
     /// The full duration of the song in milliseconds
-    var originalDuration: Int
+    var originalDuration: UInt
     /// Beats Per Minute of the song
     var bpm: Float?
     /// Specific point in the duration of the track, where it should start from
     /// f.e.: I want to play the track already 16 bars in, not from the start
-    var startTimeBars: Int? = 0
+    var startTimeBars: UInt? = 0
     /// Specific point in the duration of the track, where it should end at
     /// f.e.: I want to stop playing the track 64 bars in, not at the end
-    var endTimeBars: Int? = 0
+    var endTimeBars: UInt? = 0
     /// Current duration of the track
-    var currentDuration: Int? {
+    var currentDuration: UInt? {
         if let start = startTimeBars {
             if let end = endTimeBars {
                return end - start
@@ -43,7 +43,7 @@ final class Track: Identifiable {
     /// The player to which this track belongs to
     var player: Player?
     
-    init(id: UUID, externalId: String, name: String, artistNames: [String], albumName: String, imageUrl: URL? = nil, originalDuration: Int, bpm: Float?, startTimeBars: Int? = nil, endTimeBars: Int? = nil, player: Player? = nil) {
+    init(id: UUID, externalId: String, name: String, artistNames: [String], albumName: String, imageUrl: URL? = nil, originalDuration: UInt, bpm: Float?, startTimeBars: UInt? = nil, endTimeBars: UInt? = nil, player: Player? = nil) {
         self.id = id
         self.externalId = externalId
         self.name = name
@@ -64,7 +64,7 @@ final class Track: Identifiable {
         self.artistNames = spotTrack.artists.map{$0.name}
         self.albumName = spotTrack.album.name
         self.imageUrl = spotTrack.album.images.first?.url
-        self.originalDuration = spotTrack.duration_ms
+        self.originalDuration = UInt(spotTrack.duration_ms)
         self.bpm = spotTrack.audioFeatures?.bpm
     }
 }

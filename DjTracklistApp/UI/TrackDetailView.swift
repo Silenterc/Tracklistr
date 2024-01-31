@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 struct TrackDetailView: View {
     @State var viewModel: TrackDetailVM
+    @EnvironmentObject var router: NavigationRouter
     
     init(track: Track?, player: Player?, bpm: Float?) {
         let viewModel = TrackDetailVM(track: track, player: player, bpm: bpm)
@@ -69,7 +70,8 @@ struct TrackDetailView: View {
                     Spacer()
                     Button {
                         if viewModel.createTrack() {
-                            // navigate etc.
+                            print(router.path)
+                            router.navigateNBack(n: 1)
                         }
                     } label: {
                         Text("Submit")
@@ -81,6 +83,11 @@ struct TrackDetailView: View {
                 
             }
             .padding(16)
+            .alert("Wrong input", isPresented: $viewModel.errorShown) {
+                Button("OK") {}
+            } message: {
+                Text(viewModel.currentError?.rawValue ?? "")
+            }
         }
     }
     func fontedText(text: String) -> some View {

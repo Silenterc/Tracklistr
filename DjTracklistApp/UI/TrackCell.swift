@@ -94,7 +94,7 @@ struct TrackCell: View {
     }
     
     /// Information about the current duration of the track
-    private func timeInfo(timeInBars: Int) -> some View {
+    private func timeInfo(timeInBars: UInt) -> some View {
         VStack (alignment: .trailing){
             // BPM MUST BE THE SAME AS FOR THE PLAYLIST
             barsText(bars: timeInBars)
@@ -103,12 +103,12 @@ struct TrackCell: View {
     }
     
     /// Information about the current curation of the track in bars
-    private func barsText(bars: Int) -> Text {
+    private func barsText(bars: UInt) -> Text {
         Text("\(bars)" + (bars == 1 ? " bar" : " bars"))
             .font(.custom("Roboto-Regular", fixedSize: 8))
     }
     /// Information about the current duration of the track in mm:ss
-    private func timeText(bars: Int) -> Text {
+    private func timeText(bars: UInt) -> Text {
         let timeInSeconds = Double(bars) * (60.0/Double(viewModel.track.bpm!)) * 4.0
         let timeInterval = TimeInterval(timeInSeconds)
             
