@@ -20,8 +20,8 @@ class NavigationRouter: ObservableObject {
         case mixOverview
         case tracklistInfoView(tracklistID: UUID? = nil)
         case tracklistView(tracklistID: UUID)
-        case addTrackView(player: Player?)
-        case trackDetailView(track: Track, player: Player)
+        case addTrackView(player: Player?, bpm: Float)
+        case trackDetailView(track: Track?, player: Player?, bpm: Float?)
     }
     
     /// Path which is used to navigate the Stack programatically
@@ -36,10 +36,10 @@ class NavigationRouter: ObservableObject {
             TracklistInfoView(modelContext: modelContext, tracklistID: id)
         case .tracklistView(let id):
             TracklistView(modelContext: modelContext, tracklistID: id)
-        case .addTrackView(let player):
-            AddTrackView(player: player)
-        case .trackDetailView(let track, let player):
-            TrackDetailView(track: track, player: player)
+        case .addTrackView(let player, let bpm):
+            AddTrackView(player: player, bpm: bpm)
+        case .trackDetailView(let track, let player, let bpm):
+            TrackDetailView(track: track, player: player, bpm: bpm)
         }
 
     }

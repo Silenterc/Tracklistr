@@ -12,8 +12,8 @@ struct AddTrackView: View {
     @State var viewModel: AddTrackVM
     @EnvironmentObject var router: NavigationRouter
     
-    init(player: Player?) {
-        let viewModel = AddTrackVM(player: player)
+    init(player: Player?, bpm: Float) {
+        let viewModel = AddTrackVM(player: player, bpm: bpm)
         _viewModel = State(initialValue: viewModel)
     }
     var body: some View {
@@ -95,10 +95,26 @@ struct AddTrackView: View {
             }
             .padding(16)
             List(viewModel.tracks, id: \.id) { track in
-                NavigationLink(destination: TrackDetailView(track: track, player: viewModel.player!)) {
+                Button {
+                    viewModel.chosenTrack = track
+                    viewModel.handleSpotifyTrack()
+                    
+                } label: {
                     searchedTrackCell(track: track)
                 }
+                .tint(.black)
                 .padding(12)
+                
+                
+                
+                
+//                NavigationLink(destination: TrackDetailView(track: track, player: viewModel.player!, bpm: viewModel.bpm!)) {
+//                    searchedTrackCell(track: track)
+//                }
+                //.padding(12)
+            }
+            .navigationDestination(isPresented: $viewModel.songChosen) {
+                TrackDetailView(track: viewModel.chosenTrack, player: viewModel.player, bpm: viewModel.bpm)
             }
         }
         .padding(4)
@@ -162,7 +178,7 @@ struct AddTrackView: View {
     let container = try! ModelContainer(for: Tracklist.self, configurations: config)
     @ObservedObject var router = NavigationRouter(modelContext: container.mainContext)
     return NavigationStack(path: $router.path) {
-        AddTrackView(player: Player.mockPlayer1())
+        AddTrackView(player: Player.mockPlayer1(), bpm: 175)
             .navigationDestination(for: NavigationRouter.Destination.self) { destination in
                 router.defineViews(for: destination)
             }

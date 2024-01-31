@@ -38,7 +38,9 @@ struct TracklistView: View {
                                             }
                                         }
                                         if (player != tracklist.players!.last) {
-                                            TimeIndicationView(bars: (viewModel.tracklist?.durationMinutes.getBars(bpm: viewModel.tracklist!.bpm, timeUnit: .minutes))!)
+                                            LazyVStack{
+                                                TimeIndicationView(bars: (viewModel.tracklist?.durationMinutes.getBars(bpm: viewModel.tracklist!.bpm, timeUnit: .minutes))!)
+                                            }
                                             
                                         } else {
                                             Rectangle()
@@ -84,7 +86,7 @@ struct TracklistView: View {
             ForEach(tracklist.players!) { player in
                 Spacer()
                 Button {
-                    router.navigateTo(destination: .addTrackView(player: player))
+                    router.navigateTo(destination: .addTrackView(player: player, bpm: tracklist.bpm))
                 } label: {
                     Image(systemName: "plus.app")
                         .resizable()

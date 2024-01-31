@@ -10,8 +10,8 @@ import SwiftData
 struct TrackDetailView: View {
     @State var viewModel: TrackDetailVM
     
-    init(track: Track, player: Player) {
-        let viewModel = TrackDetailVM(track: track, player: player)
+    init(track: Track?, player: Player?, bpm: Float?) {
+        let viewModel = TrackDetailVM(track: track, player: player, bpm: bpm)
         _viewModel = State(initialValue: viewModel)
     }
     var body: some View {
@@ -97,7 +97,7 @@ struct TrackDetailView: View {
     container.mainContext.insert(tracklist)
     @ObservedObject var router = NavigationRouter(modelContext: container.mainContext)
     return NavigationStack(path: $router.path) {
-        TrackDetailView(track: .mockSolarSystemTrack(), player: .mockPlayer1())
+        TrackDetailView(track: .mockSolarSystemTrack(), player: .mockPlayer1(), bpm: 175)
             .navigationDestination(for: NavigationRouter.Destination.self) { destination in
                 router.defineViews(for: destination)
             }

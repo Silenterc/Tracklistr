@@ -18,7 +18,7 @@ struct TimeIndicationView: View {
     }
     
     var body: some View {
-        HStack(spacing: 0) {
+        LazyHStack(spacing: 0) {
             ForEach(0..<sixteenBars, id: \.self) {_ in
                 makeSixteenBars()
             }

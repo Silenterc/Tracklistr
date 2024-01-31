@@ -9,8 +9,9 @@ import Foundation
 
 @Observable
 class TrackDetailVM {
-    var track: Track
-    var player: Player
+    var track: Track?
+    var player: Player?
+    var requiredBpm: Float?
     
     var name: String
     var artistNames: String
@@ -23,16 +24,17 @@ class TrackDetailVM {
     
     var currentStartTimeBars: Int?
     var currentDurationBars: Int?
-    init(track: Track, player: Player) {
+    init(track: Track?, player: Player?, bpm: Float?) {
         self.track = track
         self.player = player
-        self.name = track.name
-        self.artistNames = track.artistNames.joined(separator: ",")
-        let durSec = (track.originalDuration / 1000) % 60
-        let durMin = (track.originalDuration / 1000) / 60
+        self.requiredBpm = bpm
+        self.name = track?.name ?? ""
+        self.artistNames = track?.artistNames.joined(separator: ",") ?? ""
+        let durSec = ((track?.originalDuration ?? 0) / 1000) % 60
+        let durMin = ((track?.originalDuration ?? 0) / 1000) / 60
         self.durationSeconds = durSec
         self.durationMinutes = durMin
-        self.bpm = track.bpm
+        self.bpm = track?.bpm
     }
     
     func createTrack() -> Bool {
