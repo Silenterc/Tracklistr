@@ -11,13 +11,12 @@ import SwiftData
 @Observable
 class TrackCellVM {
     var track: Track
-    var width: CGFloat
-    var height: CGFloat
+    var width: CGFloat = 0
+    var height: CGFloat = UIConstants.Track.height
     
-    init(track: Track, width: CGFloat, height: CGFloat) {
+    init(track: Track) {
         self.track = track
-        self.width = width
-        self.height = height
+        self.width = GridHandler.shared.getWidthFromBars(bars: track.currentDuration!)
     }
     
     func changeWidth(change: CGFloat) {

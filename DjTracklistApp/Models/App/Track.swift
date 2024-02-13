@@ -31,7 +31,7 @@ final class Track: Identifiable {
     /// Specific point in the duration of the track, where it should end at
     /// f.e.: I want to stop playing the track 64 bars in, not at the end
     var endTimeBars: UInt? = 0
-    /// Current duration of the track
+    /// Current duration of the track in bars
     var currentDuration: UInt? {
         if let start = startTimeBars {
             if let end = endTimeBars {
@@ -81,7 +81,7 @@ extension Track {
             originalDuration: 288000,
             bpm: 174,
             startTimeBars: 0,
-            endTimeBars: 92
+            endTimeBars: 96
         )
     }
     
@@ -96,7 +96,7 @@ extension Track {
             originalDuration: 190000,
             bpm: 174,
             startTimeBars: 0,
-            endTimeBars: 92
+            endTimeBars: 96
         )
     }
 }

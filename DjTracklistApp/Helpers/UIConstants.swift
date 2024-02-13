@@ -30,4 +30,8 @@ enum UIConstants {
         static let bold = "Roboto-Bold"
         static let medium = "Roboto-Medium"
     }
+    
+    enum Track {
+        static let height: CGFloat = 62
+    }
 }

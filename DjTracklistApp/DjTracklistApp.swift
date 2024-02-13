@@ -32,8 +32,9 @@ struct DjTracklistApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack(path: $router.path) {
+ //               Testing()
                 MixOverviewView(modelContext: sharedModelContainer.mainContext)
-                    .navigationDestination(for: NavigationRouter.Destination.self) { dest in
+                   .navigationDestination(for: NavigationRouter.Destination.self) { dest in
                         router.defineViews(for: dest)
                     }
                 //TracklistView(modelContext: sharedModelContainer.mainContext, tracklistID: tracklist.id)

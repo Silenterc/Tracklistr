@@ -12,7 +12,7 @@ import AsyncDownSamplingImage
 struct TrackCell: View {
     @State var viewModel: TrackCellVM
     var body: some View {
-        VStack(){
+        
             HStack(spacing: 0) {
                 resizeBarLeft()
                 VStack(alignment: .leading) {
@@ -61,7 +61,7 @@ struct TrackCell: View {
             
             .background(Color.cellBackground)
             .cornerRadius(10)
-        }
+        
         //NEED TO SOMEHOW PLAY WITH THE ALIGNMENT HERE SO ITS LEADING WHEN FROM THE LEFT AND TRAILING WHEN FROM THE RIGHT AND ALSO NEED TO KEEP THE WIDTH OF THE VIEW THE SAME UNTIL THE RESIZE COMPLETES AND THEN SOMEHOW CALCULATE THE OFFSET AND PLACE IT TO THE LEFT OR RIGHT SO IT STAYS IN THE SAME PLACE
        // .frame(maxWidth: .infinity, maxHeight: .infinity)
         
@@ -136,7 +136,7 @@ struct TrackCell: View {
     let track = Track.mockSolarSystemTrack()
     container.mainContext.insert(track)
 
-    return TrackCell(viewModel: .init(track: track, width: 192, height: 62)).modelContainer(container)
+    return TrackCell(viewModel: .init(track: track)).modelContainer(container)
 }
 
 

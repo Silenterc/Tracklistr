@@ -32,7 +32,7 @@ struct TracklistView: View {
                                     HStack (spacing: 0) {
                                         ForEach(player.tracks!) { track in
                                             
-                                            TrackCell(viewModel: .init(track: track, width: 192, height: 62))
+                                            TrackCell(viewModel: .init(track: track))
                                                 .onTapGesture(count: 2) {
                                                     if let index = player.tracks!.firstIndex(where: {$0.id == track.id}) {
                                                         player.tracks!.remove(at: index)

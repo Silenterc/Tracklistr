@@ -8,8 +8,6 @@
 import SwiftUI
 /// Simple view which creates the time indication, where the smallest unit is 4 Bars
 struct TimeIndicationView: View {
-    /// Space between the Indicators
-    var spacing: CGFloat = 8
     /// For how many bars should this View be generated
     @State var bars: UInt
     /// For how many phrases should this View be generated, where a phrase  is 16 Bars
