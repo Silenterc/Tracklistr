@@ -32,6 +32,11 @@ struct TracklistView: View {
                                                 
                                                 //Spacer()
                                                 TrackCell(viewModel: .init(track: track, width: 192, height: 62))
+                                                    .onTapGesture(count: 2) {
+                                                        if let index = player.tracks!.firstIndex(where: {$0.id == track.id}) {
+                                                            player.tracks!.remove(at: index)
+                                                        }
+                                                    }
                                                 
                                                 //Spacer()
                                                 
@@ -75,7 +80,7 @@ struct TracklistView: View {
                 .ignoresSafeArea(.all, edges: .bottom)
                 .background(.black)
                 .frame(maxWidth: .infinity)
-                .navigationBarBackButtonHidden()
+                //.navigationBarBackButtonHidden()
                 
             }
         

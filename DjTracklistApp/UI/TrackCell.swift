@@ -109,7 +109,7 @@ struct TrackCell: View {
     }
     /// Information about the current duration of the track in mm:ss
     private func timeText(bars: UInt) -> Text {
-        let timeInSeconds = Double(bars) * (60.0/Double(viewModel.track.bpm!)) * 4.0
+        let timeInSeconds = bars.getTime(bpm: viewModel.track.bpm!, timeUnit: .seconds)
         let timeInterval = TimeInterval(timeInSeconds)
             
         let formatter = DateComponentsFormatter()
