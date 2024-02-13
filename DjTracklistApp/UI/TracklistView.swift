@@ -21,68 +21,73 @@ struct TracklistView: View {
     
     var body: some View {
         if let tracklist = viewModel.tracklist {
-                ZStack {
-                    HStack {
-                        ScrollView(.horizontal, showsIndicators: false){
-                            VStack(alignment: .leading, spacing: 0) {
-                                ForEach(tracklist.players!) { player in
-                                    VStack(alignment: .leading){
-                                        LazyHStack {
-                                            ForEach(player.tracks!) { track in
-                                                
-                                                //Spacer()
-                                                TrackCell(viewModel: .init(track: track, width: 192, height: 62))
-                                                    .onTapGesture(count: 2) {
-                                                        if let index = player.tracks!.firstIndex(where: {$0.id == track.id}) {
-                                                            player.tracks!.remove(at: index)
-                                                        }
-                                                    }
-                                                
-                                                //Spacer()
-                                                
-                                            }
-                                        }
-                                        if (player != tracklist.players!.last) {
-                                            LazyVStack{
-                                                TimeIndicationView(bars: (viewModel.tracklist?.durationMinutes.getBars(bpm: viewModel.tracklist!.bpm, timeUnit: .minutes))!)
-                                            }
-                                            
-                                        } else {
-                                            Rectangle()
-                                                .frame(height: 28)
-                                                .frame(maxWidth: .infinity)
-                                                .opacity(0)
-                                            
-                                        }
-                                    }
-                                    .frame(maxWidth: .infinity)
-                                    
+            HStack {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    ZStack {
+                        
+                        VStack(alignment: .leading, spacing: 0) {
+                            ForEach(tracklist.players!) { player in
+                                VStack(alignment: .leading) {
                                     Spacer()
+                                    HStack (spacing: 0) {
+                                        ForEach(player.tracks!) { track in
+                                            
+                                            TrackCell(viewModel: .init(track: track, width: 192, height: 62))
+                                                .onTapGesture(count: 2) {
+                                                    if let index = player.tracks!.firstIndex(where: {$0.id == track.id}) {
+                                                        player.tracks!.remove(at: index)
+                                                    }
+                                                }
+                                                .frame(alignment: .leading)
+                                            
+                                        }
+                                        // TEMPORARY
+                                        Spacer()
+                                    }
+                                    Spacer()
+                                   
+                                  
+                                    
                                 }
-                                
+                             
                                 
                                 
                             }
-                            .frame(maxWidth: .infinity)
-                            //.frame(alignment: .center)
-                            .offset(x: 0, y: 22)
+                            
+                            
+                            
                         }
-                        .scrollTargetBehavior(.viewAligned)
-                   
-                        TrackAddBar(tracklist: tracklist)
-                        
-                        //                    Rectangle()
-                        //                        .fill(.white)
-                        //                        .frame(width: 30)
+                        .useSize { size in
+                            viewModel.size = size
+                            
+                        }
+                        .frame(maxWidth: .infinity)
+                        VStack {
+                            ZStack {
+                                let part =  (viewModel.size?.height ?? 0) / 4
+                                ForEach(1..<4) { i in
+                                    TimeIndicationView(bars: (viewModel.tracklist?.durationMinutes.getBars(bpm: viewModel.tracklist!.bpm, timeUnit: .minutes))!)
+                                        .offset(y: part * CGFloat(i) - UIConstants.Indicator.Big.height / 2)
+                                }
+                               
+                            }
+                            Spacer()
+                        }
                     }
                     
                 }
-                .ignoresSafeArea(.all, edges: .bottom)
-                .background(.black)
-                .frame(maxWidth: .infinity)
-                //.navigationBarBackButtonHidden()
+                .scrollTargetBehavior(.viewAligned)
+            
                 
+                TrackAddBar(tracklist: tracklist)
+      
             }
+            .ignoresSafeArea(.all, edges: .bottom)
+            .background(.black)
+            .frame(maxWidth: .infinity)
+            //.navigationBarBackButtonHidden()
+            
+        }
         
     }
     
@@ -105,8 +110,8 @@ struct TracklistView: View {
         .background(.black)
         .frame(width: 30)
     }
-        
-        
+    
+    
 }
 
 
@@ -124,5 +129,5 @@ struct TracklistView: View {
             }
     }
     .environmentObject(router)
-     
+    
 }

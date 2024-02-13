@@ -63,7 +63,7 @@ struct TrackCell: View {
             .cornerRadius(10)
         }
         //NEED TO SOMEHOW PLAY WITH THE ALIGNMENT HERE SO ITS LEADING WHEN FROM THE LEFT AND TRAILING WHEN FROM THE RIGHT AND ALSO NEED TO KEEP THE WIDTH OF THE VIEW THE SAME UNTIL THE RESIZE COMPLETES AND THEN SOMEHOW CALCULATE THE OFFSET AND PLACE IT TO THE LEFT OR RIGHT SO IT STAYS IN THE SAME PLACE
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+       // .frame(maxWidth: .infinity, maxHeight: .infinity)
         
     }
     /// Bar on the right side of the track cell, which can be dragged horizontally to make the cell bigger or smaller

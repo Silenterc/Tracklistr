@@ -49,9 +49,9 @@ extension View {
             GeometryReader { geometry in
                 Color.clear
                     .preference(key: GeoSizePrefKey.self, value: geometry.size)
+                    .onPreferenceChange(GeoSizePrefKey.self, perform: onChange)
             }
         )
-        .onPreferenceChange(GeoSizePrefKey.self, perform: onChange)
         
     }
 }
