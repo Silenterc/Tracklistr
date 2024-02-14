@@ -34,7 +34,7 @@ struct TimeIndicationView: View {
             makeIndicator(height: UIConstants.Indicator.Small.height)
             makeIndicator(height: UIConstants.Indicator.Small.height)
         }
-        .frame(width: 32, alignment: Alignment.leading)
+        .frame(width: GridHandler.shared.fourBarsWidth * 4, alignment: Alignment.leading)
     }
     /// Creates one Indicator
     ///  - Parameter height: Height of the Indicator

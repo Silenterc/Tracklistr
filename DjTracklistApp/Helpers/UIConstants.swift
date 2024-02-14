@@ -33,5 +33,17 @@ enum UIConstants {
     
     enum Track {
         static let height: CGFloat = 62
+        static let minimumBars: UInt = 16
+        static let nameSize: CGFloat = 12
+        static let artistsSize: CGFloat = 8
+        static let barsSize: CGFloat = 8
+        static let timeSize: CGFloat = 8
+        static let barSize: CGFloat = 8
+        
+        
+        enum Image {
+            static let width: CGFloat = 32
+            static let height: CGFloat = 32
+        }
     }
 }

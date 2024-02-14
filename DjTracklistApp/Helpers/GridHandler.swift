@@ -12,12 +12,22 @@ class GridHandler {
     
     let fourBarsWidth: CGFloat = UIConstants.Indicator.width + UIConstants.Indicator.spacing
     
+    private var barWidth: CGFloat {
+        fourBarsWidth / 4
+    }
+    
     static let shared = GridHandler()
     
+    var minimalWidth: CGFloat {
+        getWidthFromBars(bars: 16)
+    }
     func getWidthFromBars(bars: UInt) -> CGFloat {
         let fourBars = bars / 4
         return CGFloat(fourBars) * fourBarsWidth
         
+    }
+    func getBarsFromWidth(width: CGFloat) -> UInt {
+        return UInt(width / barWidth)
     }
     
     func roundWidth(width: CGFloat) -> CGFloat {

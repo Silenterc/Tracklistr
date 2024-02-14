@@ -22,10 +22,11 @@ struct Testing: View {
                                 ForEach(0..<4) { i in
                                         Text(songs[i])
                                             .background(Color(.cellBackground))
-                                        //.offset(x: 100)
+                                        
                                             .draggable(songs[i])
                                         //.position(x: pos[i], y: 50)
-                                            .padding(.leading, pos[i])
+                                            .offset(x: pos[i])
+                                            //.padding(.leading, pos[i])
                                           
                                 }
                                 
@@ -36,6 +37,7 @@ struct Testing: View {
                 
                            
                         }
+                    .frame(maxWidth: .infinity)
                         .border(.green)
                         .background {
                             Color.black

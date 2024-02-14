@@ -89,19 +89,19 @@ class TrackDetailVM {
                 
                 let totalDurationSeconds = durationSeconds + durationMinutes * 60
                 let totalDurationBars = totalDurationSeconds.getBars(bpm: bpm, timeUnit: .seconds)
-                if (totalDurationBars < 16) {
+                if (totalDurationBars < UIConstants.Track.minimumBars) {
                     return showError(error: .tooShortTrack)
                 } else if startTimeOffsetSeconds < 0 {
                     return showError(error: .negativeOffset)
-                } else if Double(totalDurationSeconds) - Double(startTimeOffsetSeconds) < UInt(16).getTime(bpm: bpm, timeUnit: .seconds) {
+                } else if Double(totalDurationSeconds) - Double(startTimeOffsetSeconds) < UIConstants.Track.minimumBars.getTime(bpm: bpm, timeUnit: .seconds) {
                     return showError(error: .tooLongOffset)
                 } else if currentStart % 4 != 0 {
                     return showError(error: .barsNotDivisibleBy4)
-                } else if totalDurationBars - currentStart < 16 {
+                } else if totalDurationBars - currentStart < UIConstants.Track.minimumBars {
                     return showError(error: .tooShortDuration)
                 } else if currentDuration % 4 != 0 {
                     return showError(error: .barsNotDivisibleBy4)
-                } else if currentDuration < 16 {
+                } else if currentDuration < UIConstants.Track.minimumBars {
                     return showError(error: .tooShortDuration)
                 } else if currentStart + currentDuration > totalDurationBars {
                     return showError(error: .tooLongDuration)

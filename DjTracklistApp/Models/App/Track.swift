@@ -23,6 +23,10 @@ final class Track: Identifiable {
     let imageUrl: URL?
     /// The full duration of the song in milliseconds
     var originalDuration: UInt
+    /// The full duration of the song in bars
+    var originalDurationBars: UInt {
+        originalDuration.getBars(bpm: bpm!, timeUnit: .milliseconds)
+    }
     /// Beats Per Minute of the song
     var bpm: Float?
     /// Specific point in the duration of the track, where it should start from

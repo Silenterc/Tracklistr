@@ -17,31 +17,35 @@ struct TrackCell: View {
                 resizeBarLeft()
                 VStack(alignment: .leading) {
                     HStack(alignment: .top, spacing: 3) {
-                        LazyVStack {
-                            // Used AsyncDownSamplingImage library: https://github.com/fummicc1/AsyncDownSamplingImage.git
-                            AsyncDownSamplingImage(url: viewModel.track.imageUrl, downsampleSize: CGSize(width: 100, height: 100)){
-                                image in
-                                image.resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 32, height: 32)
-                            } placeholder: {
-                                ProgressView()
-                            } fail: { error in
-                                EmptyView()
-                                
+                        if viewModel.track.currentDuration! > 48 {
+                            LazyVStack {
+                                // Used AsyncDownSamplingImage library: https://github.com/fummicc1/AsyncDownSamplingImage.git
+                                AsyncDownSamplingImage(url: viewModel.track.imageUrl, downsampleSize: CGSize(width: 100, height: 100)){
+                                    image in
+                                    image.resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: UIConstants.Track.Image.width, height: UIConstants.Track.Image.height)
+                                } placeholder: {
+                                    ProgressView()
+                                } fail: { error in
+                                    EmptyView()
+                                    
+                                }
                             }
+                            .cornerRadius(10)
+                            // width maybe viewModel.width / 6
+                            .frame(width: UIConstants.Track.Image.width, height: UIConstants.Track.Image.height)
                         }
-                        .frame(width: 32, height: 32)
-                        .cornerRadius(10)
-                        VStack(alignment: .leading){
+                        VStack(alignment: .leading) {
                             Text(viewModel.track.name)
-                                .font(.custom(UIConstants.Font.regular, fixedSize: 12))
+                                .font(.custom(UIConstants.Font.regular, fixedSize: UIConstants.Track.nameSize))
                                 .truncationMode(.tail)
                             
                             Text(viewModel.track.artistNames.joined(separator: ","))
-                                .font(.custom(UIConstants.Font.light, fixedSize: 8))
+                                .font(.custom(UIConstants.Font.light, fixedSize: UIConstants.Track.artistsSize))
                                 .truncationMode(.tail)
                         }
+                        
                     }
                     HStack {
                         timeInfo(timeInBars: viewModel.track.startTimeBars!)
@@ -51,10 +55,14 @@ struct TrackCell: View {
                         timeInfo(timeInBars: viewModel.track.endTimeBars!)
                         
                     }
+                    .padding(.trailing, 6)
                     
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .padding(6)
+                .padding(.top, 6)
+                .padding(.bottom, 6)
+                .padding(.leading, 6)
+             
                 resizeBarRight()
             }
             .frame(width: viewModel.width, height: viewModel.height, alignment: .leading)
@@ -70,12 +78,12 @@ struct TrackCell: View {
     private func resizeBarRight() -> some View {
         Rectangle()
             .fill(.ultraThickMaterial)
-            .frame(width: 10, height: viewModel.height)
+            .frame(width: UIConstants.Track.barSize, height: viewModel.height)
             .gesture(
                 LongPressGesture()
                     .sequenced(before: DragGesture()
                         .onChanged({ value in
-                            viewModel.changeWidth(change: value.translation.width)
+                            viewModel.changeWidthRight(change: value.translation.width)
                     }))
             )
     }
@@ -83,12 +91,12 @@ struct TrackCell: View {
     private func resizeBarLeft() -> some View {
         Rectangle()
             .fill(.ultraThickMaterial)
-            .frame(width: 10, height: viewModel.height)
+            .frame(width: UIConstants.Track.barSize, height: viewModel.height)
             .gesture(
                 LongPressGesture()
                     .sequenced(before: DragGesture()
                         .onChanged({ value in
-                            viewModel.changeWidth(change: -value.translation.width)
+                            viewModel.changeWidthLeft(change: -value.translation.width)
                     }))
             )
     }
@@ -105,7 +113,7 @@ struct TrackCell: View {
     /// Information about the current curation of the track in bars
     private func barsText(bars: UInt) -> Text {
         Text("\(bars)" + (bars == 1 ? " bar" : " bars"))
-            .font(.custom("Roboto-Regular", fixedSize: 8))
+            .font(.custom("Roboto-Regular", fixedSize: UIConstants.Track.barsSize))
     }
     /// Information about the current duration of the track in mm:ss
     private func timeText(bars: UInt) -> Text {
@@ -122,7 +130,7 @@ struct TrackCell: View {
             formattedString = formattedOutput
         }
         return Text(formattedString)
-                    .font(.custom("Roboto-Regular", fixedSize: 8))
+                    .font(.custom("Roboto-Regular", fixedSize: UIConstants.Track.timeSize))
     }
         
         
