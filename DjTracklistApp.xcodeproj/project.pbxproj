@@ -81,6 +81,8 @@
 		4251D92B2B6932DA00CB7CA4 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4251D92A2B6932DA00CB7CA4 /* Errors.swift */; };
 		4251D92D2B7BC43200CB7CA4 /* Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4251D92C2B7BC43200CB7CA4 /* Testing.swift */; };
 		4251D92F2B7BF23600CB7CA4 /* GridHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4251D92E2B7BF23600CB7CA4 /* GridHandler.swift */; };
+		4251D9312B7F903D00CB7CA4 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4251D9302B7F903D00CB7CA4 /* PlayerView.swift */; };
+		4251D9332B7F906500CB7CA4 /* PlayerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4251D9322B7F906500CB7CA4 /* PlayerVM.swift */; };
 		429FF00F2B668FA00093AB75 /* AddTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429FF00E2B668FA00093AB75 /* AddTrackView.swift */; };
 		429FF0112B668FCA0093AB75 /* AddTrackVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429FF0102B668FCA0093AB75 /* AddTrackVM.swift */; };
 		429FF0132B66B43B0093AB75 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429FF0122B66B43B0093AB75 /* ApiService.swift */; };
@@ -169,6 +171,8 @@
 		4251D92A2B6932DA00CB7CA4 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		4251D92C2B7BC43200CB7CA4 /* Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing.swift; sourceTree = "<group>"; };
 		4251D92E2B7BF23600CB7CA4 /* GridHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridHandler.swift; sourceTree = "<group>"; };
+		4251D9302B7F903D00CB7CA4 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		4251D9322B7F906500CB7CA4 /* PlayerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerVM.swift; sourceTree = "<group>"; };
 		429FF00E2B668FA00093AB75 /* AddTrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTrackView.swift; sourceTree = "<group>"; };
 		429FF0102B668FCA0093AB75 /* AddTrackVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTrackVM.swift; sourceTree = "<group>"; };
 		429FF0122B66B43B0093AB75 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
@@ -407,6 +411,8 @@
 				429FF0102B668FCA0093AB75 /* AddTrackVM.swift */,
 				4251D9212B67FAF400CB7CA4 /* TrackDetailView.swift */,
 				4251D9252B68443F00CB7CA4 /* TrackDetailVM.swift */,
+				4251D9302B7F903D00CB7CA4 /* PlayerView.swift */,
+				4251D9322B7F906500CB7CA4 /* PlayerVM.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -610,6 +616,7 @@
 				42A571C82B61A1EA0041907E /* UIConstants.swift in Sources */,
 				429FF0112B668FCA0093AB75 /* AddTrackVM.swift in Sources */,
 				422A75022B5BE16600CD9E76 /* APIHandler.swift in Sources */,
+				4251D9332B7F906500CB7CA4 /* PlayerVM.swift in Sources */,
 				422A75192B5C065400CD9E76 /* APIConstant.swift in Sources */,
 				422A75352B5D518800CD9E76 /* URLSessionProtocol.swift in Sources */,
 				422A753F2B5D829800CD9E76 /* Track.swift in Sources */,
@@ -622,6 +629,7 @@
 				4251D92B2B6932DA00CB7CA4 /* Errors.swift in Sources */,
 				422A75742B60392400CD9E76 /* TimeIndicationView.swift in Sources */,
 				422A75512B6005FD00CD9E76 /* TracklistVM.swift in Sources */,
+				4251D9312B7F903D00CB7CA4 /* PlayerView.swift in Sources */,
 				422A75762B603AE000CD9E76 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -44,10 +44,21 @@ final class Track: Identifiable {
         }
         return nil
     }
+    /// The position of the track in the Player View. Right now it refers to the position of the left edge from the left,
+    /// because the offset is performed by .padding().
+    var position: CGFloat = 0
+    
+    var positionRightEdge: CGFloat {
+        if let dur = currentDuration {
+            return position + GridHandler.shared.getWidthFromBars(bars: dur)
+        } else {
+            return 0
+        }
+    }
     /// The player to which this track belongs to
     var player: Player?
     
-    init(id: UUID, externalId: String, name: String, artistNames: [String], albumName: String, imageUrl: URL? = nil, originalDuration: UInt, bpm: Float?, startTimeBars: UInt? = nil, endTimeBars: UInt? = nil, player: Player? = nil) {
+    init(id: UUID, externalId: String, name: String, artistNames: [String], albumName: String, imageUrl: URL? = nil, originalDuration: UInt, bpm: Float?, startTimeBars: UInt? = nil, endTimeBars: UInt? = nil, position: CGFloat = 0, player: Player? = nil) {
         self.id = id
         self.externalId = externalId
         self.name = name
@@ -58,6 +69,7 @@ final class Track: Identifiable {
         self.bpm = bpm
         self.startTimeBars = startTimeBars
         self.endTimeBars = endTimeBars
+        self.position = position
         self.player = player
     }
     
@@ -85,7 +97,8 @@ extension Track {
             originalDuration: 288000,
             bpm: 174,
             startTimeBars: 0,
-            endTimeBars: 96
+            endTimeBars: 96,
+            position: 0
         )
     }
     
@@ -100,7 +113,40 @@ extension Track {
             originalDuration: 190000,
             bpm: 174,
             startTimeBars: 0,
-            endTimeBars: 96
+            endTimeBars: 96,
+            position: GridHandler.shared.getWidthFromBars(bars: 96)
+        )
+    }
+    
+    static func mockFallingTrack() -> Track {
+        return Track(
+            id: UUID(),
+            externalId: "falling",
+            name: "Falling",
+            artistNames: ["Camo & Krooked"],
+            albumName: "Falling",
+            imageUrl: URL(string: "https://i.scdn.co/image/ab67616d0000b27355a0011a809339d416ceec67")!,
+            originalDuration: 198857,
+            bpm: 174,
+            startTimeBars: 0,
+            endTimeBars: 96,
+            position: GridHandler.shared.getWidthFromBars(bars: 96 * 2)
+        )
+    }
+    
+    static func mockDesireTrack() -> Track {
+        return Track(
+            id: UUID(),
+            externalId: "desire",
+            name: "Desire",
+            artistNames: ["Sub Focus, Dimension"],
+            albumName: "Desire",
+            imageUrl: URL(string: "https://i.scdn.co/image/ab67616d0000b273b393fcf525ae1aea04eb9b5a")!,
+            originalDuration: 242758,
+            bpm: 174,
+            startTimeBars: 0,
+            endTimeBars: 96,
+            position: GridHandler.shared.getWidthFromBars(bars: 96 * 3)
         )
     }
 }

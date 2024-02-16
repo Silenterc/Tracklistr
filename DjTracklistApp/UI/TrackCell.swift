@@ -144,7 +144,7 @@ struct TrackCell: View {
     let track = Track.mockSolarSystemTrack()
     container.mainContext.insert(track)
 
-    return TrackCell(viewModel: .init(track: track)).modelContainer(container)
+    return TrackCell(viewModel: .init(track: track, validatePos: {_ in return true})).modelContainer(container)
 }
 
 

@@ -26,7 +26,7 @@ class Player {
 
 extension Player {
     static func mockPlayer1() -> Player {
-        Player(id: UUID(),tracks: [Track.mockSolarSystemTrack(), Track.mockDevotionTrack(), Track.mockDevotionTrack(), Track.mockSolarSystemTrack()])
+        Player(id: UUID(),tracks: [Track.mockSolarSystemTrack(), Track.mockDevotionTrack(), Track.mockFallingTrack(), Track.mockDesireTrack()])
     }
     static func mockPlayer2() -> Player {
         Player(id: UUID(),tracks: [Track.mockDevotionTrack(), Track.mockSolarSystemTrack()])

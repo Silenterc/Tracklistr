@@ -23,27 +23,13 @@ struct TracklistView: View {
         if let tracklist = viewModel.tracklist {
             HStack {
                 ScrollView(.horizontal, showsIndicators: false) {
-                    ZStack {
+                    ZStack(alignment: .leading) {
                         
                         VStack(alignment: .leading, spacing: 0) {
                             ForEach(tracklist.players!) { player in
                                 VStack(alignment: .leading) {
                                     Spacer()
-                                    HStack (spacing: 0) {
-                                        ForEach(player.tracks!) { track in
-                                            
-                                            TrackCell(viewModel: .init(track: track))
-                                                .onTapGesture(count: 2) {
-                                                    if let index = player.tracks!.firstIndex(where: {$0.id == track.id}) {
-                                                        player.tracks!.remove(at: index)
-                                                    }
-                                                }
-                                                .frame(alignment: .leading)
-                                            
-                                        }
-                                        // TEMPORARY
-                                        Spacer()
-                                    }
+                                    PlayerView(viewModel: .init(player: player))
                                     Spacer()
                                    
                                   
@@ -61,7 +47,8 @@ struct TracklistView: View {
                             viewModel.size = size
                             
                         }
-                        .frame(maxWidth: .infinity)
+                        // MAYBE MAKE THE SIZE EQUAL TO THE WHOLE SET LENGTH
+                        //.frame(maxWidth: .infinity)
                         VStack {
                             ZStack {
                                 let part =  (viewModel.size?.height ?? 0) / 4
