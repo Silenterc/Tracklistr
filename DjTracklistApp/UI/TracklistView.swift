@@ -12,7 +12,7 @@ struct TracklistView: View {
     @State var viewModel: TracklistVM
     @EnvironmentObject var router: NavigationRouter
     init(modelContext: ModelContext, tracklistID: UUID) {
-        let viewModel = TracklistVM(tracklistService: TracklistService(databaseContext: modelContext), tracklistID: tracklistID)
+        let viewModel = TracklistVM(tracklistService: DatabaseService(databaseContext: modelContext), tracklistID: tracklistID)
         _viewModel = State(initialValue: viewModel)
     }
     
@@ -26,14 +26,12 @@ struct TracklistView: View {
                     ZStack(alignment: .leading) {
                         
                         VStack(alignment: .leading, spacing: 0) {
-                            ForEach(tracklist.players!) { player in
+                            ForEach(viewModel.players) { player in
                                 VStack(alignment: .leading) {
                                     Spacer()
                                     PlayerView(viewModel: .init(player: player))
                                     Spacer()
                                    
-                                  
-                                    
                                 }
                              
                                 
@@ -80,7 +78,7 @@ struct TracklistView: View {
     
     func TrackAddBar(tracklist: Tracklist) -> some View {
         VStack {
-            ForEach(tracklist.players!) { player in
+            ForEach(viewModel.players) { player in
                 Spacer()
                 Button {
                     router.navigateTo(destination: .addTrackView(player: player, bpm: tracklist.bpm))

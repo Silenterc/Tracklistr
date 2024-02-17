@@ -38,6 +38,7 @@ class TrackCellVM {
         
         track.endTimeBars! = UInt(newEndTimeBars)
         if validatePos(track) {
+            
             width = roundedNewWidth
         } else {
             track.endTimeBars = oldEndTimeBars
@@ -61,10 +62,14 @@ class TrackCellVM {
             return
         }
         track.startTimeBars! = UInt(newStartTimeBars)
+        let oldPosition = track.position
+        track.position = track.position - (change > 0 ? GridHandler.shared.getWidthFromBars(bars: UInt(change)) : -1 * GridHandler.shared.getWidthFromBars(bars: UInt(abs(change))))
+        print(track.startTimeBars!)
         if validatePos(track) {
             width = roundedNewWidth
         } else {
             track.startTimeBars = oldStartTimeBars
+            track.position = oldPosition
         }
     }
     

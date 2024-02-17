@@ -90,7 +90,7 @@
 		42A571C82B61A1EA0041907E /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A571C72B61A1EA0041907E /* UIConstants.swift */; };
 		42A571CA2B6297BA0041907E /* TracklistInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A571C92B6297BA0041907E /* TracklistInfoView.swift */; };
 		42A571CC2B6297CC0041907E /* TracklistInfoVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A571CB2B6297CC0041907E /* TracklistInfoVM.swift */; };
-		42A571CE2B6298BC0041907E /* TracklistService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A571CD2B6298BC0041907E /* TracklistService.swift */; };
+		42A571CE2B6298BC0041907E /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A571CD2B6298BC0041907E /* DatabaseService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -180,7 +180,7 @@
 		42A571C72B61A1EA0041907E /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
 		42A571C92B6297BA0041907E /* TracklistInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracklistInfoView.swift; sourceTree = "<group>"; };
 		42A571CB2B6297CC0041907E /* TracklistInfoVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracklistInfoVM.swift; sourceTree = "<group>"; };
-		42A571CD2B6298BC0041907E /* TracklistService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracklistService.swift; sourceTree = "<group>"; };
+		42A571CD2B6298BC0041907E /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -329,7 +329,7 @@
 			isa = PBXGroup;
 			children = (
 				422A75212B5C6A7E00CD9E76 /* SpotifyService.swift */,
-				42A571CD2B6298BC0041907E /* TracklistService.swift */,
+				42A571CD2B6298BC0041907E /* DatabaseService.swift */,
 				429FF0122B66B43B0093AB75 /* ApiService.swift */,
 			);
 			path = Services;
@@ -622,7 +622,7 @@
 				422A753F2B5D829800CD9E76 /* Track.swift in Sources */,
 				422A75222B5C6A7E00CD9E76 /* SpotifyService.swift in Sources */,
 				422A75082B5BEC7C00CD9E76 /* AccessToken.swift in Sources */,
-				42A571CE2B6298BC0041907E /* TracklistService.swift in Sources */,
+				42A571CE2B6298BC0041907E /* DatabaseService.swift in Sources */,
 				422A75312B5D49BE00CD9E76 /* Album.swift in Sources */,
 				422A753A2B5D7F1000CD9E76 /* MusicAPITrack.swift in Sources */,
 				422A75452B5DA7FE00CD9E76 /* Tracklist.swift in Sources */,

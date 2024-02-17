@@ -13,7 +13,7 @@ import SwiftData
 @Observable
 class TracklistInfoVM {
     /// Service responsible for persisting tracklist data
-    var tracklistService: TracklistService
+    var tracklistService: DatabaseService
     var tracklistID: UUID
     var tracklist: Tracklist
     
@@ -37,7 +37,7 @@ class TracklistInfoVM {
     /// Initializer
     /// - Parameter tracklistService: SwiftData Tracklist repository
     /// - Parameter tracklistID: If we are editing an existing tracklist, we need its ID
-    init(tracklistService: TracklistService, tracklistID: UUID? = nil) {
+    init(tracklistService: DatabaseService, tracklistID: UUID? = nil) {
         self.tracklistService = tracklistService
         // If an existing tracklist gets edited
         if let id = tracklistID {
@@ -64,10 +64,18 @@ class TracklistInfoVM {
         // Right now we only support 4 decks so they get added here and also we have created a new Tracklist so it gets added to the db
         if (toBeCreated) {
             tracklistService.insertTracklist(tracklist: tracklist)
-            tracklist.players!.append(Player(id: UUID(), tracklist: tracklist))
-            tracklist.players!.append(Player(id: UUID(), tracklist: tracklist))
-            tracklist.players!.append(Player(id: UUID(), tracklist: tracklist))
-            tracklist.players!.append(Player(id: UUID(), tracklist: tracklist))
+            let player0 = Player(id: UUID(), order: 0)
+            let player1 = Player(id: UUID(), order: 1)
+            let player2 = Player(id: UUID(), order: 2)
+            let player3 = Player(id: UUID(), order: 3)
+            tracklistService.insertPlayer(player: player0)
+            tracklistService.insertPlayer(player: player1)
+            tracklistService.insertPlayer(player: player2)
+            tracklistService.insertPlayer(player: player3)
+            player0.tracklist = tracklist
+            player1.tracklist = tracklist
+            player2.tracklist = tracklist
+            player3.tracklist = tracklist
         }
         
         

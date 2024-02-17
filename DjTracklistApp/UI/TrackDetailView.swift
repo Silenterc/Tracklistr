@@ -70,7 +70,6 @@ struct TrackDetailView: View {
                     Spacer()
                     Button {
                         if viewModel.createTrack() {
-                            print(router.path)
                             router.navigateNBack(n: 1)
                         }
                     } label: {

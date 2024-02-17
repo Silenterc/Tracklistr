@@ -12,17 +12,18 @@ import SwiftData
 class TracklistVM {
     
     // Middle man between our VM and SwiftData, used for all Database operations
-    var tracklistService: TracklistService
+    var tracklistService: DatabaseService
     var tracklistID: UUID
     var tracklist: Tracklist?
+    var players: [Player] = []
     
     var size: CGSize?
     
-    init(tracklistService: TracklistService, tracklistID: UUID) {
+    init(tracklistService: DatabaseService, tracklistID: UUID) {
         self.tracklistService = tracklistService
         self.tracklistID = tracklistID
         fetchTracklist()
-        print("Here")
+        fetchPlayers()
     }
     
     func fetchTracklist() {
@@ -31,6 +32,17 @@ class TracklistVM {
             
         } catch {
             // TODO
+            print("oh oh")
+        }
+    }
+    
+    func fetchPlayers() {
+        do {
+            players = try tracklistService.fetchPlayers(id: tracklistID)
+            players.forEach({print($0.order)})
+        } catch {
+            // TODO
+            print("oh oh")
         }
     }
     

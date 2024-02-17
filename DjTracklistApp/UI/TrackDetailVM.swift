@@ -60,6 +60,11 @@ class TrackDetailVM {
                         return true
                     
                     } else {
+                        // We need to position the track correctly - it should be precisely at the end of the player's tracks, as the last track
+                        if let lastTrack = self.player!.tracks!.last {
+                            track.position = lastTrack.positionRightEdge
+                        }
+                        
                         self.player!.tracks!.append(track)
                         return true
                     }

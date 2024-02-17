@@ -18,7 +18,7 @@ class PlayerVM {
     /// Validates whether the track doesnt overlap with another -> their positions and durations are not overlapping, so each track has its own place
     func validatePosition(track: Track) -> Bool {
         for secTrack in player.tracks! {
-            if secTrack == track {
+            if secTrack.id == track.id {
                 continue
             }
             if track.position < secTrack.positionRightEdge && track.positionRightEdge > secTrack.position {

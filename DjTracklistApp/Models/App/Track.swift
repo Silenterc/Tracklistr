@@ -10,6 +10,7 @@ import SwiftData
 /// Class representing one track/song  in the App's tracklist
 @Model
 final class Track: Identifiable {
+    
     @Attribute(.unique) let id:UUID
     /// Id of this track from the API it was taken from , is empty for custom song
     let externalId: String

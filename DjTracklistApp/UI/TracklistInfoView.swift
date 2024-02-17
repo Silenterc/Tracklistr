@@ -14,7 +14,7 @@ struct TracklistInfoView: View {
     @State var viewModel: TracklistInfoVM
     @EnvironmentObject var router: NavigationRouter
     init(modelContext: ModelContext,tracklistID: UUID? = nil) {
-        let viewModel = TracklistInfoVM(tracklistService: TracklistService(databaseContext: modelContext), tracklistID: tracklistID)
+        let viewModel = TracklistInfoVM(tracklistService: DatabaseService(databaseContext: modelContext), tracklistID: tracklistID)
         _viewModel = State(initialValue: viewModel)
     }
     

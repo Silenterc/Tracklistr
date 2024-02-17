@@ -39,7 +39,7 @@ extension Tracklist {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd HH:mm"
         let date = formatter.date(from: "2023/11/29 21:00")!
-        return Tracklist(id: UUID(), players: [Player.mockPlayer1(), Player.mockPlayer2(), Player.mockPlayer1(), Player.mockPlayer1()], name: "Silence 10", editedAt: date, bpm: 175, durationMinutes: 60)
+        return Tracklist(id: UUID(), players: [], name: "Silence 10", editedAt: date, bpm: 175, durationMinutes: 60)
     }
     
     static func mockTracklist2() -> Tracklist {
