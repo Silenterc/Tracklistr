@@ -2,10 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CLIENT_ID</key>
-	<string>$(CLIENT_ID)</string>
-	<key>CLIENT_SECRET</key>
-	<string>$(CLIENT_SECRET)</string>
+	<key>CLIENT_ID_MUSI</key>
+	<string>$(CLIENT_ID_MUSI)</string>
+	<key>CLIENT_ID_SPOT</key>
+	<string>$(CLIENT_ID_SPOT)</string>
+	<key>CLIENT_SECRET_SPOT</key>
+	<string>$(CLIENT_SECRET_SPOT)</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Roboto-Black.ttf</string>

@@ -38,19 +38,34 @@ class AddTrackVM {
         
     }
     @MainActor
-    func handleSpotifyTrack() {
-        if chosenTrack != nil && spotifyTapped {
-            Task {
-                do {
-                    self.chosenTrack = try await apiService?.getTrackWithFeatures(id: chosenTrack!.externalId)
-                    // Rounded to 1 decimal place
-                    self.chosenTrack!.bpm?.round()
-                    songChosen = true
-                } catch {
-                    print(error)
+    func handleChosenTrack() {
+        if chosenTrack != nil {
+            if spotifyTapped {
+                Task {
+                    do {
+                        self.chosenTrack = try await apiService?.getTrackWithFeatures(id: chosenTrack!.externalId)
+                        // Rounded to 1 decimal place
+                        self.chosenTrack!.bpm?.round()
+                        songChosen = true
+                    } catch {
+                        print(error)
+                    }
+                    
                 }
-        
+            } else {
+                songChosen = true
             }
+            
         }
+    }
+    @MainActor
+    func reset() {
+        apiService = nil
+        tracks.removeAll()
+        songChosen = false
+        chosenTrack = nil
+        searchName = ""
+        searchArtists = ""
+        
     }
 }

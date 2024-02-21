@@ -19,17 +19,23 @@ struct TrackCell: View {
                     HStack(alignment: .top, spacing: 3) {
                         if viewModel.track.currentDuration! > 48 {
                             LazyVStack {
-                                // Used AsyncDownSamplingImage library: https://github.com/fummicc1/AsyncDownSamplingImage.git
-                                AsyncDownSamplingImage(url: viewModel.track.imageUrl, downsampleSize: CGSize(width: 100, height: 100)){
-                                    image in
-                                    image.resizable()
+                                if let imageUrl = viewModel.track.imageUrl {
+                                    // Used AsyncDownSamplingImage library: https://github.com/fummicc1/AsyncDownSamplingImage.git
+                                    AsyncDownSamplingImage(url: imageUrl, downsampleSize: CGSize(width: 100, height: 100)){
+                                        image in
+                                        image.resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: UIConstants.Track.Image.width, height: UIConstants.Track.Image.height)
+                                    } placeholder: {
+                                        ProgressView()
+                                    } fail: { error in
+                                        EmptyView()
+                                    }
+                                } else {
+                                    Image(systemName: "opticaldisc.fill")
+                                        .resizable()
                                         .aspectRatio(contentMode: .fit)
                                         .frame(width: UIConstants.Track.Image.width, height: UIConstants.Track.Image.height)
-                                } placeholder: {
-                                    ProgressView()
-                                } fail: { error in
-                                    EmptyView()
-                                    
                                 }
                             }
                             .cornerRadius(10)
@@ -112,7 +118,7 @@ struct TrackCell: View {
     
     /// Information about the current curation of the track in bars
     private func barsText(bars: UInt) -> Text {
-        Text("\(bars)" + (bars == 1 ? " bar" : " bars"))
+        Text("\(bars)" + (viewModel.track.currentDuration! > 48 ? (bars == 1 ? " bar" : " bars") : ""))
             .font(.custom("Roboto-Regular", fixedSize: UIConstants.Track.barsSize))
     }
     /// Information about the current duration of the track in mm:ss

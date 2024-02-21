@@ -48,7 +48,7 @@ class TrackDetailVM {
                 // However the required bpm by the playlist can be different from the track's, so we have to scale it
                 let unscaledOriginalDuration = ((durationSeconds + durationMinutes * 60) * 1000) - UInt(startTimeOffsetSeconds * 1000)
                 // We scale it here
-                let scaledOriginalDuration = UInt((Double(unscaledOriginalDuration) / Double(requiredBpm!)) * Double(track.bpm!))
+                let scaledOriginalDuration = UInt((Double(unscaledOriginalDuration) / Double(requiredBpm!)) * Double(bpm!))
                 track.originalDuration = scaledOriginalDuration
                 track.bpm = requiredBpm
                 
@@ -61,10 +61,17 @@ class TrackDetailVM {
                     
                     } else {
                         // We need to position the track correctly - it should be precisely at the end of the player's tracks, as the last track
-                        if let lastTrack = self.player!.tracks!.last {
-                            track.position = lastTrack.positionRightEdge
+                        // This piece of code will work one I manage to get a sorted array out of the db, for now we will find the last track by linearily browsing the array
+//                        if let lastTrack = self.player!.tracks!.last {
+//                            track.position = lastTrack.positionRightEdge
+//                        }
+                        var lastPos: CGFloat = 0
+                        tracks.forEach { tr in
+                            if tr.position >= lastPos {
+                                lastPos = tr.positionRightEdge
+                            }
                         }
-                        
+                        track.position = lastPos
                         self.player!.tracks!.append(track)
                         return true
                     }

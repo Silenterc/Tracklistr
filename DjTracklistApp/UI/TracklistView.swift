@@ -106,6 +106,18 @@ struct TracklistView: View {
     let container = try! ModelContainer(for: Tracklist.self, configurations: config)
     let tracklist = Tracklist.mockTracklist1()
     container.mainContext.insert(tracklist)
+    let player0 = Player.mockPlayer1()
+    let player1 = Player.mockPlayer2()
+    let player2 = Player.mockPlayer3()
+    let player3 = Player.mockPlayer4()
+    container.mainContext.insert(player0)
+    container.mainContext.insert(player1)
+    container.mainContext.insert(player2)
+    container.mainContext.insert(player3)
+    player0.tracklist = tracklist
+    player1.tracklist = tracklist
+    player2.tracklist = tracklist
+    player3.tracklist = tracklist
     @ObservedObject var router = NavigationRouter(modelContext: container.mainContext)
     return NavigationStack(path: $router.path) {
         TracklistView(modelContext: container.mainContext, tracklistID: tracklist.id)

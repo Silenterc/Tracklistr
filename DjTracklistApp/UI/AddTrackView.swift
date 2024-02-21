@@ -43,34 +43,38 @@ struct AddTrackView: View {
                     }
                     
                     Button(action: {
+                        viewModel.apiService = MusicApiService(apiHandler: MusicAPIHandler())
                         viewModel.musicApiTapped = true
                     }, label: {
                         inputSelectionCell(image: musicApi, text: "Find via all services")
                     })
                     .tint(.black)
                     .navigationDestination(isPresented: $viewModel.musicApiTapped) {
-                        EmptyView()
+                        searchTrackView()
                     }
-                    
                     
                 }
                 
                 HStack (alignment: .bottom) {
                     let plus = Image(systemName: "plus.app").resizable().frame(width: 45, height: 45)
                     Button(action: {
+                        viewModel.chosenTrack = .init(id: UUID(), externalId: "", name: "", artistNames: [], albumName: "", originalDuration: 0, bpm: nil)
                         viewModel.manualTapped = true
                     }, label: {
                         inputSelectionCell(image: plus, text: "Add your own")
                     })
                     .tint(.black)
                     .navigationDestination(isPresented: $viewModel.manualTapped) {
-                        EmptyView()
+                        TrackDetailView(track: viewModel.chosenTrack, player: viewModel.player, bpm: viewModel.bpm)
                     }
                     
                 }
             }
             
             Spacer()
+        }
+        .onAppear {
+            viewModel.reset()
         }
         .frame(width: 400)
         
@@ -97,7 +101,7 @@ struct AddTrackView: View {
             List(viewModel.tracks, id: \.id) { track in
                 Button {
                     viewModel.chosenTrack = track
-                    viewModel.handleSpotifyTrack()
+                    viewModel.handleChosenTrack()
                     
                 } label: {
                     searchedTrackCell(track: track)
@@ -105,13 +109,6 @@ struct AddTrackView: View {
                 .tint(.black)
                 .padding(12)
                 
-                
-                
-                
-//                NavigationLink(destination: TrackDetailView(track: track, player: viewModel.player!, bpm: viewModel.bpm!)) {
-//                    searchedTrackCell(track: track)
-//                }
-                //.padding(12)
             }
             .navigationDestination(isPresented: $viewModel.songChosen) {
                 TrackDetailView(track: viewModel.chosenTrack, player: viewModel.player, bpm: viewModel.bpm)
@@ -136,16 +133,7 @@ struct AddTrackView: View {
                 }
                 .aspectRatio(1, contentMode: .fit)
                 .frame(width: 50, height: 50)
-                
-//                AsyncImage(url: track.imageUrl) { image in
-//                    image.resizable()
-//                } placeholder: {
-//                    ProgressView()
-//                }
-//                .aspectRatio(1, contentMode: .fit)
-//                .frame(width: 50, height: 50)
-                
-                
+                     
                 Text(track.name)
                     .font(.custom(UIConstants.Font.regular, size: 18))
                     .frame(width: geometry.size.width * 0.5, alignment: .leading)

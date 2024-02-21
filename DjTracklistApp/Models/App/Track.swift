@@ -84,6 +84,16 @@ final class Track: Identifiable {
         self.originalDuration = UInt(spotTrack.duration_ms)
         self.bpm = spotTrack.audioFeatures?.bpm
     }
+    
+    init(musiTrack: MusicApiTrack) {
+        self.id = UUID()
+        self.externalId = musiTrack.externalId
+        self.name = musiTrack.name
+        self.artistNames = musiTrack.artistNames ?? []
+        self.albumName = musiTrack.albumName ?? ""
+        self.imageUrl = musiTrack.imageUrl
+        self.originalDuration = UInt(musiTrack.duration ?? 0)
+    }
 }
 
 extension Track {
