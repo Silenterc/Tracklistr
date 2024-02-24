@@ -39,9 +39,14 @@ class DatabaseService {
                 throw FetchError.noItemsFound
             }
             let tracklist = tracklists.first!
-            tracklist.players!.forEach({print($0.order)})
+         //   tracklist.players!.forEach({print($0.order)})
             return tracklist
         }
+    }
+    
+    func fetchTracklists() throws -> [Tracklist] {
+        let descriptor = FetchDescriptor<Tracklist>(sortBy: [SortDescriptor(\.editedAt)])
+        return try databaseContext.fetch(descriptor)
     }
     /// Fetches all the players belonging to a tracklist in ascending order by their order variable
     /// - Parameter  id: id of the owning tracklist
@@ -77,7 +82,6 @@ class DatabaseService {
         tracklist.players!.sort(by: {$0.order < $1.order})
         for player in tracklist.players! {
             player.tracks!.sort(by: {$0.position < $1.position})
-            print(player.order)
         }
     }
 }

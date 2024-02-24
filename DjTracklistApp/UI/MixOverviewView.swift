@@ -18,7 +18,7 @@ struct MixOverviewView: View {
     
     // We need an initializer for injecting the database Context into our VM
     init(modelContext: ModelContext) {
-        let viewModel = MixOverviewVM(databaseContext: modelContext)
+        let viewModel = MixOverviewVM(databaseService: .init(databaseContext: modelContext))
         _viewModel = State(initialValue: viewModel)
     }
     var body: some View {
@@ -46,9 +46,6 @@ struct MixOverviewView: View {
             }
         }
         .navigationTitle("Mix Overview")
-        .navigationDestination(for: NavigationRouter.Destination.self) { destination in
-            router.defineViews(for: destination)
-        }
         
         
     }

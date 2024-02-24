@@ -11,14 +11,12 @@ import SwiftData
 @Observable
 class TrackCellVM {
     var track: Track
-    var validatePos: (Track) -> Bool
     var width: CGFloat = 0
     var height: CGFloat = UIConstants.Track.height
     
-    init(track: Track, validatePos: @escaping (Track) -> Bool) {
+    init(track: Track) {
         self.track = track
         self.width = GridHandler.shared.getWidthFromBars(bars: track.currentDuration!)
-        self.validatePos = validatePos
     }
     
     func changeWidthRight(change: CGFloat) {
@@ -37,7 +35,7 @@ class TrackCellVM {
         let newEndTimeBars = Int(oldEndTimeBars) + change
         
         track.endTimeBars! = UInt(newEndTimeBars)
-        if validatePos(track) {
+        if GridHandler.shared.validatePosition(track: track, player: track.player!) {
             
             width = roundedNewWidth
         } else {
@@ -64,8 +62,7 @@ class TrackCellVM {
         track.startTimeBars! = UInt(newStartTimeBars)
         let oldPosition = track.position
         track.position = track.position - (change > 0 ? GridHandler.shared.getWidthFromBars(bars: UInt(change)) : -1 * GridHandler.shared.getWidthFromBars(bars: UInt(abs(change))))
-        print(track.startTimeBars!)
-        if validatePos(track) {
+        if GridHandler.shared.validatePosition(track: track, player: track.player!) {
             width = roundedNewWidth
         } else {
             track.startTimeBars = oldStartTimeBars

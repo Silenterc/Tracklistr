@@ -7,7 +7,7 @@
 
 import SwiftUI
 import SwiftData
-
+import UniformTypeIdentifiers
 struct TracklistView: View {
     @State var viewModel: TracklistVM
     @EnvironmentObject var router: NavigationRouter
@@ -29,7 +29,9 @@ struct TracklistView: View {
                             ForEach(viewModel.players) { player in
                                 VStack(alignment: .leading) {
                                     Spacer()
-                                    PlayerView(viewModel: .init(player: player))
+                                    PlayerView(viewModel: .init(player: player), draggedTrack: $viewModel.draggedTrack, srcPlayer: $viewModel.srcPlayer)
+                                        .frame(width: GridHandler.shared.getWidthFromBars(bars: tracklist.durationMinutes.getBars(bpm: tracklist.bpm, timeUnit: .minutes)), alignment: .leading)
+                                        .onDrop(of: [UTType.text], delegate: TrackDropDelegate(dragged: $viewModel.draggedTrack, destPlayer: player, srcPlayer: $viewModel.srcPlayer))
                                     Spacer()
                                    
                                 }

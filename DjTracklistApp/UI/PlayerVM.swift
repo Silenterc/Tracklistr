@@ -6,26 +6,14 @@
 //
 
 import Foundation
+import SwiftUI
 @Observable
 class PlayerVM {
     
     var player: Player
-    
+    var draggedTrack: Track?
     init(player: Player) {
         self.player = player
     }
     
-    /// Validates whether the track doesnt overlap with another -> their positions and durations are not overlapping, so each track has its own place
-    func validatePosition(track: Track) -> Bool {
-        for secTrack in player.tracks! {
-            if secTrack.id == track.id {
-                continue
-            }
-            if track.position < secTrack.positionRightEdge && track.positionRightEdge > secTrack.position {
-                return false
-            }
-        }
-        return true
-        
-    }
 }

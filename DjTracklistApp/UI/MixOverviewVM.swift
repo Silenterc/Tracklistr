@@ -15,25 +15,23 @@ class MixOverviewVM {
     // Array of the tracklists the user has created so far
     var tracklists: [Tracklist] = []
     // Middle man between our VM and SwiftData, used for all Database operations
-    var databaseContext: ModelContext
+    var databaseService: DatabaseService
     
-    init(databaseContext: ModelContext, tracklists: [Tracklist] = []) {
+    init(databaseService: DatabaseService, tracklists: [Tracklist] = []) {
         self.tracklists = tracklists
-        self.databaseContext = databaseContext
+        self.databaseService = databaseService
         fetchTracklists()
-   
     }
     
     func fetchTracklists() {
         do {
-            let descriptor = FetchDescriptor<Tracklist>(sortBy: [SortDescriptor(\.editedAt)])
-            tracklists = try databaseContext.fetch(descriptor)
+            tracklists = try databaseService.fetchTracklists()
         } catch {
             print("Fetch failed")
         }
     }
     
     func insertTracklist(tracklist: Tracklist) {
-        databaseContext.insert(tracklist)
+        databaseService.insertTracklist(tracklist: tracklist)
     }
 }

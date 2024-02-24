@@ -18,7 +18,8 @@ class TracklistVM {
     var players: [Player] = []
     
     var size: CGSize?
-    
+    var draggedTrack: Track?
+    var srcPlayer: Player?
     init(tracklistService: DatabaseService, tracklistID: UUID) {
         self.tracklistService = tracklistService
         self.tracklistID = tracklistID
@@ -39,7 +40,6 @@ class TracklistVM {
     func fetchPlayers() {
         do {
             players = try tracklistService.fetchPlayers(id: tracklistID)
-            players.forEach({print($0.order)})
         } catch {
             // TODO
             print("oh oh")

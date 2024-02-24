@@ -94,6 +94,7 @@ final class Track: Identifiable {
         self.imageUrl = musiTrack.imageUrl
         self.originalDuration = UInt(musiTrack.duration ?? 0)
     }
+    
 }
 
 extension Track {

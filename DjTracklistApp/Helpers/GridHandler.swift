@@ -41,4 +41,33 @@ class GridHandler {
         }
     }
     
+    /// Validates whether the track doesnt overlap with another -> their positions and durations are not overlapping, so each track has its own place
+    func validatePosition(track: Track, player: Player) -> Bool {
+        for secTrack in player.tracks! {
+            if secTrack.id == track.id {
+                continue
+            }
+            if track.position < secTrack.positionRightEdge && track.positionRightEdge > secTrack.position {
+                return false
+            }
+        }
+        return true
+    }
+    
+    func validatePositionCenter(track: Track, player: Player, centralCoord: CGFloat) -> Bool {
+        // The proposed position of the track's left edge
+        let positionLeft = centralCoord - ((track.positionRightEdge - track.position) / 2)
+        let positionRight = centralCoord + ((track.positionRightEdge - track.position) / 2)
+        for secTrack in player.tracks! {
+            if secTrack.id == track.id {
+               continue
+            }
+            
+            if positionLeft < secTrack.positionRightEdge && positionRight > secTrack.position {
+                return false
+            }
+        }
+        return true
+    }
+    
 }

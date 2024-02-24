@@ -11,6 +11,7 @@ import AsyncDownSamplingImage
 /// View representing a Track which is placed on the TracklistView
 struct TrackCell: View {
     @State var viewModel: TrackCellVM
+    @State var animateSliding: Bool = false
     var body: some View {
         
             HStack(spacing: 0) {
@@ -150,7 +151,7 @@ struct TrackCell: View {
     let track = Track.mockSolarSystemTrack()
     container.mainContext.insert(track)
 
-    return TrackCell(viewModel: .init(track: track, validatePos: {_ in return true})).modelContainer(container)
+    return TrackCell(viewModel: .init(track: track)).modelContainer(container)
 }
 
 

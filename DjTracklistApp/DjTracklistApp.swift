@@ -7,7 +7,7 @@
 
 import SwiftUI
 import SwiftData
-
+import SwiftDataTransferrable
 let tracklist = Tracklist.mockTracklist1()
 @MainActor
 let sharedModelContainer: ModelContainer = {
@@ -32,6 +32,12 @@ let sharedModelContainer: ModelContainer = {
         player1.tracklist = tracklist
         player2.tracklist = tracklist
         player3.tracklist = tracklist
+        
+        tracklist.players!.forEach { player in
+            player.tracks!.forEach { track in
+                track.player = player
+            }
+        }
         return container
     } catch {
         fatalError("Error initializing")
@@ -52,6 +58,7 @@ struct DjTracklistApp: App {
                 //TracklistView(modelContext: sharedModelContainer.mainContext, tracklistID: tracklist.id)
                 //TracklistInfoView(modelContext: sharedModelContainer.mainContext)
                 .modelContainer(sharedModelContainer)
+                .swiftDataTransferrable(exportedUTType: "com.YourTeam.persistentModelID", modelContext: sharedModelContainer.mainContext)
             }
             .environmentObject(router)
         }

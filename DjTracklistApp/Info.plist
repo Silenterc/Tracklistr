@@ -2,6 +2,21 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeIdentifier</key>
+			<string>com.YourTeam.persistentModelID</string>
+			<key>UTTypeDescription</key>
+			<string>SwiftData Persistent Model ID</string>
+			<key>UTTypeTagSpecification</key>
+			<dict/>
+		</dict>
+	</array>
 	<key>CLIENT_ID_MUSI</key>
 	<string>$(CLIENT_ID_MUSI)</string>
 	<key>CLIENT_ID_SPOT</key>
