@@ -11,6 +11,8 @@ import UniformTypeIdentifiers
 struct TracklistView: View {
     @State var viewModel: TracklistVM
     @EnvironmentObject var router: NavigationRouter
+    
+    @State var draggedPos: CGPoint?
     init(modelContext: ModelContext, tracklistID: UUID) {
         let viewModel = TracklistVM(tracklistService: DatabaseService(databaseContext: modelContext), tracklistID: tracklistID)
         _viewModel = State(initialValue: viewModel)
@@ -31,16 +33,18 @@ struct TracklistView: View {
                                     Spacer()
                                     PlayerView(viewModel: .init(player: player), draggedTrack: $viewModel.draggedTrack, srcPlayer: $viewModel.srcPlayer)
                                         .frame(width: GridHandler.shared.getWidthFromBars(bars: tracklist.durationMinutes.getBars(bpm: tracklist.bpm, timeUnit: .minutes)), alignment: .leading)
-                                        .onDrop(of: [UTType.text], delegate: TrackDropDelegate(dragged: $viewModel.draggedTrack, destPlayer: player, srcPlayer: $viewModel.srcPlayer))
+                                        .onDrop(of: [UTType.text], delegate: TrackDropDelegate(dragged: $viewModel.draggedTrack, destPlayer: player, srcPlayer: $viewModel.srcPlayer, draggedPos: $draggedPos, playerSize: $viewModel.playerSize))
                                     Spacer()
                                    
                                 }
+                                .useSize { value in
+                                    viewModel.playerSize = value
+                                }
+                                
                              
                                 
                                 
                             }
-                            
-                            
                             
                         }
                         .useSize { size in
@@ -59,6 +63,14 @@ struct TracklistView: View {
                                
                             }
                             Spacer()
+                        }
+                        if let dragged = viewModel.draggedTrack, let pos = draggedPos {
+                            Rectangle()
+                                .fill(.cellBackground)
+                                .frame(width: GridHandler.shared.getWidthFromBars(bars: dragged.currentDuration!), height: UIConstants.Track.height)
+                                .position(pos)
+                                .allowsHitTesting(false)
+                                .disabled(true)
                         }
                     }
                     

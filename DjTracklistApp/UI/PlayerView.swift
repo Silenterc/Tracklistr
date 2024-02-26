@@ -24,13 +24,21 @@ struct PlayerView: View {
                             viewModel.player.tracks!.remove(at: index)
                         }
                     }
+                    .onTapGesture{}
                     .onDrag {
                         draggedTrack = track
                         srcPlayer = viewModel.player
                         return NSItemProvider(object: NSString())
+                    } preview: {
+                        Color.gray
+                            .opacity(0.1)
+//                        Rectangle()
+//                            .frame(width: GridHandler.shared.getWidthFromBars(bars: track.currentDuration!), height: UIConstants.Track.height)
                     }
+                    
                     .padding(.leading, track.position)
             }
+            
             
             
         }

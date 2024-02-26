@@ -20,6 +20,7 @@ class TracklistVM {
     var size: CGSize?
     var draggedTrack: Track?
     var srcPlayer: Player?
+    var playerSize: CGSize?
     init(tracklistService: DatabaseService, tracklistID: UUID) {
         self.tracklistService = tracklistService
         self.tracklistID = tracklistID
