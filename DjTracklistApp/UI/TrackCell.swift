@@ -26,7 +26,7 @@ struct TrackCell: View {
                                     image in
                                     image.resizable()
                                         .aspectRatio(contentMode: .fit)
-                                        .frame(width: UIConstants.Track.Image.width, height: UIConstants.Track.Image.height)
+                                        .frame(width: UIConstants.shared.track.image.width, height: UIConstants.shared.track.image.height)
                                 } placeholder: {
                                     ProgressView()
                                 } fail: { error in
@@ -36,20 +36,20 @@ struct TrackCell: View {
                                 Image(systemName: "opticaldisc.fill")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
-                                    .frame(width: UIConstants.Track.Image.width, height: UIConstants.Track.Image.height)
+                                    .frame(width: UIConstants.shared.track.image.width, height: UIConstants.shared.track.image.height)
                             }
                         }
                         .cornerRadius(10)
                         // width maybe viewModel.width / 6
-                        .frame(width: UIConstants.Track.Image.width, height: UIConstants.Track.Image.height)
+                        .frame(width: UIConstants.shared.track.image.width, height: UIConstants.shared.track.image.height)
                     }
                     VStack(alignment: .leading) {
                         Text(viewModel.track.name)
-                            .font(.custom(UIConstants.Font.regular, fixedSize: UIConstants.Track.nameSize))
+                            .font(.custom(UIConstants.shared.font.regular, fixedSize: UIConstants.shared.track.nameSize))
                             .truncationMode(.tail)
                         
                         Text(viewModel.track.artistNames.joined(separator: ","))
-                            .font(.custom(UIConstants.Font.light, fixedSize: UIConstants.Track.artistsSize))
+                            .font(.custom(UIConstants.shared.font.light, fixedSize: UIConstants.shared.track.artistsSize))
                             .truncationMode(.tail)
                     }
                     
@@ -72,8 +72,7 @@ struct TrackCell: View {
             
             resizeBarRight()
         }
-        .frame(width: viewModel.width, height: viewModel.height, alignment: .leading)
-        
+        .frame(width: viewModel.width, height: UIConstants.shared.track.height, alignment: .leading)
         .background(Color.cellBackground)
         .cornerRadius(10)
         .offset(viewModel.drag)
@@ -89,6 +88,7 @@ struct TrackCell: View {
                 .onEnded { gesture in
                     _ = DragHandler.shared.performDrop(location: CGPoint(x: gesture.location.x - viewModel.xOffset, y: gesture.location.y))
                     viewModel.endDrag()
+                    
                 }
         )
         
@@ -100,7 +100,7 @@ struct TrackCell: View {
     private func resizeBarRight() -> some View {
         Rectangle()
             .fill(.ultraThickMaterial)
-            .frame(width: UIConstants.Track.barSize, height: viewModel.height)
+            .frame(width: UIConstants.shared.track.barSize, height: UIConstants.shared.track.height)
             .gesture(
                 LongPressGesture()
                     .sequenced(before: DragGesture()
@@ -113,7 +113,7 @@ struct TrackCell: View {
     private func resizeBarLeft() -> some View {
         Rectangle()
             .fill(.ultraThickMaterial)
-            .frame(width: UIConstants.Track.barSize, height: viewModel.height)
+            .frame(width: UIConstants.shared.track.barSize, height: UIConstants.shared.track.height)
             .gesture(
                 LongPressGesture()
                     .sequenced(before: DragGesture()
@@ -135,7 +135,7 @@ struct TrackCell: View {
     /// Information about the current curation of the track in bars
     private func barsText(bars: UInt) -> Text {
         Text("\(bars)" + (viewModel.track.currentDuration! > 48 ? (bars == 1 ? " bar" : " bars") : ""))
-            .font(.custom("Roboto-Regular", fixedSize: UIConstants.Track.barsSize))
+            .font(.custom("Roboto-Regular", fixedSize: UIConstants.shared.track.barsSize))
     }
     /// Information about the current duration of the track in mm:ss
     private func timeText(bars: UInt) -> Text {
@@ -152,7 +152,7 @@ struct TrackCell: View {
             formattedString = formattedOutput
         }
         return Text(formattedString)
-            .font(.custom("Roboto-Regular", fixedSize: UIConstants.Track.timeSize))
+            .font(.custom("Roboto-Regular", fixedSize: UIConstants.shared.track.timeSize))
     }
     
     

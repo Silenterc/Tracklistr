@@ -11,7 +11,6 @@ import SwiftUI
 class PlayerVM {
     var databaseService: DatabaseService
     var player: Player
-    var draggedTrack: Track?
     init(player: Player, databaseService: DatabaseService) {
         self.player = player
         self.databaseService = databaseService

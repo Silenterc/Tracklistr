@@ -23,16 +23,16 @@ struct TimeIndicationView: View {
             // We want the indication to be aligned to the left, even if this view somehow gets stretched
             Spacer()
         }
-        .frame(height: 28)
+        .frame(height: UIConstants.shared.indicator.big.height)
         .frame(maxWidth: .infinity)
     }
     /// Creates the visual representation of 16 Bars, which is made out of 4 Indicators -> 3 small and 1 big
     private func makeSixteenBars() -> some View {
-        HStack(spacing: UIConstants.Indicator.spacing) {
-            makeIndicator(height: UIConstants.Indicator.Big.height)
-            makeIndicator(height: UIConstants.Indicator.Small.height)
-            makeIndicator(height: UIConstants.Indicator.Small.height)
-            makeIndicator(height: UIConstants.Indicator.Small.height)
+        HStack(spacing: UIConstants.shared.indicator.spacing) {
+            makeIndicator(height: UIConstants.shared.indicator.big.height)
+            makeIndicator(height: UIConstants.shared.indicator.small.height)
+            makeIndicator(height: UIConstants.shared.indicator.small.height)
+            makeIndicator(height: UIConstants.shared.indicator.small.height)
         }
         .frame(width: GridHandler.shared.fourBarsWidth * 4, alignment: Alignment.leading)
     }
@@ -41,7 +41,7 @@ struct TimeIndicationView: View {
     private func makeIndicator(height: CGFloat) -> some View {
         Rectangle()
             .fill(.timelineIndicator)
-            .frame(width: UIConstants.Indicator.width, height: height)
+            .frame(width: UIConstants.shared.indicator.width, height: height)
     }
 }
 

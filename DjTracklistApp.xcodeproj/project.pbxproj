@@ -87,7 +87,6 @@
 		4251D9372B863A1200CB7CA4 /* MusicApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4251D9362B863A1200CB7CA4 /* MusicApiService.swift */; };
 		4251D9392B863AF800CB7CA4 /* MusicApiSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4251D9382B863AF800CB7CA4 /* MusicApiSearchResult.swift */; };
 		4251D93C2B866A8B00CB7CA4 /* SwiftDataTransferrable in Frameworks */ = {isa = PBXBuildFile; productRef = 4251D93B2B866A8B00CB7CA4 /* SwiftDataTransferrable */; };
-		4251D93E2B8A782800CB7CA4 /* TrackDropDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4251D93D2B8A782800CB7CA4 /* TrackDropDelegate.swift */; };
 		429FF00F2B668FA00093AB75 /* AddTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429FF00E2B668FA00093AB75 /* AddTrackView.swift */; };
 		429FF0112B668FCA0093AB75 /* AddTrackVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429FF0102B668FCA0093AB75 /* AddTrackVM.swift */; };
 		429FF0132B66B43B0093AB75 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429FF0122B66B43B0093AB75 /* ApiService.swift */; };
@@ -182,7 +181,6 @@
 		4251D9342B8636E300CB7CA4 /* MusicAPIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicAPIHandler.swift; sourceTree = "<group>"; };
 		4251D9362B863A1200CB7CA4 /* MusicApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicApiService.swift; sourceTree = "<group>"; };
 		4251D9382B863AF800CB7CA4 /* MusicApiSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicApiSearchResult.swift; sourceTree = "<group>"; };
-		4251D93D2B8A782800CB7CA4 /* TrackDropDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDropDelegate.swift; sourceTree = "<group>"; };
 		429FF00E2B668FA00093AB75 /* AddTrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTrackView.swift; sourceTree = "<group>"; };
 		429FF0102B668FCA0093AB75 /* AddTrackVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTrackVM.swift; sourceTree = "<group>"; };
 		429FF0122B66B43B0093AB75 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
@@ -366,7 +364,6 @@
 				4251D9232B68026400CB7CA4 /* NavigationRouter.swift */,
 				4251D92A2B6932DA00CB7CA4 /* Errors.swift */,
 				4251D92E2B7BF23600CB7CA4 /* GridHandler.swift */,
-				4251D93D2B8A782800CB7CA4 /* TrackDropDelegate.swift */,
 				42A1B4F02B8E1A02008E32B0 /* DragHandler.swift */,
 			);
 			path = Helpers;
@@ -646,7 +643,6 @@
 				422A75082B5BEC7C00CD9E76 /* AccessToken.swift in Sources */,
 				42A571CE2B6298BC0041907E /* DatabaseService.swift in Sources */,
 				422A75312B5D49BE00CD9E76 /* Album.swift in Sources */,
-				4251D93E2B8A782800CB7CA4 /* TrackDropDelegate.swift in Sources */,
 				422A753A2B5D7F1000CD9E76 /* MusicApiTrack.swift in Sources */,
 				422A75452B5DA7FE00CD9E76 /* Tracklist.swift in Sources */,
 				4251D9372B863A1200CB7CA4 /* MusicApiService.swift in Sources */,

@@ -23,7 +23,7 @@ struct AddTrackView: View {
             HStack {
                 Spacer()
                 Text("Add a Track")
-                    .font(.custom(UIConstants.Font.bold, fixedSize: 30))
+                    .font(.custom(UIConstants.shared.font.bold, fixedSize: 30))
                 Spacer()
             }
             
@@ -135,12 +135,12 @@ struct AddTrackView: View {
                 .frame(width: 50, height: 50)
                      
                 Text(track.name)
-                    .font(.custom(UIConstants.Font.regular, size: 18))
+                    .font(.custom(UIConstants.shared.font.regular, size: 18))
                     .frame(width: geometry.size.width * 0.5, alignment: .leading)
                 
                 
                 Text(track.artistNames.joined(separator: ","))
-                    .font(.custom(UIConstants.Font.regular, size: 18))
+                    .font(.custom(UIConstants.shared.font.regular, size: 18))
             }
             .frame(height: geometry.size.height)
         }
@@ -153,7 +153,7 @@ struct AddTrackView: View {
             image
             
             Text(text)
-                .font(.custom(UIConstants.Font.regular, fixedSize: 16))
+                .font(.custom(UIConstants.shared.font.regular, fixedSize: 16))
             
         }
         .frame(width: 150)

@@ -6,14 +6,14 @@
 //
 
 import Foundation
-
+/// Errors regarding the API
 enum APIError: Error {
     case invalidURL
     case requestFailed
     case decodingFailed
     case accessKeyFailure
 }
-
+/// Erorrs regarding entering Track info
 enum TrackInfoError: String, LocalizedError {
     case missingData = "Missing Required Data"
     case negativeBpm = "Negative BPM"

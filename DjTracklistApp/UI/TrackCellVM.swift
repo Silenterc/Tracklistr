@@ -7,19 +7,26 @@
 
 import Foundation
 import SwiftData
+import SwiftUI
 /// ViewModel for the TrackCell
 @Observable
 class TrackCellVM {
     var track: Track
-    var width: CGFloat = 0
-    var height: CGFloat = UIConstants.Track.height
+    var editedWidth: CGFloat? = nil
+    var width: CGFloat {
+        if let editedWidth = editedWidth {
+            return editedWidth
+        } else {
+            return GridHandler.shared.getWidthFromBars(bars: track.currentDuration!)
+        }
+    }
     var drag: CGSize = .zero
     var dragging: Bool = false
     var xOffset: CGFloat = 0
     
     init(track: Track) {
         self.track = track
-        self.width = GridHandler.shared.getWidthFromBars(bars: track.currentDuration!)
+     //   self.width = GridHandler.shared.getWidthFromBars(bars: track.currentDuration!)
     }
     
     func changeWidthRight(change: CGFloat) {
@@ -40,7 +47,7 @@ class TrackCellVM {
         track.endTimeBars! = UInt(newEndTimeBars)
         if GridHandler.shared.validatePosition(track: track, player: track.player!) {
             
-            width = roundedNewWidth
+            editedWidth = roundedNewWidth
         } else {
             track.endTimeBars = oldEndTimeBars
         }
@@ -66,7 +73,7 @@ class TrackCellVM {
         let oldPosition = track.position
         track.position = track.position - (change > 0 ? GridHandler.shared.getWidthFromBars(bars: UInt(change)) : -1 * GridHandler.shared.getWidthFromBars(bars: UInt(abs(change))))
         if GridHandler.shared.validatePosition(track: track, player: track.player!) {
-            width = roundedNewWidth
+            editedWidth = roundedNewWidth
         } else {
             track.startTimeBars = oldStartTimeBars
             track.position = oldPosition

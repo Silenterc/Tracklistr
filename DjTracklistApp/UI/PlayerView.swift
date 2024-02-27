@@ -9,9 +9,6 @@ import SwiftUI
 import SwiftData
 struct PlayerView: View {
     @State var viewModel: PlayerVM
-    @Binding var draggedTrack: Track?
-    @Binding var srcPlayer: Player?
-    @Binding var dragging: Bool
     var body: some View {
         ZStack(alignment: .leading) {
             ForEach(viewModel.player.tracks!) { track in
@@ -22,18 +19,6 @@ struct PlayerView: View {
                             viewModel.deleteTrack(track: track)
                         }
                     }))
-//                    .onDrag {
-//                        draggedTrack = track
-//                        srcPlayer = viewModel.player
-//                        dragging = true
-//                        return NSItemProvider(object: NSString())
-//                    } preview: {
-//                        Color.gray
-//                            .opacity(0.1)
-//                        Rectangle()
-//                            .frame(width: GridHandler.shared.getWidthFromBars(bars: track.currentDuration!), height: UIConstants.Track.height)
-//                    }
-                    
                     .padding(.leading, track.position)
             }
             
@@ -51,7 +36,7 @@ struct PlayerView: View {
     @ObservedObject var router = NavigationRouter(modelContext: container.mainContext)
     return NavigationStack(path: $router.path) {
         ScrollView(.horizontal){
-            PlayerView(viewModel:.init(player: player, databaseService: .init(databaseContext: container.mainContext)), draggedTrack: .constant(nil), srcPlayer: .constant(nil), dragging: .constant(false))
+            PlayerView(viewModel:.init(player: player, databaseService: .init(databaseContext: container.mainContext)))
                 .navigationDestination(for: NavigationRouter.Destination.self) { destination in
                     router.defineViews(for: destination)
                 }

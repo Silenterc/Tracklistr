@@ -22,74 +22,62 @@ struct TracklistView: View {
     var body: some View {
         if let tracklist = viewModel.tracklist {
             HStack {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    ZStack(alignment: .leading) {
-                        
-                        VStack(alignment: .leading, spacing: 0) {
-                            ForEach(viewModel.players) { player in
-                                VStack(alignment: .leading) {
-                                    Spacer()
-                                    PlayerView(viewModel: .init(player: player, databaseService: viewModel.tracklistService), draggedTrack: $viewModel.draggedTrack, srcPlayer: $viewModel.srcPlayer, dragging: $viewModel.dragging)
-                                        .frame(width: GridHandler.shared.getWidthFromBars(bars: tracklist.durationMinutes.getBars(bpm: tracklist.bpm, timeUnit: .minutes)), alignment: .leading)
-                                        .onDrop(of: [UTType.text], delegate: TrackDropDelegate(dragged: $viewModel.draggedTrack, destPlayer: player, srcPlayer: $viewModel.srcPlayer, updateInfo: { [weak viewModel] newInfo in
-                                            viewModel?.updateDragInfo(newOne: newInfo)
-                                        },playerSize: $viewModel.playerSize))
-                                    Spacer()
-                                   
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        ZStack(alignment: .leading) {
+                            
+                            VStack {
+                                ZStack() {
+                                    let part = (viewModel.size?.height ?? 0) / 4
+                                    ForEach(1..<4) { i in
+                                        TimeIndicationView(bars: (viewModel.tracklist?.durationMinutes.getBars(bpm: viewModel.tracklist!.bpm, timeUnit: .minutes))!)
+                                        
+                                            .offset(y: part * CGFloat(i) - UIConstants.shared.indicator.big.height / 2)
+                                    }
+                                    
                                 }
-                                .zIndex(1)
-//                                .useSize { value in
-//                                    viewModel.playerSize = value
-//                                }
-                                
-                             
-                                
-                                
+                                Spacer()
                             }
                             
-                        }
-                        .useSize { size in
-                            viewModel.size = size
-                            DragHandler.shared.tracklistSize = size
-                        }
-                        .coordinateSpace(.named("players"))
-                        // MAYBE MAKE THE SIZE EQUAL TO THE WHOLE SET LENGTH
-                        //.frame(maxWidth: .infinity)
-                        VStack {
-                            ZStack {
-                                let part =  (viewModel.size?.height ?? 0) / 4
-                                ForEach(1..<4) { i in
-                                    TimeIndicationView(bars: (viewModel.tracklist?.durationMinutes.getBars(bpm: viewModel.tracklist!.bpm, timeUnit: .minutes))!)
-                                        .offset(y: part * CGFloat(i) - UIConstants.Indicator.Big.height / 2)
+                            
+                            VStack(alignment: .leading, spacing: 0) {
+                                ForEach(viewModel.players) { player in
+                                    VStack(alignment: .leading) {
+                                        Spacer()
+                                        PlayerView(viewModel: .init(player: player, databaseService: viewModel.tracklistService))
+                                            .frame(width: GridHandler.shared.getWidthFromBars(bars: tracklist.durationMinutes.getBars(bpm: tracklist.bpm, timeUnit: .minutes)), alignment: .leading)
+                                        Spacer()
+                                        
+                                    }
+                             
+                                    .zIndex(1)
                                 }
-                               
+                                
                             }
-                            Spacer()
+                         
+                            .useSize { size in
+                                if (size.height > UIConstants.shared.screenSize.height) {
+                                    viewModel.size = size
+                                    UIConstants.shared.screenSize = size
+                                    print("actual: \(size)")
+                                }
+                            }
+                            .coordinateSpace(.named("players"))
+                            // MAYBE MAKE THE SIZE EQUAL TO THE WHOLE SET LENGTH
+                            //.frame(maxWidth: .infinity)
+                            
                         }
                         
-                        if viewModel.dragging {
-//                            Rectangle()
-//                                .fill(.cellBackground)
-//                                .frame(width: GridHandler.shared.getWidthFromBars(bars: viewModel.draggedTrack?.currentDuration ?? 0), height: UIConstants.Track.height)
-//                               // .position(viewModel.dragInfo ?? CGPointZero)
-//                                .allowsHitTesting(false)
-//                                .disabled(true)
-                        }
                     }
+                    .scrollTargetBehavior(.viewAligned)
                     
-                }
-                .scrollTargetBehavior(.viewAligned)
-            
                 
-                TrackAddBar(tracklist: tracklist)
-      
+                .navigationBarBackButtonHidden()
+                    TrackAddBar(tracklist: tracklist)
+                    
             }
-            
             .ignoresSafeArea(.all, edges: .bottom)
             .background(.black)
             .frame(maxWidth: .infinity)
-            //.navigationBarBackButtonHidden()
-            
         }
         
     }

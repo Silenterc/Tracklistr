@@ -24,9 +24,6 @@ class TracklistVM {
     var players: [Player] = []
     
     var size: CGSize?
-    var draggedTrack: Track?
-    var dragging: Bool = false
-    var dragInfo: CGPoint?
     var srcPlayer: Player?
     var playerSize: CGSize? = CGSize(width: 300, height: 70)
     init(tracklistService: DatabaseService, tracklistID: UUID) {
@@ -54,11 +51,6 @@ class TracklistVM {
             // TODO
             print("oh oh")
         }
-    }
-    
-    func updateDragInfo(newOne: CGPoint) {
-        dragInfo = newOne
-        print(newOne)
     }
     
     

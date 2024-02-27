@@ -46,6 +46,14 @@ struct MixOverviewView: View {
             }
         }
         .navigationTitle("Mix Overview")
+//        .useSize(onChange: { size in
+//            if size.height > size.width {
+//                UIConstants.shared.screenSize = CGSize(width: size.height, height: size.width)
+//            } else {
+//                UIConstants.shared.screenSize = size
+//            }
+//            print(size)
+//        })
         
         
     }
@@ -64,11 +72,11 @@ extension MixOverviewView {
             HStack {
                 VStack(alignment: .leading) {
                     Text(name)
-                        .font(.custom(UIConstants.Font.medium, fixedSize: 18))
+                        .font(.custom(UIConstants.shared.font.medium, fixedSize: 18))
                     
                     if let date = editedAt{
                         Text("Date: \(date))")
-                            .font(.custom(UIConstants.Font.light, fixedSize: 16))
+                            .font(.custom(UIConstants.shared.font.light, fixedSize: 16))
                             .foregroundColor(.gray)
                     }
                     

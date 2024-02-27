@@ -25,31 +25,31 @@ struct TracklistInfoView: View {
             VStack(alignment: .leading, spacing: 16) {
                 
                 Text("Name:")
-                    .font(.custom(UIConstants.Font.regular, fixedSize: 18))
+                    .font(.custom(UIConstants.shared.font.regular, fixedSize: 18))
                 TextField("Enter name", text: $viewModel.currentName)
-                    .font(.custom(UIConstants.Font.regular, fixedSize: 18))
+                    .font(.custom(UIConstants.shared.font.regular, fixedSize: 18))
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 
                 Text("BPM:")
-                    .font(.custom(UIConstants.Font.regular, fixedSize: 18))
+                    .font(.custom(UIConstants.shared.font.regular, fixedSize: 18))
                 TextField("Enter BPM",value: $viewModel.currentBpm, format: .number)
-                    .font(.custom(UIConstants.Font.regular, fixedSize: 18))
+                    .font(.custom(UIConstants.shared.font.regular, fixedSize: 18))
                     .keyboardType(.decimalPad)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 
                 Text("Length:")
-                    .font(.custom(UIConstants.Font.regular, fixedSize: 18))
+                    .font(.custom(UIConstants.shared.font.regular, fixedSize: 18))
                 TextField("Enter duration in minutes",value: $viewModel.currentDurationMinutes, format: .number)
-                    .font(.custom(UIConstants.Font.regular, fixedSize: 18))
+                    .font(.custom(UIConstants.shared.font.regular, fixedSize: 18))
                     .keyboardType(.numberPad)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 
                 
                 
                 Text("Number of Decks:")
-                    .font(.custom(UIConstants.Font.regular, fixedSize: 18))
+                    .font(.custom(UIConstants.shared.font.regular, fixedSize: 18))
                 TextField("4", value: $viewModel.decksCount, formatter: NumberFormatter())
-                    .font(.custom(UIConstants.Font.regular, fixedSize: 18))
+                    .font(.custom(UIConstants.shared.font.regular, fixedSize: 18))
                     .disabled(true)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 
@@ -57,7 +57,7 @@ struct TracklistInfoView: View {
                     Button("Cancel") {
                         // Handle cancel action
                     }
-                    .font(.custom(UIConstants.Font.regular, fixedSize: 18))
+                    .font(.custom(UIConstants.shared.font.regular, fixedSize: 18))
                     .foregroundColor(.red)
                     
                     Spacer()
@@ -67,7 +67,7 @@ struct TracklistInfoView: View {
                         router.navigateTo(destination: .tracklistView(tracklistID: viewModel.tracklist.id))
                        
                     }
-                    .font(.custom(UIConstants.Font.regular, fixedSize: 18))
+                    .font(.custom(UIConstants.shared.font.regular, fixedSize: 18))
                     .disabled(viewModel.isCreateButtonDisabled)
                     
                 }

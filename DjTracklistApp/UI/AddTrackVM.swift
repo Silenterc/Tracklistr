@@ -54,6 +54,9 @@ class AddTrackVM {
                 }
             } else {
                 songChosen = true
+                if (chosenTrack!.artistNames.isEmpty) {
+                    chosenTrack!.artistNames = searchArtists.components(separatedBy: ",")
+                }
             }
             
         }
