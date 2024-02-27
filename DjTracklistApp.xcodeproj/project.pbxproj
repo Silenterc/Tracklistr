@@ -91,6 +91,7 @@
 		429FF00F2B668FA00093AB75 /* AddTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429FF00E2B668FA00093AB75 /* AddTrackView.swift */; };
 		429FF0112B668FCA0093AB75 /* AddTrackVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429FF0102B668FCA0093AB75 /* AddTrackVM.swift */; };
 		429FF0132B66B43B0093AB75 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429FF0122B66B43B0093AB75 /* ApiService.swift */; };
+		42A1B4F12B8E1A02008E32B0 /* DragHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A1B4F02B8E1A02008E32B0 /* DragHandler.swift */; };
 		42A571C62B619E7C0041907E /* TrackCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A571C52B619E7C0041907E /* TrackCellVM.swift */; };
 		42A571C82B61A1EA0041907E /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A571C72B61A1EA0041907E /* UIConstants.swift */; };
 		42A571CA2B6297BA0041907E /* TracklistInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A571C92B6297BA0041907E /* TracklistInfoView.swift */; };
@@ -185,6 +186,7 @@
 		429FF00E2B668FA00093AB75 /* AddTrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTrackView.swift; sourceTree = "<group>"; };
 		429FF0102B668FCA0093AB75 /* AddTrackVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTrackVM.swift; sourceTree = "<group>"; };
 		429FF0122B66B43B0093AB75 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		42A1B4F02B8E1A02008E32B0 /* DragHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragHandler.swift; sourceTree = "<group>"; };
 		42A571C52B619E7C0041907E /* TrackCellVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCellVM.swift; sourceTree = "<group>"; };
 		42A571C72B61A1EA0041907E /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
 		42A571C92B6297BA0041907E /* TracklistInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracklistInfoView.swift; sourceTree = "<group>"; };
@@ -365,6 +367,7 @@
 				4251D92A2B6932DA00CB7CA4 /* Errors.swift */,
 				4251D92E2B7BF23600CB7CA4 /* GridHandler.swift */,
 				4251D93D2B8A782800CB7CA4 /* TrackDropDelegate.swift */,
+				42A1B4F02B8E1A02008E32B0 /* DragHandler.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -632,6 +635,7 @@
 				422A75132B5BFC9500CD9E76 /* Authorization.swift in Sources */,
 				4251D9242B68026400CB7CA4 /* NavigationRouter.swift in Sources */,
 				42A571C82B61A1EA0041907E /* UIConstants.swift in Sources */,
+				42A1B4F12B8E1A02008E32B0 /* DragHandler.swift in Sources */,
 				429FF0112B668FCA0093AB75 /* AddTrackVM.swift in Sources */,
 				422A75022B5BE16600CD9E76 /* APIHandler.swift in Sources */,
 				4251D9332B7F906500CB7CA4 /* PlayerVM.swift in Sources */,

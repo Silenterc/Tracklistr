@@ -11,8 +11,6 @@ import UniformTypeIdentifiers
 struct TracklistView: View {
     @State var viewModel: TracklistVM
     @EnvironmentObject var router: NavigationRouter
-    
-    @State var draggedPos: CGPoint?
     init(modelContext: ModelContext, tracklistID: UUID) {
         let viewModel = TracklistVM(tracklistService: DatabaseService(databaseContext: modelContext), tracklistID: tracklistID)
         _viewModel = State(initialValue: viewModel)
@@ -31,15 +29,18 @@ struct TracklistView: View {
                             ForEach(viewModel.players) { player in
                                 VStack(alignment: .leading) {
                                     Spacer()
-                                    PlayerView(viewModel: .init(player: player), draggedTrack: $viewModel.draggedTrack, srcPlayer: $viewModel.srcPlayer)
+                                    PlayerView(viewModel: .init(player: player, databaseService: viewModel.tracklistService), draggedTrack: $viewModel.draggedTrack, srcPlayer: $viewModel.srcPlayer, dragging: $viewModel.dragging)
                                         .frame(width: GridHandler.shared.getWidthFromBars(bars: tracklist.durationMinutes.getBars(bpm: tracklist.bpm, timeUnit: .minutes)), alignment: .leading)
-                                        .onDrop(of: [UTType.text], delegate: TrackDropDelegate(dragged: $viewModel.draggedTrack, destPlayer: player, srcPlayer: $viewModel.srcPlayer, draggedPos: $draggedPos, playerSize: $viewModel.playerSize))
+                                        .onDrop(of: [UTType.text], delegate: TrackDropDelegate(dragged: $viewModel.draggedTrack, destPlayer: player, srcPlayer: $viewModel.srcPlayer, updateInfo: { [weak viewModel] newInfo in
+                                            viewModel?.updateDragInfo(newOne: newInfo)
+                                        },playerSize: $viewModel.playerSize))
                                     Spacer()
                                    
                                 }
-                                .useSize { value in
-                                    viewModel.playerSize = value
-                                }
+                                .zIndex(1)
+//                                .useSize { value in
+//                                    viewModel.playerSize = value
+//                                }
                                 
                              
                                 
@@ -49,8 +50,9 @@ struct TracklistView: View {
                         }
                         .useSize { size in
                             viewModel.size = size
-                            
+                            DragHandler.shared.tracklistSize = size
                         }
+                        .coordinateSpace(.named("players"))
                         // MAYBE MAKE THE SIZE EQUAL TO THE WHOLE SET LENGTH
                         //.frame(maxWidth: .infinity)
                         VStack {
@@ -64,13 +66,14 @@ struct TracklistView: View {
                             }
                             Spacer()
                         }
-                        if let dragged = viewModel.draggedTrack, let pos = draggedPos {
-                            Rectangle()
-                                .fill(.cellBackground)
-                                .frame(width: GridHandler.shared.getWidthFromBars(bars: dragged.currentDuration!), height: UIConstants.Track.height)
-                                .position(pos)
-                                .allowsHitTesting(false)
-                                .disabled(true)
+                        
+                        if viewModel.dragging {
+//                            Rectangle()
+//                                .fill(.cellBackground)
+//                                .frame(width: GridHandler.shared.getWidthFromBars(bars: viewModel.draggedTrack?.currentDuration ?? 0), height: UIConstants.Track.height)
+//                               // .position(viewModel.dragInfo ?? CGPointZero)
+//                                .allowsHitTesting(false)
+//                                .disabled(true)
                         }
                     }
                     
@@ -81,6 +84,7 @@ struct TracklistView: View {
                 TrackAddBar(tracklist: tracklist)
       
             }
+            
             .ignoresSafeArea(.all, edges: .bottom)
             .background(.black)
             .frame(maxWidth: .infinity)

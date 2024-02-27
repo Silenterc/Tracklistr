@@ -30,13 +30,13 @@ class GridHandler {
         return UInt(width / barWidth)
     }
     
-    func roundWidth(width: CGFloat) -> CGFloat {
-        let remainder = width.truncatingRemainder(dividingBy: fourBarsWidth)
+    func roundHorizontally(horizontalUnit: CGFloat) -> CGFloat {
+        let remainder = horizontalUnit.truncatingRemainder(dividingBy: fourBarsWidth)
         if (remainder < fourBarsWidth / 2) {
-            return width - remainder
+            return horizontalUnit - remainder
             
         } else {
-            return width - remainder + fourBarsWidth
+            return horizontalUnit - remainder + fourBarsWidth
             
         }
     }
@@ -56,8 +56,8 @@ class GridHandler {
     
     func validatePositionCenter(track: Track, player: Player, centralCoord: CGFloat) -> Bool {
         // The proposed position of the track's left edge
-        let positionLeft = centralCoord - ((track.positionRightEdge - track.position) / 2)
-        let positionRight = centralCoord + ((track.positionRightEdge - track.position) / 2)
+        let positionLeft = centralCoord - (track.width / 2)
+        let positionRight = centralCoord + (track.width / 2)
         for secTrack in player.tracks! {
             if secTrack.id == track.id {
                continue
@@ -69,5 +69,6 @@ class GridHandler {
         }
         return true
     }
+    
     
 }

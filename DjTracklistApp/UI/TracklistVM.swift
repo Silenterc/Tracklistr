@@ -7,7 +7,13 @@
 
 import Foundation
 import SwiftData
-
+import SwiftUI
+class DragInfo {
+    init(draggedPos: CGPoint) {
+        self.draggedPos = draggedPos
+    }
+    var draggedPos: CGPoint
+}
 @Observable
 class TracklistVM {
     
@@ -19,13 +25,16 @@ class TracklistVM {
     
     var size: CGSize?
     var draggedTrack: Track?
+    var dragging: Bool = false
+    var dragInfo: CGPoint?
     var srcPlayer: Player?
-    var playerSize: CGSize?
+    var playerSize: CGSize? = CGSize(width: 300, height: 70)
     init(tracklistService: DatabaseService, tracklistID: UUID) {
         self.tracklistService = tracklistService
         self.tracklistID = tracklistID
         fetchTracklist()
         fetchPlayers()
+        DragHandler.shared.players = players
     }
     
     func fetchTracklist() {
@@ -45,6 +54,11 @@ class TracklistVM {
             // TODO
             print("oh oh")
         }
+    }
+    
+    func updateDragInfo(newOne: CGPoint) {
+        dragInfo = newOne
+        print(newOne)
     }
     
     

@@ -13,6 +13,9 @@ class TrackCellVM {
     var track: Track
     var width: CGFloat = 0
     var height: CGFloat = UIConstants.Track.height
+    var drag: CGSize = .zero
+    var dragging: Bool = false
+    var xOffset: CGFloat = 0
     
     init(track: Track) {
         self.track = track
@@ -24,7 +27,7 @@ class TrackCellVM {
         if newWidth <= GridHandler.shared.minimalWidth || newWidth <= 0 {
             return
         }
-        let roundedNewWidth = GridHandler.shared.roundWidth(width: newWidth)
+        let roundedNewWidth = GridHandler.shared.roundHorizontally(horizontalUnit: newWidth)
         let oldDurationBars = track.currentDuration!
         let newDurationBars = GridHandler.shared.getBarsFromWidth(width: roundedNewWidth)
         if newDurationBars > track.originalDurationBars {
@@ -48,7 +51,7 @@ class TrackCellVM {
         if newWidth <= GridHandler.shared.minimalWidth {
             return
         }
-        let roundedNewWidth = GridHandler.shared.roundWidth(width: newWidth)
+        let roundedNewWidth = GridHandler.shared.roundHorizontally(horizontalUnit: newWidth)
         let oldDurationBars = track.currentDuration!
         let newDurationBars = GridHandler.shared.getBarsFromWidth(width: roundedNewWidth)
         
@@ -68,6 +71,20 @@ class TrackCellVM {
             track.startTimeBars = oldStartTimeBars
             track.position = oldPosition
         }
+    }
+    
+    func startOfDrag(start: CGPoint) {
+        if !dragging {
+            DragHandler.shared.draggedTrack = track
+            xOffset = start.x - track.positionMiddle
+            dragging.toggle()
+        }
+    }
+    
+    func endDrag() {
+        drag = .zero
+        dragging = false
+        xOffset = 0
     }
     
     

@@ -77,6 +77,9 @@ class DatabaseService {
     func insertPlayer(player: Player) {
         databaseContext.insert(player)
     }
+    func removeTrack(track: Track) {
+        databaseContext.delete(track)
+    }
     
     private func sortAll(tracklist: Tracklist) {
         tracklist.players!.sort(by: {$0.order < $1.order})

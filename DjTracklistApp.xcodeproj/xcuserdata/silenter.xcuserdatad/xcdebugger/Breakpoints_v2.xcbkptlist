@@ -252,8 +252,8 @@
             filePath = "DjTracklistApp/UI/TracklistVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
             landmarkName = "fetchTracklist()"
             landmarkType = "7">
          </BreakpointContent>
@@ -331,8 +331,8 @@
             filePath = "DjTracklistApp/UI/TracklistVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "init(tracklistService:tracklistID:)"
             landmarkType = "7">
             <Locations>
@@ -379,8 +379,8 @@
             filePath = "DjTracklistApp/UI/TracklistVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "fetchTracklist()"
             landmarkType = "7">
          </BreakpointContent>
@@ -790,8 +790,8 @@
             filePath = "DjTracklistApp/UI/TrackCellVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
             landmarkName = "changeWidthRight(change:)"
             landmarkType = "7">
             <Locations>
@@ -963,8 +963,8 @@
             filePath = "DjTracklistApp/UI/TracklistVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "init(tracklistService:tracklistID:)"
             landmarkType = "7">
             <Locations>
@@ -1122,8 +1122,8 @@
             filePath = "DjTracklistApp/UI/TrackCellVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "changeWidthLeft(change:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1138,8 +1138,8 @@
             filePath = "DjTracklistApp/UI/TrackCellVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "changeWidthLeft(change:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1154,8 +1154,8 @@
             filePath = "DjTracklistApp/UI/TrackCellVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "changeWidthRight(change:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1296,8 +1296,8 @@
             filePath = "DjTracklistApp/UI/TrackCellVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "changeWidthRight(change:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1312,9 +1312,327 @@
             filePath = "DjTracklistApp/UI/TrackCellVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
             landmarkName = "init(track:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1C128A21-B1F0-40BC-BB91-17B8CC97158F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DjTracklistApp/UI/PlayerVM.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "deleteTrack(track:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1C128A21-B1F0-40BC-BB91-17B8CC97158F - e6d82dca4927c737"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DjTracklistApp.PlayerVM.deleteTrack(track: DjTracklistApp.Track) -&gt; ()"
+                  moduleName = "DjTracklistApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/silenter/Desktop/DjTracklistApp/DjTracklistApp/UI/PlayerVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "103">
+               </Location>
+               <Location
+                  uuid = "1C128A21-B1F0-40BC-BB91-17B8CC97158F - e6d82dca4927c737"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DjTracklistApp.PlayerVM.deleteTrack(track: DjTracklistApp.Track) -&gt; ()"
+                  moduleName = "DjTracklistApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/silenter/Desktop/DjTracklistApp/DjTracklistApp/UI/PlayerVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "442">
+               </Location>
+               <Location
+                  uuid = "1C128A21-B1F0-40BC-BB91-17B8CC97158F - 54211e0910c58d9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (DjTracklistApp.Track) -&gt; Swift.Bool in DjTracklistApp.PlayerVM.deleteTrack(track: DjTracklistApp.Track) -&gt; ()"
+                  moduleName = "DjTracklistApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/silenter/Desktop/DjTracklistApp/DjTracklistApp/UI/PlayerVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "116">
+               </Location>
+               <Location
+                  uuid = "1C128A21-B1F0-40BC-BB91-17B8CC97158F - e6d82dca4927c7e8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DjTracklistApp.PlayerVM.deleteTrack(track: DjTracklistApp.Track) -&gt; ()"
+                  moduleName = "DjTracklistApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/silenter/Desktop/DjTracklistApp/DjTracklistApp/UI/PlayerVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "55">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9794BC09-AF5E-438B-86B8-09A89E5F97AE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DjTracklistApp/UI/PlayerView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "72802FE2-7F16-4AE9-86B4-EDC861AB9C2F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DjTracklistApp/Helpers/DragHandler.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "performDrop(location:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "72802FE2-7F16-4AE9-86B4-EDC861AB9C2F - f0c4013dbe10aae3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DjTracklistApp.DragHandler.performDrop(location: __C.CGPoint) -&gt; Swift.Bool"
+                  moduleName = "DjTracklistApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/silenter/Desktop/DjTracklistApp/DjTracklistApp/Helpers/DragHandler.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "2490">
+               </Location>
+               <Location
+                  uuid = "72802FE2-7F16-4AE9-86B4-EDC861AB9C2F - f0c4013dbe10ab7c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DjTracklistApp.DragHandler.performDrop(location: __C.CGPoint) -&gt; Swift.Bool"
+                  moduleName = "DjTracklistApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/silenter/Desktop/DjTracklistApp/DjTracklistApp/Helpers/DragHandler.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "2520">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D6D95967-7226-402E-90C3-5F6598D24BAD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DjTracklistApp/Helpers/DragHandler.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "performDrop(location:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D6D95967-7226-402E-90C3-5F6598D24BAD - f0c4013dbe10aa06"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DjTracklistApp.DragHandler.performDrop(location: __C.CGPoint) -&gt; Swift.Bool"
+                  moduleName = "DjTracklistApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/silenter/Desktop/DjTracklistApp/DjTracklistApp/Helpers/DragHandler.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "2538">
+               </Location>
+               <Location
+                  uuid = "D6D95967-7226-402E-90C3-5F6598D24BAD - f0c4013dbe10aa21"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DjTracklistApp.DragHandler.performDrop(location: __C.CGPoint) -&gt; Swift.Bool"
+                  moduleName = "DjTracklistApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/silenter/Desktop/DjTracklistApp/DjTracklistApp/Helpers/DragHandler.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "2580">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E357CE2D-EDB6-40FC-B8D7-E99589059175"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DjTracklistApp/Helpers/DragHandler.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "performDrop(location:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E357CE2D-EDB6-40FC-B8D7-E99589059175 - f0c4013dbe10aa44"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DjTracklistApp.DragHandler.performDrop(location: __C.CGPoint) -&gt; Swift.Bool"
+                  moduleName = "DjTracklistApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/silenter/Desktop/DjTracklistApp/DjTracklistApp/Helpers/DragHandler.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "2568">
+               </Location>
+               <Location
+                  uuid = "E357CE2D-EDB6-40FC-B8D7-E99589059175 - f0c4013dbe10aa44"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DjTracklistApp.DragHandler.performDrop(location: __C.CGPoint) -&gt; Swift.Bool"
+                  moduleName = "DjTracklistApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/silenter/Desktop/DjTracklistApp/DjTracklistApp/Helpers/DragHandler.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "2628">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "65C775AF-0092-457E-A23E-8FD088CE6A0F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DjTracklistApp/Helpers/GridHandler.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "validatePositionCenter(track:player:centralCoord:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E837D067-C0F4-4341-AB01-3E4587F001D0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DjTracklistApp/Helpers/GridHandler.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "validatePositionCenter(track:player:centralCoord:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E837D067-C0F4-4341-AB01-3E4587F001D0 - 1bbd8f7e531447ed"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DjTracklistApp.GridHandler.validatePositionCenter(track: DjTracklistApp.Track, player: DjTracklistApp.Player, centralCoord: CoreGraphics.CGFloat) -&gt; Swift.Bool"
+                  moduleName = "DjTracklistApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/silenter/Desktop/DjTracklistApp/DjTracklistApp/Helpers/GridHandler.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "61"
+                  endingLineNumber = "61"
+                  offsetFromSymbolStart = "331">
+               </Location>
+               <Location
+                  uuid = "E837D067-C0F4-4341-AB01-3E4587F001D0 - 1bbd8f7e531447ed"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DjTracklistApp.GridHandler.validatePositionCenter(track: DjTracklistApp.Track, player: DjTracklistApp.Player, centralCoord: CoreGraphics.CGFloat) -&gt; Swift.Bool"
+                  moduleName = "DjTracklistApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/silenter/Desktop/DjTracklistApp/DjTracklistApp/Helpers/GridHandler.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "61"
+                  endingLineNumber = "61"
+                  offsetFromSymbolStart = "626">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D75A8095-936B-4D7C-819C-AE95405A7CE6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DjTracklistApp/UI/TrackCellVM.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "startOfDrag(start:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

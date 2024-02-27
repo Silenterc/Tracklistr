@@ -56,6 +56,13 @@ final class Track: Identifiable {
             return 0
         }
     }
+    
+    var positionMiddle: CGFloat {
+        position + width / 2
+    }
+    var width: CGFloat {
+        positionRightEdge - position
+    }
     /// The player to which this track belongs to
     var player: Player?
     

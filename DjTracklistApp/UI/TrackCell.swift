@@ -14,71 +14,86 @@ struct TrackCell: View {
     @State var animateSliding: Bool = false
     var body: some View {
         
-            HStack(spacing: 0) {
-                resizeBarLeft()
-                VStack(alignment: .leading) {
-                    HStack(alignment: .top, spacing: 3) {
-                        if viewModel.track.currentDuration! > 48 {
-                            LazyVStack {
-                                if let imageUrl = viewModel.track.imageUrl {
-                                    // Used AsyncDownSamplingImage library: https://github.com/fummicc1/AsyncDownSamplingImage.git
-                                    AsyncDownSamplingImage(url: imageUrl, downsampleSize: CGSize(width: 100, height: 100)){
-                                        image in
-                                        image.resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: UIConstants.Track.Image.width, height: UIConstants.Track.Image.height)
-                                    } placeholder: {
-                                        ProgressView()
-                                    } fail: { error in
-                                        EmptyView()
-                                    }
-                                } else {
-                                    Image(systemName: "opticaldisc.fill")
-                                        .resizable()
+        HStack(spacing: 0) {
+            resizeBarLeft()
+            VStack(alignment: .leading) {
+                HStack(alignment: .top, spacing: 3) {
+                    if viewModel.track.currentDuration! > 48 {
+                        LazyVStack {
+                            if let imageUrl = viewModel.track.imageUrl {
+                                // Used AsyncDownSamplingImage library: https://github.com/fummicc1/AsyncDownSamplingImage.git
+                                AsyncDownSamplingImage(url: imageUrl, downsampleSize: CGSize(width: 100, height: 100)){
+                                    image in
+                                    image.resizable()
                                         .aspectRatio(contentMode: .fit)
                                         .frame(width: UIConstants.Track.Image.width, height: UIConstants.Track.Image.height)
+                                } placeholder: {
+                                    ProgressView()
+                                } fail: { error in
+                                    EmptyView()
                                 }
+                            } else {
+                                Image(systemName: "opticaldisc.fill")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: UIConstants.Track.Image.width, height: UIConstants.Track.Image.height)
                             }
-                            .cornerRadius(10)
-                            // width maybe viewModel.width / 6
-                            .frame(width: UIConstants.Track.Image.width, height: UIConstants.Track.Image.height)
                         }
-                        VStack(alignment: .leading) {
-                            Text(viewModel.track.name)
-                                .font(.custom(UIConstants.Font.regular, fixedSize: UIConstants.Track.nameSize))
-                                .truncationMode(.tail)
-                            
-                            Text(viewModel.track.artistNames.joined(separator: ","))
-                                .font(.custom(UIConstants.Font.light, fixedSize: UIConstants.Track.artistsSize))
-                                .truncationMode(.tail)
-                        }
-                        
+                        .cornerRadius(10)
+                        // width maybe viewModel.width / 6
+                        .frame(width: UIConstants.Track.Image.width, height: UIConstants.Track.Image.height)
                     }
-                    HStack {
-                        timeInfo(timeInBars: viewModel.track.startTimeBars!)
+                    VStack(alignment: .leading) {
+                        Text(viewModel.track.name)
+                            .font(.custom(UIConstants.Font.regular, fixedSize: UIConstants.Track.nameSize))
+                            .truncationMode(.tail)
                         
-                        Spacer()
-                        
-                        timeInfo(timeInBars: viewModel.track.endTimeBars!)
-                        
+                        Text(viewModel.track.artistNames.joined(separator: ","))
+                            .font(.custom(UIConstants.Font.light, fixedSize: UIConstants.Track.artistsSize))
+                            .truncationMode(.tail)
                     }
-                    .padding(.trailing, 6)
                     
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .padding(.top, 6)
-                .padding(.bottom, 6)
-                .padding(.leading, 6)
-             
-                resizeBarRight()
+                HStack {
+                    timeInfo(timeInBars: viewModel.track.startTimeBars!)
+                    
+                    Spacer()
+                    
+                    timeInfo(timeInBars: viewModel.track.endTimeBars!)
+                    
+                }
+                .padding(.trailing, 6)
+                
             }
-            .frame(width: viewModel.width, height: viewModel.height, alignment: .leading)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .padding(.top, 6)
+            .padding(.bottom, 6)
+            .padding(.leading, 6)
             
-            .background(Color.cellBackground)
-            .cornerRadius(10)
+            resizeBarRight()
+        }
+        .frame(width: viewModel.width, height: viewModel.height, alignment: .leading)
+        
+        .background(Color.cellBackground)
+        .cornerRadius(10)
+        .offset(viewModel.drag)
+        .onTapGesture {}
+        .gesture (
+            DragGesture(minimumDistance: 0, coordinateSpace: .named("players"))
+                .onChanged { gesture in
+                    viewModel.drag = gesture.translation
+                    if !viewModel.dragging {
+                        viewModel.startOfDrag(start: gesture.startLocation)
+                    }
+                }
+                .onEnded { gesture in
+                    _ = DragHandler.shared.performDrop(location: CGPoint(x: gesture.location.x - viewModel.xOffset, y: gesture.location.y))
+                    viewModel.endDrag()
+                }
+        )
         
         //NEED TO SOMEHOW PLAY WITH THE ALIGNMENT HERE SO ITS LEADING WHEN FROM THE LEFT AND TRAILING WHEN FROM THE RIGHT AND ALSO NEED TO KEEP THE WIDTH OF THE VIEW THE SAME UNTIL THE RESIZE COMPLETES AND THEN SOMEHOW CALCULATE THE OFFSET AND PLACE IT TO THE LEFT OR RIGHT SO IT STAYS IN THE SAME PLACE
-       // .frame(maxWidth: .infinity, maxHeight: .infinity)
+        // .frame(maxWidth: .infinity, maxHeight: .infinity)
         
     }
     /// Bar on the right side of the track cell, which can be dragged horizontally to make the cell bigger or smaller
@@ -91,7 +106,7 @@ struct TrackCell: View {
                     .sequenced(before: DragGesture()
                         .onChanged({ value in
                             viewModel.changeWidthRight(change: value.translation.width)
-                    }))
+                        }))
             )
     }
     /// Bar on the left side of the track cell, which can be dragged horizontally to make the cell bigger or smaller
@@ -104,7 +119,7 @@ struct TrackCell: View {
                     .sequenced(before: DragGesture()
                         .onChanged({ value in
                             viewModel.changeWidthLeft(change: -value.translation.width)
-                    }))
+                        }))
             )
     }
     
@@ -126,7 +141,7 @@ struct TrackCell: View {
     private func timeText(bars: UInt) -> Text {
         let timeInSeconds = bars.getTime(bpm: viewModel.track.bpm!, timeUnit: .seconds)
         let timeInterval = TimeInterval(timeInSeconds)
-            
+        
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .positional
         formatter.allowedUnits = [.minute, .second]
@@ -137,10 +152,10 @@ struct TrackCell: View {
             formattedString = formattedOutput
         }
         return Text(formattedString)
-                    .font(.custom("Roboto-Regular", fixedSize: UIConstants.Track.timeSize))
+            .font(.custom("Roboto-Regular", fixedSize: UIConstants.Track.timeSize))
     }
-        
-        
+    
+    
     
     
 }
@@ -150,7 +165,7 @@ struct TrackCell: View {
     let container = try! ModelContainer(for: Tracklist.self, configurations: config)
     let track = Track.mockSolarSystemTrack()
     container.mainContext.insert(track)
-
+    
     return TrackCell(viewModel: .init(track: track)).modelContainer(container)
 }
 
