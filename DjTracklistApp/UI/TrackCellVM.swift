@@ -23,10 +23,10 @@ class TrackCellVM {
     var drag: CGSize = .zero
     var dragging: Bool = false
     var xOffset: CGFloat = 0
-    
+    var shorterUI: Bool {track.currentDuration! <= 48}
     init(track: Track) {
         self.track = track
-     //   self.width = GridHandler.shared.getWidthFromBars(bars: track.currentDuration!)
+       // self.width = GridHandler.shared.getWidthFromBars(bars: track.currentDuration!)
     }
     
     func changeWidthRight(change: CGFloat) {
@@ -45,6 +45,7 @@ class TrackCellVM {
         let newEndTimeBars = Int(oldEndTimeBars) + change
         
         track.endTimeBars! = UInt(newEndTimeBars)
+        //editedWidth = roundedNewWidth
         if GridHandler.shared.validatePosition(track: track, player: track.player!) {
             
             editedWidth = roundedNewWidth

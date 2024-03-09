@@ -6,72 +6,58 @@
 //
 
 import SwiftUI
-
-struct ContentView: View {
-    
-    @State var newWidth: CGFloat = 100
-    @State var oldValue: CGFloat = 0
-    @State var newValue: CGFloat = 0
-    @State var handleWidth: CGFloat = 100
-    @State var handleOpacity = 1.0
+struct CustomScrollView: View {
+    @State private var offsetX: CGFloat = 0
+    @GestureState private var dragState = CGSize.zero
+    let items: [String]
     
     var body: some View {
-        
-        ZStack (alignment: .leading) {
-            
-            // Content
-            Rectangle()
-                .fill(Color.blue)
-                .cornerRadius(10)
-                .frame(minWidth: 50)
-                .frame(maxWidth: 280)
-                .frame(width: newWidth)
-                .frame(minHeight: 100, maxHeight: 100, alignment: .leading)
-            
-            // Handle
-            HStack {
-                
-                // Handle Proxy
-                Rectangle()
-                    .opacity(0)
-                    .cornerRadius(10)
-                    .frame(minWidth: 50)
-                    .frame(maxWidth: 280)
-                    .frame(width: handleWidth)
-                    .frame(minHeight: 100, maxHeight: 100, alignment: .leading)
-                
-                // Handle
-                Rectangle()
-                    .fill(Color.gray)
-                    .opacity(handleOpacity)
-                    .frame(width: 8, height: 100)
-                    .cornerRadius(10)
-                    .gesture(
-                        DragGesture()
-                            .onChanged { value in
-                                handleOpacity = 0.0
-                                newValue = value.translation.width
-                                let changeValue = oldValue - newValue
-                                if newWidth - changeValue >= 50 && newWidth - changeValue <= 280 {
-                                    newWidth = newWidth - changeValue
-                                }
-                                oldValue = value.translation.width
-                                // print(newWidth)
-                            }
-                            .onEnded { value in
-                                oldValue = 0
-                                handleWidth = newWidth
-                                withAnimation(.easeIn(duration: 0.1)) { handleOpacity = 1.0 }
-                            }
-                    )
+        GeometryReader { geometry in
+            HStack(spacing: 0) {
+                ForEach(items, id: \.self) { item in
+                    Text(item)
+                        .frame(width: geometry.size.width)
+                        .background(Color.gray.opacity(0.2))
+                }
             }
+            .offset(x: offsetX + dragState.width)
+            .gesture(
+                DragGesture()
+                    .updating($dragState) { drag, state, _ in
+                        state = drag.translation
+                    }
+                    .onEnded { drag in
+                        print("actual: \(drag.translation.width)")
+                        print("predicted: \(drag.predictedEndTranslation.width)")
+                        offsetX += drag.translation.width
+                        withAnimation(.linear(duration: 1)) {
+                            applyDeceleration(difference: drag.predictedEndTranslation.width - drag.translation.width)
+                        }
+                        
+                    }
+            )
         }
-        .frame(width: 300, height: 300, alignment: .leading)
+    }
+    
+    func applyDeceleration(difference: CGFloat) {
+        withAnimation(.spring) {
+            print("difference: \(difference)")
+            let decelerationRate = 0.4
+            let threshold: CGFloat = 0.5
+            var currentDifference = difference
+
+                repeat {
+                    currentDifference *= decelerationRate
+                    self.offsetX += currentDifference
+                } while abs(currentDifference) > threshold
+        }
+        
     }
 }
 
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        CustomScrollView(items: ["lol", "here", "maybe"])
     }
 }

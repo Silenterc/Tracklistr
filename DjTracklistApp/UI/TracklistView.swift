@@ -8,9 +8,15 @@
 import SwiftUI
 import SwiftData
 import UniformTypeIdentifiers
+
 struct TracklistView: View {
     @State var viewModel: TracklistVM
     @EnvironmentObject var router: NavigationRouter
+    @State var contentOffset: CGPoint = .zero
+    @State var scrollViewWidth: CGFloat = .zero
+    @State var visibleWidth: CGFloat = .zero
+    @State private var offsetX: CGFloat = 0
+    @GestureState private var dragState = CGSize.zero
     init(modelContext: ModelContext, tracklistID: UUID) {
         let viewModel = TracklistVM(tracklistService: DatabaseService(databaseContext: modelContext), tracklistID: tracklistID)
         _viewModel = State(initialValue: viewModel)
@@ -22,21 +28,22 @@ struct TracklistView: View {
     var body: some View {
         if let tracklist = viewModel.tracklist {
             HStack {
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        ZStack(alignment: .leading) {
-                            
-                            VStack {
-                                ZStack() {
-                                    let part = (viewModel.size?.height ?? 0) / 4
-                                    ForEach(1..<4) { i in
-                                        TimeIndicationView(bars: (viewModel.tracklist?.durationMinutes.getBars(bpm: viewModel.tracklist!.bpm, timeUnit: .minutes))!)
+                ScrollView (.horizontal) {
+                        ZStack (alignment: .leading) {
+                            HStack {
+                                VStack {
+                                    ZStack() {
+                                        let part = (viewModel.size?.height ?? 0) / 4
+                                        ForEach(1..<4) { i in
+                                            TimeIndicationView(bars: (viewModel.tracklist?.durationMinutes.getBars(bpm: viewModel.tracklist!.bpm, timeUnit: .minutes))!)
+                                                .offset(y: part * CGFloat(i) - UIConstants.shared.indicator.big.height / 2)
+                                        }
                                         
-                                            .offset(y: part * CGFloat(i) - UIConstants.shared.indicator.big.height / 2)
                                     }
-                                    
+                                    Spacer()
                                 }
-                                Spacer()
                             }
+                        
                             
                             
                             VStack(alignment: .leading, spacing: 0) {
@@ -48,12 +55,12 @@ struct TracklistView: View {
                                         Spacer()
                                         
                                     }
-                             
+                                    
                                     .zIndex(1)
                                 }
                                 
                             }
-                         
+                            
                             .useSize { size in
                                 if (size.height > UIConstants.shared.screenSize.height) {
                                     viewModel.size = size

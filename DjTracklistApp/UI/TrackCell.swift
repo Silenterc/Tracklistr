@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftData
 import AsyncDownSamplingImage
+import Marquee
 /// View representing a Track which is placed on the TracklistView
 struct TrackCell: View {
     @State var viewModel: TrackCellVM
@@ -18,8 +19,8 @@ struct TrackCell: View {
             resizeBarLeft()
             VStack(alignment: .leading) {
                 HStack(alignment: .top, spacing: 3) {
-                    if viewModel.track.currentDuration! > 48 {
-                        LazyVStack {
+                    if !viewModel.shorterUI {
+                        VStack {
                             if let imageUrl = viewModel.track.imageUrl {
                                 // Used AsyncDownSamplingImage library: https://github.com/fummicc1/AsyncDownSamplingImage.git
                                 AsyncDownSamplingImage(url: imageUrl, downsampleSize: CGSize(width: 100, height: 100)){
@@ -43,15 +44,21 @@ struct TrackCell: View {
                         // width maybe viewModel.width / 6
                         .frame(width: UIConstants.shared.track.image.width, height: UIConstants.shared.track.image.height)
                     }
-                    VStack(alignment: .leading) {
-                        Text(viewModel.track.name)
-                            .font(.custom(UIConstants.shared.font.regular, fixedSize: UIConstants.shared.track.nameSize))
-                            .truncationMode(.tail)
-                        
-                        Text(viewModel.track.artistNames.joined(separator: ","))
-                            .font(.custom(UIConstants.shared.font.light, fixedSize: UIConstants.shared.track.artistsSize))
-                            .truncationMode(.tail)
+                    VStack(alignment: .leading, spacing: 0) {
+                        GeometryReader { proxy in
+                            SlidingText(geometryProxy: proxy, text: viewModel.track.name, font: UIFont(name: UIConstants.shared.font.regular, size: UIConstants.shared.track.nameSize)!)
+                             
+                                
+                        }
+                     
+                        GeometryReader { proxy in
+                            SlidingText(geometryProxy: proxy, text: viewModel.track.artistNames.joined(separator: ","), font: UIFont(name: UIConstants.shared.font.light, size: UIConstants.shared.track.artistsSize)!)
+                                
+                                
+                        }
+                   
                     }
+                   
                     
                 }
                 HStack {
@@ -134,7 +141,7 @@ struct TrackCell: View {
     
     /// Information about the current curation of the track in bars
     private func barsText(bars: UInt) -> Text {
-        Text("\(bars)" + (viewModel.track.currentDuration! > 48 ? (bars == 1 ? " bar" : " bars") : ""))
+        Text("\(bars)" + (!viewModel.shorterUI ? (bars == 1 ? " bar" : " bars") : ""))
             .font(.custom("Roboto-Regular", fixedSize: UIConstants.shared.track.barsSize))
     }
     /// Information about the current duration of the track in mm:ss
@@ -155,6 +162,39 @@ struct TrackCell: View {
             .font(.custom("Roboto-Regular", fixedSize: UIConstants.shared.track.timeSize))
     }
     
+    /// Used for the Marquee Text sliding animation
+    /// Courtesy of the package: https://github.com/SwiftUIKit/Marquee
+    struct SlidingText: View {
+        let geometryProxy: GeometryProxy
+        var text: String
+        let font: UIFont
+        private var textWidth: CGFloat {
+            return text.size(withAttributes: [.font: font]).width
+        }
+        /// Whether the text should have the sliding animation
+        private var animate: Bool {
+            return textWidth > geometryProxy.size.width
+        }
+        /// How long should the sliding duration be, right now it means 20 points/sec
+        private var duration: Double {
+            Double(textWidth / 20)
+        }
+
+        var body: some View {
+            if animate {
+                Marquee {
+                    Text(text)
+                        .font(Font(font))
+                }
+                .frame(width: textWidth)
+                .marqueeDuration(duration)
+            } else {
+                Text(text)
+                    .font(Font(font))
+            }
+        }
+            
+    }
     
     
     
@@ -164,8 +204,12 @@ struct TrackCell: View {
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
     let container = try! ModelContainer(for: Tracklist.self, configurations: config)
     let track = Track.mockSolarSystemTrack()
+    let player = Player.mockPlayer1()
+    container.mainContext.insert(player)
     container.mainContext.insert(track)
-    
+    player.tracks?.append(track)
+    track.player = player
+    UIConstants.shared.screenSize = CGSize(width: 656.0, height: 393.0)
     return TrackCell(viewModel: .init(track: track)).modelContainer(container)
 }
 

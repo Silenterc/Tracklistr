@@ -55,6 +55,7 @@ struct DjTracklistApp: App {
                    .navigationDestination(for: NavigationRouter.Destination.self) { dest in
                         router.defineViews(for: dest)
                     }
+                //ContentView()
                 //TracklistView(modelContext: sharedModelContainer.mainContext, tracklistID: tracklist.id)
                 //TracklistInfoView(modelContext: sharedModelContainer.mainContext)
                 .modelContainer(sharedModelContainer)

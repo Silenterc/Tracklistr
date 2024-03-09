@@ -91,6 +91,8 @@
 		429FF0112B668FCA0093AB75 /* AddTrackVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429FF0102B668FCA0093AB75 /* AddTrackVM.swift */; };
 		429FF0132B66B43B0093AB75 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429FF0122B66B43B0093AB75 /* ApiService.swift */; };
 		42A1B4F12B8E1A02008E32B0 /* DragHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A1B4F02B8E1A02008E32B0 /* DragHandler.swift */; };
+		42A1B4F32B960FF7008E32B0 /* HorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A1B4F22B960FF7008E32B0 /* HorizontalScrollView.swift */; };
+		42A1B4F72B9CC446008E32B0 /* Marquee in Frameworks */ = {isa = PBXBuildFile; productRef = 42A1B4F62B9CC446008E32B0 /* Marquee */; };
 		42A571C62B619E7C0041907E /* TrackCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A571C52B619E7C0041907E /* TrackCellVM.swift */; };
 		42A571C82B61A1EA0041907E /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A571C72B61A1EA0041907E /* UIConstants.swift */; };
 		42A571CA2B6297BA0041907E /* TracklistInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A571C92B6297BA0041907E /* TracklistInfoView.swift */; };
@@ -185,6 +187,7 @@
 		429FF0102B668FCA0093AB75 /* AddTrackVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTrackVM.swift; sourceTree = "<group>"; };
 		429FF0122B66B43B0093AB75 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		42A1B4F02B8E1A02008E32B0 /* DragHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragHandler.swift; sourceTree = "<group>"; };
+		42A1B4F22B960FF7008E32B0 /* HorizontalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScrollView.swift; sourceTree = "<group>"; };
 		42A571C52B619E7C0041907E /* TrackCellVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCellVM.swift; sourceTree = "<group>"; };
 		42A571C72B61A1EA0041907E /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
 		42A571C92B6297BA0041907E /* TracklistInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracklistInfoView.swift; sourceTree = "<group>"; };
@@ -197,6 +200,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42A1B4F72B9CC446008E32B0 /* Marquee in Frameworks */,
 				4251D93C2B866A8B00CB7CA4 /* SwiftDataTransferrable in Frameworks */,
 				4251D9292B6907B800CB7CA4 /* AsyncDownSamplingImage in Frameworks */,
 			);
@@ -365,6 +369,7 @@
 				4251D92A2B6932DA00CB7CA4 /* Errors.swift */,
 				4251D92E2B7BF23600CB7CA4 /* GridHandler.swift */,
 				42A1B4F02B8E1A02008E32B0 /* DragHandler.swift */,
+				42A1B4F22B960FF7008E32B0 /* HorizontalScrollView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -470,6 +475,7 @@
 			packageProductDependencies = (
 				4251D9282B6907B800CB7CA4 /* AsyncDownSamplingImage */,
 				4251D93B2B866A8B00CB7CA4 /* SwiftDataTransferrable */,
+				42A1B4F62B9CC446008E32B0 /* Marquee */,
 			);
 			productName = DjTracklistApp;
 			productReference = 422A74D12B5BDFB900CD9E76 /* DjTracklistApp.app */;
@@ -546,6 +552,7 @@
 			packageReferences = (
 				4251D9272B6907B800CB7CA4 /* XCRemoteSwiftPackageReference "AsyncDownSamplingImage" */,
 				4251D93A2B866A8B00CB7CA4 /* XCRemoteSwiftPackageReference "swiftdata-transferrable" */,
+				42A1B4F52B9CC446008E32B0 /* XCRemoteSwiftPackageReference "Marquee" */,
 			);
 			productRefGroup = 422A74D22B5BDFB900CD9E76 /* Products */;
 			projectDirPath = "";
@@ -632,6 +639,7 @@
 				422A75132B5BFC9500CD9E76 /* Authorization.swift in Sources */,
 				4251D9242B68026400CB7CA4 /* NavigationRouter.swift in Sources */,
 				42A571C82B61A1EA0041907E /* UIConstants.swift in Sources */,
+				42A1B4F32B960FF7008E32B0 /* HorizontalScrollView.swift in Sources */,
 				42A1B4F12B8E1A02008E32B0 /* DragHandler.swift in Sources */,
 				429FF0112B668FCA0093AB75 /* AddTrackVM.swift in Sources */,
 				422A75022B5BE16600CD9E76 /* APIHandler.swift in Sources */,
@@ -1019,6 +1027,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		42A1B4F52B9CC446008E32B0 /* XCRemoteSwiftPackageReference "Marquee" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftUIKit/Marquee";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1031,6 +1047,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4251D93A2B866A8B00CB7CA4 /* XCRemoteSwiftPackageReference "swiftdata-transferrable" */;
 			productName = SwiftDataTransferrable;
+		};
+		42A1B4F62B9CC446008E32B0 /* Marquee */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 42A1B4F52B9CC446008E32B0 /* XCRemoteSwiftPackageReference "Marquee" */;
+			productName = Marquee;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
