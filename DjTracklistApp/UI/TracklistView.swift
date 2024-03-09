@@ -35,8 +35,12 @@ struct TracklistView: View {
                                     ZStack() {
                                         let part = (viewModel.size?.height ?? 0) / 4
                                         ForEach(1..<4) { i in
-                                            TimeIndicationView(bars: (viewModel.tracklist?.durationMinutes.getBars(bpm: viewModel.tracklist!.bpm, timeUnit: .minutes))!)
-                                                .offset(y: part * CGFloat(i) - UIConstants.shared.indicator.big.height / 2)
+                                            VStack(alignment: .leading, spacing: 0) {
+                                                TimeIndicationView(bars: (viewModel.tracklist?.durationMinutes.getBars(bpm: viewModel.tracklist!.bpm, timeUnit: .minutes))!)
+                                                minutesIndication(tracklist: tracklist)
+                                                
+                                            }
+                                            .offset(y: part * CGFloat(i) - UIConstants.shared.indicator.big.height / 2 - UIConstants.shared.track.nameSize / 2)
                                         }
                                         
                                     }
@@ -107,6 +111,17 @@ struct TracklistView: View {
         }
         .background(.black)
         .frame(width: 30)
+    }
+    
+    func minutesIndication(tracklist: Tracklist) -> some View {
+        ZStack (alignment: .leading) {
+            ForEach(0..<Int(tracklist.durationMinutes) / 10, id: \.self) { x in
+                Text("\(x * 10)")
+                    .foregroundStyle(Color(.complementaryTimeline))
+                    .font(.custom("Roboto-Regular", fixedSize: UIConstants.shared.track.nameSize))
+                    .offset(x: GridHandler.shared.getWidthFromBars(bars: UInt(x * 10).getBars(bpm: tracklist.bpm, timeUnit: .minutes)))
+            }
+        }
     }
     
     
