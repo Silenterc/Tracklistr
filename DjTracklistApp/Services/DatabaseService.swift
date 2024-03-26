@@ -81,6 +81,10 @@ class DatabaseService {
         databaseContext.delete(track)
     }
     
+    func deleteTracklist(tracklist: Tracklist) {
+        databaseContext.delete(tracklist)
+    }
+    
     private func sortAll(tracklist: Tracklist) {
         tracklist.players!.sort(by: {$0.order < $1.order})
         for player in tracklist.players! {

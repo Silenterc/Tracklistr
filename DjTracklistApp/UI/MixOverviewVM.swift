@@ -17,6 +17,8 @@ class MixOverviewVM {
     // Middle man between our VM and SwiftData, used for all Database operations
     var databaseService: DatabaseService
     
+    var selectedTracklist: Tracklist?
+    
     init(databaseService: DatabaseService, tracklists: [Tracklist] = []) {
         self.tracklists = tracklists
         self.databaseService = databaseService
@@ -33,5 +35,11 @@ class MixOverviewVM {
     
     func insertTracklist(tracklist: Tracklist) {
         databaseService.insertTracklist(tracklist: tracklist)
+    }
+    
+    func deleteTracklist(indexSet: IndexSet) {
+        for index in indexSet {
+            databaseService.deleteTracklist(tracklist: tracklists[index])
+        }
     }
 }

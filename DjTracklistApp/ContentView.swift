@@ -6,58 +6,32 @@
 //
 
 import SwiftUI
-struct CustomScrollView: View {
-    @State private var offsetX: CGFloat = 0
-    @GestureState private var dragState = CGSize.zero
-    let items: [String]
-    
-    var body: some View {
-        GeometryReader { geometry in
-            HStack(spacing: 0) {
-                ForEach(items, id: \.self) { item in
-                    Text(item)
-                        .frame(width: geometry.size.width)
-                        .background(Color.gray.opacity(0.2))
-                }
-            }
-            .offset(x: offsetX + dragState.width)
-            .gesture(
-                DragGesture()
-                    .updating($dragState) { drag, state, _ in
-                        state = drag.translation
-                    }
-                    .onEnded { drag in
-                        print("actual: \(drag.translation.width)")
-                        print("predicted: \(drag.predictedEndTranslation.width)")
-                        offsetX += drag.translation.width
-                        withAnimation(.linear(duration: 1)) {
-                            applyDeceleration(difference: drag.predictedEndTranslation.width - drag.translation.width)
-                        }
-                        
-                    }
-            )
-        }
-    }
-    
-    func applyDeceleration(difference: CGFloat) {
-        withAnimation(.spring) {
-            print("difference: \(difference)")
-            let decelerationRate = 0.4
-            let threshold: CGFloat = 0.5
-            var currentDifference = difference
+struct ContentView: View {
+    @State private var numbers = [Int]()
+    @State private var currentNumber = 1
 
-                repeat {
-                    currentDifference *= decelerationRate
-                    self.offsetX += currentDifference
-                } while abs(currentDifference) > threshold
-        }
+    var body: some View {
+        VStack {
         
+                ForEach(numbers, id: \.self) {
+                    Text("Row \($0)")
+                }
+                .onDelete(perform: { indexSet in
+                    print("Here")
+                })
+            
+
+            Button("Add Number") {
+                numbers.append(currentNumber)
+                currentNumber += 1
+            }
+        }
     }
 }
 
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        CustomScrollView(items: ["lol", "here", "maybe"])
+        ContentView()
     }
 }

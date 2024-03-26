@@ -22,30 +22,58 @@ struct MixOverviewView: View {
         _viewModel = State(initialValue: viewModel)
     }
     var body: some View {
-        
         VStack {
-            ScrollView {
-                LazyVStack(spacing: 20) {
-                    Button {
-                        router.navigateTo(destination: .tracklistInfoView())
-                    } label: {
-                        TracklistCell(viewModel: viewModel, name: "Start a new set")
-                    }
-                    ForEach(viewModel.tracklists) { tracklist in
-                        Button {
-                            router.navigateTo(destination: .tracklistView(tracklistID: tracklist.id))
-                        } label: {
-                            TracklistCell(viewModel: viewModel, name: tracklist.name, editedAt: tracklist.editedAt)
-                        }
+            HStack {
+                Spacer()
+                Button {
+                    router.navigateTo(destination: .tracklistInfoView(tracklistID: nil))
+                } label: {
+                    HStack {
+                        Image(systemName: "plus")
+                            .font(.system(size: 28))
                     }
                 }
-                .padding()
+                .tint(.complementaryTimeline)
             }
+            Text("Mix Overview")
+                .font(.custom(UIConstants.shared.font.bold, size: 30))
+            List(selection: $viewModel.selectedTracklist) {
+                ForEach (viewModel.tracklists, id: \.self) { tracklist in
+                    HStack {
+                        Image(systemName:"slider.vertical.3")
+                            .foregroundStyle(.timelineIndicator)
+                        Text(tracklist.name)
+                            .font(.custom(UIConstants.shared.font.regular, size: 18))
+                        Spacer()
+                        Text(tracklist.editedAt.formatted(date: .abbreviated, time: .omitted))
+                            .font(.custom(UIConstants.shared.font.regular, size: 18))
+                        Image(systemName: "chevron.right")
+                            .foregroundStyle(.complementaryTimeline)
+                    }
+                    .listRowInsets(EdgeInsets())
+                    //.listRowBackground(Color.cellBackground)
+                    .listRowSeparatorTint(.timelineIndicator)
+                }
+                .onDelete(perform: { indexSet in
+                    viewModel.deleteTracklist(indexSet: indexSet)
+                })
+            }
+            .listStyle(.plain)
+            .edgesIgnoringSafeArea(.all)
             .onAppear{
                 viewModel.fetchTracklists()
             }
+            .onChange(of: viewModel.selectedTracklist) { _, newValue in
+                if let tlist = newValue {
+                    router.navigateTo(destination: .tracklistView(tracklistID: tlist.id))
+                }
+            }
         }
-        .navigationTitle("Mix Overview")
+        .padding(16)
+       
+                    
+         
+            
 //        .useSize(onChange: { size in
 //            if size.height > size.width {
 //                UIConstants.shared.screenSize = CGSize(width: size.height, height: size.width)
@@ -81,12 +109,8 @@ extension MixOverviewView {
                     }
                     
                 }
-                Spacer()
             }
-            .padding()
-            .background(Color.white)
             .cornerRadius(10)
-            .shadow(radius: 3)
         }
     }
     
@@ -94,6 +118,9 @@ extension MixOverviewView {
 #Preview {
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
     let container = try! ModelContainer(for: Tracklist.self, configurations: config)
+    container.mainContext.insert(Tracklist.mockTracklist1())
+    container.mainContext.insert(Tracklist.mockTracklist1())
+    container.mainContext.insert(Tracklist.mockTracklist1())
     @ObservedObject var router = NavigationRouter(modelContext: container.mainContext)
     return NavigationStack(path: $router.path) {
         MixOverviewView(modelContext: container.mainContext)
