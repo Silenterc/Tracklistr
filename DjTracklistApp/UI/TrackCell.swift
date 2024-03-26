@@ -18,7 +18,7 @@ struct TrackCell: View {
         HStack(spacing: 0) {
             resizeBarLeft()
             VStack(alignment: .leading) {
-                HStack(alignment: .top, spacing: 3) {
+                HStack(alignment: .top, spacing: 0) {
                     if !viewModel.shorterUI {
                         VStack {
                             if let imageUrl = viewModel.track.imageUrl {
@@ -47,20 +47,23 @@ struct TrackCell: View {
                     VStack(alignment: .leading, spacing: 0) {
                         GeometryReader { proxy in
                             SlidingText(geometryProxy: proxy, text: viewModel.track.name, font: UIFont(name: UIConstants.shared.font.regular, size: UIConstants.shared.track.nameSize)!)
-                             
-                                
                         }
-                     
+                        
+                        //Spacer()
                         GeometryReader { proxy in
                             SlidingText(geometryProxy: proxy, text: viewModel.track.artistNames.joined(separator: ","), font: UIFont(name: UIConstants.shared.font.light, size: UIConstants.shared.track.artistsSize)!)
-                                
-                                
+    
                         }
-                   
+            
                     }
-                   
+                    .frame(height: UIConstants.shared.track.image.height)
+                    .padding(.leading, UIConstants.shared.track.height * 0.1)
+                    
                     
                 }
+                //.border(.green)
+                //.padding(.top, 4)
+                //Spacer()
                 HStack {
                     timeInfo(timeInBars: viewModel.track.startTimeBars!)
                     
@@ -69,13 +72,15 @@ struct TrackCell: View {
                     timeInfo(timeInBars: viewModel.track.endTimeBars!)
                     
                 }
-                .padding(.trailing, 6)
+                //.border(.red)
+                //.padding(.trailing, 6)
+                //.padding(.bottom, 4)
                 
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .padding(.top, 6)
-            .padding(.bottom, 6)
-            .padding(.leading, 6)
+            .frame(height: UIConstants.shared.track.height)
+            .padding(UIConstants.shared.track.height * 0.1)
+            .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+            //.padding(.leading, 6)
             
             resizeBarRight()
         }
@@ -98,16 +103,13 @@ struct TrackCell: View {
                     
                 }
         )
-        
-        //NEED TO SOMEHOW PLAY WITH THE ALIGNMENT HERE SO ITS LEADING WHEN FROM THE LEFT AND TRAILING WHEN FROM THE RIGHT AND ALSO NEED TO KEEP THE WIDTH OF THE VIEW THE SAME UNTIL THE RESIZE COMPLETES AND THEN SOMEHOW CALCULATE THE OFFSET AND PLACE IT TO THE LEFT OR RIGHT SO IT STAYS IN THE SAME PLACE
-        // .frame(maxWidth: .infinity, maxHeight: .infinity)
-        
     }
     /// Bar on the right side of the track cell, which can be dragged horizontally to make the cell bigger or smaller
     private func resizeBarRight() -> some View {
         Rectangle()
             .fill(.ultraThickMaterial)
             .frame(width: UIConstants.shared.track.barSize, height: UIConstants.shared.track.height)
+            .fixedSize()
             .gesture(
                 LongPressGesture()
                     .sequenced(before: DragGesture()
@@ -121,6 +123,7 @@ struct TrackCell: View {
         Rectangle()
             .fill(.ultraThickMaterial)
             .frame(width: UIConstants.shared.track.barSize, height: UIConstants.shared.track.height)
+            .fixedSize()
             .gesture(
                 LongPressGesture()
                     .sequenced(before: DragGesture()
@@ -186,7 +189,7 @@ struct TrackCell: View {
                     Text(text)
                         .font(Font(font))
                 }
-                .frame(width: textWidth)
+                .frame(width: textWidth, height: font.pointSize)
                 .marqueeDuration(duration)
             } else {
                 Text(text)

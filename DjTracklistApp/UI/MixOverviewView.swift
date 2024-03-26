@@ -65,23 +65,13 @@ struct MixOverviewView: View {
             }
             .onChange(of: viewModel.selectedTracklist) { _, newValue in
                 if let tlist = newValue {
+                    viewModel.selectedTracklist = nil
                     router.navigateTo(destination: .tracklistView(tracklistID: tlist.id))
                 }
             }
         }
         .padding(16)
-       
-                    
-         
-            
-//        .useSize(onChange: { size in
-//            if size.height > size.width {
-//                UIConstants.shared.screenSize = CGSize(width: size.height, height: size.width)
-//            } else {
-//                UIConstants.shared.screenSize = size
-//            }
-//            print(size)
-//        })
+
         
         
     }

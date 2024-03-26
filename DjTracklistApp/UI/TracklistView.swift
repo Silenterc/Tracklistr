@@ -27,13 +27,30 @@ struct TracklistView: View {
     
     var body: some View {
         if let tracklist = viewModel.tracklist {
-            HStack {
-                ScrollView (.horizontal) {
+            VStack(spacing: 0) {
+                HStack {
+                    Button {
+                        router.navigateToRoot()
+                    } label: {
+                        HStack(spacing: 4) {
+                            Image(systemName: "chevron.left")
+                                .foregroundStyle(.complementaryTimeline)
+                            Text("Back")
+                                .font(.custom(UIConstants.shared.font.light, size: UIConstants.shared.track.nameSize + 4))
+                                .foregroundStyle(.complementaryTimeline)
+                        }
+                    }
+                    .offset(y: 8)
+                    Spacer()
+                }
+                
+                HStack {
+                    ScrollView (.horizontal) {
                         ZStack (alignment: .leading) {
                             HStack {
                                 VStack {
                                     ZStack() {
-                                        let part = (viewModel.size?.height ?? 0) / 4
+                                        let part = UIConstants.shared.screenSize.height / 4
                                         ForEach(1..<4) { i in
                                             VStack(alignment: .leading, spacing: 0) {
                                                 TimeIndicationView(bars: (viewModel.tracklist?.durationMinutes.getBars(bpm: viewModel.tracklist!.bpm, timeUnit: .minutes))!)
@@ -47,7 +64,7 @@ struct TracklistView: View {
                                     Spacer()
                                 }
                             }
-                        
+                            
                             
                             
                             VStack(alignment: .leading, spacing: 0) {
@@ -67,7 +84,6 @@ struct TracklistView: View {
                             
                             .useSize { size in
                                 if (size.height > UIConstants.shared.screenSize.height) {
-                                    viewModel.size = size
                                     UIConstants.shared.screenSize = size
                                     print("actual: \(size)")
                                 }
@@ -80,11 +96,11 @@ struct TracklistView: View {
                         
                     }
                     .scrollTargetBehavior(.viewAligned)
-                    
-                
-                .navigationBarBackButtonHidden()
+                    .navigationBarBackButtonHidden()
                     TrackAddBar(tracklist: tracklist)
                     
+                }
+                //.border(.red)
             }
             .ignoresSafeArea(.all, edges: .bottom)
             .background(.black)

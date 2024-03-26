@@ -103,7 +103,7 @@ final class Track: Identifiable {
     }
     
 }
-// Positions: Iphone 15 Pro: 0; 212.64; 425.28; 637.92 ; 850.56
+// Positions: Iphone 15 Pro: 0; 203.52; 407.04; 610.56 ; 814.08
 //            IPad Air: 0; 406.08; 812.16; 1218.24
 extension Track {
     static func mockSolarSystemTrack() -> Track {
@@ -134,7 +134,7 @@ extension Track {
             bpm: 174,
             startTimeBars: 0,
             endTimeBars: 96,
-            position: 212.64
+            position: 203.52
         )
     }
     
@@ -150,7 +150,7 @@ extension Track {
             bpm: 174,
             startTimeBars: 0,
             endTimeBars: 96,
-            position: 425.28
+            position: 407.04
         )
     }
     
@@ -166,7 +166,7 @@ extension Track {
             bpm: 174,
             startTimeBars: 0,
             endTimeBars: 96,
-            position: 637.92
+            position: 610.56
         )
     }
 }

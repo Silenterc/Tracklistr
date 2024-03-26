@@ -23,7 +23,6 @@ class TracklistVM {
     var tracklist: Tracklist?
     var players: [Player] = []
     
-    var size: CGSize?
     var srcPlayer: Player?
     var playerSize: CGSize? = CGSize(width: 300, height: 70)
     init(tracklistService: DatabaseService, tracklistID: UUID) {

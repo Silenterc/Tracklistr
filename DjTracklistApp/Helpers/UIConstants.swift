@@ -52,8 +52,8 @@ class UIConstants {
         let barSize: CGFloat = 8
         
         struct Image {
-            let width: CGFloat = 32
-            let height: CGFloat = 32
+            let width: CGFloat = UIConstants.shared.track.height * 0.55
+            let height: CGFloat = UIConstants.shared.track.height * 0.55
         }
         var image: Image {Image()}
     }
