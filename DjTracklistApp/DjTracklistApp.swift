@@ -14,30 +14,30 @@ let sharedModelContainer: ModelContainer = {
     let schema = Schema([
         Tracklist.self,
         Player.self,
-        Track.self
+        Track.self,
     ])
     let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
     do {
         let container = try ModelContainer(for:schema, configurations: [modelConfiguration])
-        container.mainContext.insert(tracklist)
-        let player0 = Player.mockPlayer1()
-        let player1 = Player.mockPlayer2()
-        let player2 = Player.mockPlayer3()
-        let player3 = Player.mockPlayer4()
-        container.mainContext.insert(player0)
-        container.mainContext.insert(player1)
-        container.mainContext.insert(player2)
-        container.mainContext.insert(player3)
-        player0.tracklist = tracklist
-        player1.tracklist = tracklist
-        player2.tracklist = tracklist
-        player3.tracklist = tracklist
-        
-        tracklist.players!.forEach { player in
-            player.tracks!.forEach { track in
-                track.player = player
-            }
-        }
+//        container.mainContext.insert(tracklist)
+//        let player0 = Player.mockPlayer1()
+//        let player1 = Player.mockPlayer2()
+//        let player2 = Player.mockPlayer3()
+//        let player3 = Player.mockPlayer4()
+//        container.mainContext.insert(player0)
+//        container.mainContext.insert(player1)
+//        container.mainContext.insert(player2)
+//        container.mainContext.insert(player3)
+//        player0.tracklist = tracklist
+//        player1.tracklist = tracklist
+//        player2.tracklist = tracklist
+//        player3.tracklist = tracklist
+//        
+//        tracklist.players!.forEach { player in
+//            player.tracks!.forEach { track in
+//                track.player = player
+//            }
+//        }
         return container
     } catch {
         fatalError("Error initializing")

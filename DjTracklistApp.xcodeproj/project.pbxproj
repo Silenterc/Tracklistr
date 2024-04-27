@@ -91,13 +91,14 @@
 		429FF0112B668FCA0093AB75 /* AddTrackVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429FF0102B668FCA0093AB75 /* AddTrackVM.swift */; };
 		429FF0132B66B43B0093AB75 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429FF0122B66B43B0093AB75 /* ApiService.swift */; };
 		42A1B4F12B8E1A02008E32B0 /* DragHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A1B4F02B8E1A02008E32B0 /* DragHandler.swift */; };
-		42A1B4F32B960FF7008E32B0 /* HorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A1B4F22B960FF7008E32B0 /* HorizontalScrollView.swift */; };
 		42A1B4F72B9CC446008E32B0 /* Marquee in Frameworks */ = {isa = PBXBuildFile; productRef = 42A1B4F62B9CC446008E32B0 /* Marquee */; };
 		42A571C62B619E7C0041907E /* TrackCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A571C52B619E7C0041907E /* TrackCellVM.swift */; };
 		42A571C82B61A1EA0041907E /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A571C72B61A1EA0041907E /* UIConstants.swift */; };
 		42A571CA2B6297BA0041907E /* TracklistInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A571C92B6297BA0041907E /* TracklistInfoView.swift */; };
 		42A571CC2B6297CC0041907E /* TracklistInfoVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A571CB2B6297CC0041907E /* TracklistInfoVM.swift */; };
 		42A571CE2B6298BC0041907E /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A571CD2B6298BC0041907E /* DatabaseService.swift */; };
+		42FCC5DC2BC803C000F5BA82 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 422A751F2B5C685700CD9E76 /* Config.xcconfig */; };
+		42FCC5DD2BC803C100F5BA82 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 422A751F2B5C685700CD9E76 /* Config.xcconfig */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,7 +124,7 @@
 		422A74D42B5BDFB900CD9E76 /* DjTracklistApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DjTracklistApp.swift; sourceTree = "<group>"; };
 		422A74D62B5BDFB900CD9E76 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		422A74D82B5BDFB900CD9E76 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
-		422A74DA2B5BDFCB00CD9E76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		422A74DA2B5BDFCB00CD9E76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = DjTracklistApp/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		422A74DD2B5BDFCB00CD9E76 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		422A74E32B5BDFCC00CD9E76 /* DjTracklistAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DjTracklistAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		422A74E72B5BDFCC00CD9E76 /* DjTracklistAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DjTracklistAppTests.swift; sourceTree = "<group>"; };
@@ -187,7 +188,6 @@
 		429FF0102B668FCA0093AB75 /* AddTrackVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTrackVM.swift; sourceTree = "<group>"; };
 		429FF0122B66B43B0093AB75 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		42A1B4F02B8E1A02008E32B0 /* DragHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragHandler.swift; sourceTree = "<group>"; };
-		42A1B4F22B960FF7008E32B0 /* HorizontalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScrollView.swift; sourceTree = "<group>"; };
 		42A571C52B619E7C0041907E /* TrackCellVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCellVM.swift; sourceTree = "<group>"; };
 		42A571C72B61A1EA0041907E /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
 		42A571C92B6297BA0041907E /* TracklistInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracklistInfoView.swift; sourceTree = "<group>"; };
@@ -369,7 +369,6 @@
 				4251D92A2B6932DA00CB7CA4 /* Errors.swift */,
 				4251D92E2B7BF23600CB7CA4 /* GridHandler.swift */,
 				42A1B4F02B8E1A02008E32B0 /* DragHandler.swift */,
-				42A1B4F22B960FF7008E32B0 /* HorizontalScrollView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -575,6 +574,7 @@
 				422A756C2B60233800CD9E76 /* Roboto-LightItalic.ttf in Resources */,
 				422A75642B60233800CD9E76 /* Roboto-Thin.ttf in Resources */,
 				422A75682B60233800CD9E76 /* Roboto-Regular.ttf in Resources */,
+				42FCC5DC2BC803C000F5BA82 /* Config.xcconfig in Resources */,
 				422A74DE2B5BDFCB00CD9E76 /* Preview Assets.xcassets in Resources */,
 				422A756E2B60233800CD9E76 /* LICENSE.txt in Resources */,
 				422A756F2B60233800CD9E76 /* Roboto-Italic.ttf in Resources */,
@@ -593,6 +593,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42FCC5DD2BC803C100F5BA82 /* Config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -639,7 +640,6 @@
 				422A75132B5BFC9500CD9E76 /* Authorization.swift in Sources */,
 				4251D9242B68026400CB7CA4 /* NavigationRouter.swift in Sources */,
 				42A571C82B61A1EA0041907E /* UIConstants.swift in Sources */,
-				42A1B4F32B960FF7008E32B0 /* HorizontalScrollView.swift in Sources */,
 				42A1B4F12B8E1A02008E32B0 /* DragHandler.swift in Sources */,
 				429FF0112B668FCA0093AB75 /* AddTrackVM.swift in Sources */,
 				422A75022B5BE16600CD9E76 /* APIHandler.swift in Sources */,
@@ -841,23 +841,29 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DjTracklistApp/Preview Content\"";
+				DEVELOPMENT_TEAM = 77Q6WHQ789;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DjTracklistApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Tracklistr;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = cz.cvut.fit.DjTracklistApp;
+				PRODUCT_BUNDLE_IDENTIFIER = cz.zimaluk1.DjTracklistApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -870,23 +876,32 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CLIENT_ID_MUSI = "61e7de1b-87cb-4315-9d30-fd59bc81dbba";
+				CLIENT_ID_SPOT = b4ed26c9e4d24d8d906a7bbd77afe114;
+				CLIENT_SECRET_SPOT = 73e079d1a2ae4b6dba97c5b456de94b5;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DjTracklistApp/Preview Content\"";
+				DEVELOPMENT_TEAM = 77Q6WHQ789;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DjTracklistApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Tracklistr;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = cz.cvut.fit.DjTracklistApp;
+				PRODUCT_BUNDLE_IDENTIFIER = cz.zimaluk1.DjTracklistApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

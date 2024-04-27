@@ -87,6 +87,9 @@ struct TrackDetailView: View {
             } message: {
                 Text(viewModel.currentError?.rawValue ?? "")
             }
+            .onAppear {
+                print(viewModel.track?.bpm)
+            }
         }
     }
     func fontedText(text: String) -> some View {

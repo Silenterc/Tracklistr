@@ -11,7 +11,6 @@ import AsyncDownSamplingImage
 struct AddTrackView: View {
     @State var viewModel: AddTrackVM
     @EnvironmentObject var router: NavigationRouter
-    
     init(player: Player?, bpm: Float) {
         let viewModel = AddTrackVM(player: player, bpm: bpm)
         _viewModel = State(initialValue: viewModel)
@@ -85,14 +84,13 @@ struct AddTrackView: View {
             HStack() {
                 TextField("Track name (required)", text: $viewModel.searchName)
                     .textFieldStyle(.roundedBorder)
-                
                 TextField("Artists (separated by comma)", text: $viewModel.searchArtists)
                     .textFieldStyle(.roundedBorder)
                 Button("Submit") {
                     Task {
                         await viewModel.searchTracks()
                     }
-                    
+                    hideKeyboard()
                 }
                 .disabled(viewModel.searchName.isEmpty)
                 
@@ -111,6 +109,7 @@ struct AddTrackView: View {
                 
             }
             .navigationDestination(isPresented: $viewModel.songChosen) {
+                
                 TrackDetailView(track: viewModel.chosenTrack, player: viewModel.player, bpm: viewModel.bpm)
             }
         }

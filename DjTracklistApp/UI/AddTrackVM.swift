@@ -46,16 +46,20 @@ class AddTrackVM {
                         self.chosenTrack = try await apiService?.getTrackWithFeatures(id: chosenTrack!.externalId)
                         // Rounded to 1 decimal place
                         self.chosenTrack!.bpm?.round()
-                        songChosen = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            self.songChosen = true
+                        }
                     } catch {
                         print(error)
                     }
                     
                 }
             } else {
-                songChosen = true
                 if (chosenTrack!.artistNames.isEmpty) {
                     chosenTrack!.artistNames = searchArtists.components(separatedBy: ",")
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.songChosen = true
                 }
             }
             

@@ -54,12 +54,6 @@ struct TracklistInfoView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 
                 HStack {
-                    Button("Cancel") {
-                        // Handle cancel action
-                    }
-                    .font(.custom(UIConstants.shared.font.regular, fixedSize: 18))
-                    .foregroundColor(.red)
-                    
                     Spacer()
                     Button(viewModel.toBeCreated ? "Create" : "Save") {
                         viewModel.updateTracklist()
@@ -69,6 +63,7 @@ struct TracklistInfoView: View {
                     }
                     .font(.custom(UIConstants.shared.font.regular, fixedSize: 18))
                     .disabled(viewModel.isCreateButtonDisabled)
+                    Spacer()
                     
                 }
                 .padding(.top, 20)
