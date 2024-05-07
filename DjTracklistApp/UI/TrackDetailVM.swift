@@ -60,11 +60,6 @@ class TrackDetailVM {
                         return true
                     
                     } else {
-                        // We need to position the track correctly - it should be precisely at the end of the player's tracks, as the last track
-                        // This piece of code will work one I manage to get a sorted array out of the db, for now we will find the last track by linearily browsing the array
-//                        if let lastTrack = self.player!.tracks!.last {
-//                            track.position = lastTrack.positionRightEdge
-//                        }
                         var lastPos: CGFloat = 0
                         tracks.forEach { tr in
                             if tr.position >= lastPos {

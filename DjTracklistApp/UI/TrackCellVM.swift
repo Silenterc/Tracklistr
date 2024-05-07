@@ -37,16 +37,18 @@ class TrackCellVM {
         let roundedNewWidth = GridHandler.shared.roundHorizontally(horizontalUnit: newWidth)
         let oldDurationBars = track.currentDuration!
         let newDurationBars = GridHandler.shared.getBarsFromWidth(width: roundedNewWidth)
-        if newDurationBars > track.originalDurationBars {
+        if (newDurationBars) > track.originalDurationBars {
             return
         }
         let change: Int = Int(newDurationBars) - Int(oldDurationBars)
         let oldEndTimeBars = track.endTimeBars!
         let newEndTimeBars = Int(oldEndTimeBars) + change
-        
+        if (newEndTimeBars > track.originalDuration.getBars(bpm: track.bpm!, timeUnit: .milliseconds)) {
+            return
+        }
         track.endTimeBars! = UInt(newEndTimeBars)
         //editedWidth = roundedNewWidth
-        if GridHandler.shared.validatePosition(track: track, player: track.player!) {
+        if GridHandler.shared.validatePosition(track: track, player: track.player!, leadingCoord: track.position) {
             
             editedWidth = roundedNewWidth
         } else {
@@ -73,7 +75,7 @@ class TrackCellVM {
         track.startTimeBars! = UInt(newStartTimeBars)
         let oldPosition = track.position
         track.position = track.position - (change > 0 ? GridHandler.shared.getWidthFromBars(bars: UInt(change)) : -1 * GridHandler.shared.getWidthFromBars(bars: UInt(abs(change))))
-        if GridHandler.shared.validatePosition(track: track, player: track.player!) {
+        if GridHandler.shared.validatePosition(track: track, player: track.player!, leadingCoord: track.position) {
             editedWidth = roundedNewWidth
         } else {
             track.startTimeBars = oldStartTimeBars

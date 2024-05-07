@@ -16,7 +16,7 @@ let sharedModelContainer: ModelContainer = {
         Player.self,
         Track.self,
     ])
-    let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
+    let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
     do {
         let container = try ModelContainer(for:schema, configurations: [modelConfiguration])
 //        container.mainContext.insert(tracklist)

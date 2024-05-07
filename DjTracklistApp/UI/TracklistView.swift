@@ -89,8 +89,6 @@ struct TracklistView: View {
                                 }
                             }
                             .coordinateSpace(.named("players"))
-                            // MAYBE MAKE THE SIZE EQUAL TO THE WHOLE SET LENGTH
-                            //.frame(maxWidth: .infinity)
                             
                         }
                         
@@ -100,7 +98,7 @@ struct TracklistView: View {
                     TrackAddBar(tracklist: tracklist)
                     
                 }
-                //.border(.red)
+              
             }
             .ignoresSafeArea(.all, edges: .bottom)
             .background(.black)
@@ -119,19 +117,19 @@ struct TracklistView: View {
                     Image(systemName: "plus.app")
                         .resizable()
                         .tint(Color.cellBackground)
-                        .frame(width: 25, height: 25)
+                        .frame(width: UIConstants.shared.track.addButtonSize, height: UIConstants.shared.track.addButtonSize)
                 }
                 Spacer()
                 
             }
         }
         .background(.black)
-        .frame(width: 30)
+        .frame(width: UIConstants.shared.track.addbarSize)
     }
     
     func minutesIndication(tracklist: Tracklist) -> some View {
         ZStack (alignment: .leading) {
-            ForEach(0..<Int(tracklist.durationMinutes) / 10, id: \.self) { x in
+            ForEach(0...Int(tracklist.durationMinutes) / 10, id: \.self) { x in
                 Text("\(x * 10)")
                     .foregroundStyle(Color(.complementaryTimeline))
                     .font(.custom("Roboto-Regular", fixedSize: UIConstants.shared.track.nameSize))

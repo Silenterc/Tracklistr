@@ -45,12 +45,13 @@ class UIConstants {
         // 62 originally
         var height: CGFloat { UIConstants.shared.screenSize.height * 0.15 }
         let minimumBars: UInt = 16
-        let nameSize: CGFloat = 12
-        let artistsSize: CGFloat = 8
-        let barsSize: CGFloat = 8
-        let timeSize: CGFloat = 8
-        let barSize: CGFloat = 8
-        
+        let nameSize: CGFloat = UIConstants.shared.screenSize.height * 0.035
+        let artistsSize: CGFloat = UIConstants.shared.screenSize.height * 0.025
+        let barsSize: CGFloat = UIConstants.shared.screenSize.height * 0.025
+        let timeSize: CGFloat = UIConstants.shared.screenSize.height * 0.025
+        let barSize: CGFloat = UIConstants.shared.screenSize.height * 0.025
+        let addbarSize: CGFloat = UIConstants.shared.screenSize.height * 0.08
+        let addButtonSize: CGFloat = UIConstants.shared.screenSize.height * 0.07
         struct Image {
             let width: CGFloat = UIConstants.shared.track.height * 0.55
             let height: CGFloat = UIConstants.shared.track.height * 0.55

@@ -31,7 +31,7 @@ class GridHandler {
     /// Calculates the bars that correspond to width
     /// - Parameter width The width for which the bars should be calculated
     func getBarsFromWidth(width: CGFloat) -> UInt {
-        return UInt(width / barWidth)
+        return UInt(width / (barWidth * 4)) * 4
     }
     /// Finds the nearest horizontal point to ``horizontalUnit``, which can be used in the app -> It is divisible by ``fourBarsWidth``, the smallest width unit
     /// So basically it rounds ``horizontalUnit`` to be divisible by``fourBarsWidth``
@@ -46,32 +46,25 @@ class GridHandler {
             
         }
     }
-    
-    /// Validates whether the track doesnt overlap with another -> their positions and durations are not overlapping, so each track has its own place
-    func validatePosition(track: Track, player: Player) -> Bool {
-        for secTrack in player.tracks! {
-            if secTrack.id == track.id {
-                continue
-            }
-            if track.position < secTrack.positionRightEdge && track.positionRightEdge > secTrack.position {
+    /// Validates whether a track at ``leadingCoord`` doesnt overlap with another at a given ``player``.
+    /// Before validating, it rounds the coordinates using ``roundHorizontally()``
+    /// - Parameter leadingCoord: The current coordinates of the leading edge of the track
+    func validatePosition(track: Track, player: Player, leadingCoord: CGFloat) -> Bool {
+        let leadingRounded = roundHorizontally(horizontalUnit: leadingCoord)
+        if let tracklist = player.tracklist {
+            let tracklistLengthBars = tracklist.durationMinutes.getBars(bpm: tracklist.bpm, timeUnit: .minutes)
+            let tracklistLengthWidth = getWidthFromBars(bars: tracklistLengthBars)
+            if (leadingRounded >= tracklistLengthWidth || leadingRounded < 0) {
                 return false
             }
         }
-        return true
-    }
-    /// Validates whether a track at ``centralCoord`` doesnt overlap with another at a given ``player``.
-    /// Before validating, it rounds the coordinates using ``roundHorizontally()``
-    /// - Parameter centralCoord: The current coordinates of the center of the track
-    func validatePositionCenter(track: Track, player: Player, centralCoord: CGFloat) -> Bool {
-        let rounded = roundHorizontally(horizontalUnit: centralCoord)
         // The proposed position of the track's left edge
-        let positionLeft = rounded - (track.width / 2)
-        let positionRight = rounded + (track.width / 2)
+        let positionLeft = leadingRounded
+        let positionRight = leadingRounded + track.width
         for secTrack in player.tracks! {
             if secTrack.id == track.id {
                continue
             }
-            
             if positionLeft < secTrack.positionRightEdge && positionRight > secTrack.position {
                 return false
             }

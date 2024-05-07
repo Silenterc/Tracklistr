@@ -15,20 +15,16 @@ class DragHandler {
     /// - Parameter location Where has the user dropped the track in the "players" coordinateSpace. The location should be of the center of the dropped Track.
     ///  - Returns whether the drop could be performed at the desired location
     func performDrop(location: CGPoint) -> Bool {
-        if let dragged = draggedTrack, let _ = players {
+        if let dragged = draggedTrack {
             // Calculates which Player is the location closest to
             let player = getCorrespondingPlayer(location: location)
             if let player = player {
-                // Validate if there is enought space for the track at the location of the drop
-                if (GridHandler.shared.validatePositionCenter(track: dragged, player: player, centralCoord: location.x)) {
+                // Validate if there is enough space for the track at the location of the drop
+                if (GridHandler.shared.validatePosition(track: dragged, player: player, leadingCoord: location.x - dragged.width / 2)) {
                     // Get the position of the leading edge of the track (since location represents the center)
                     let leadingEdgePos = location.x - dragged.width / 2
                     // Round it to the nearest four bars
                     let roundedPosition = GridHandler.shared.roundHorizontally(horizontalUnit: leadingEdgePos)
-                    // Cant drop outside the view
-                    if roundedPosition < 0 {
-                        return false
-                    }
                     // If we dropped to the same player that we dragged from, we just change the track position
                     if (dragged.player?.id == player.id) {
                         dragged.position = roundedPosition

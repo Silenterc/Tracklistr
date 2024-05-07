@@ -725,8 +725,8 @@
             filePath = "DjTracklistApp/UI/TrackDetailVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
             landmarkName = "createTrack()"
             landmarkType = "7">
             <Locations>
@@ -788,8 +788,8 @@
             filePath = "DjTracklistApp/UI/TrackDetailVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "createTrack()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1152,8 +1152,8 @@
             filePath = "DjTracklistApp/UI/TrackCellVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
             landmarkName = "changeWidthLeft(change:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1168,8 +1168,8 @@
             filePath = "DjTracklistApp/UI/TrackCellVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
             landmarkName = "changeWidthLeft(change:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1184,8 +1184,8 @@
             filePath = "DjTracklistApp/UI/TrackCellVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "changeWidthRight(change:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1310,8 +1310,8 @@
             filePath = "DjTracklistApp/UI/TrackCellVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
             landmarkName = "changeWidthRight(change:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1436,8 +1436,8 @@
             filePath = "DjTracklistApp/Helpers/DragHandler.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "performDrop(location:)"
             landmarkType = "7">
             <Locations>
@@ -1484,8 +1484,8 @@
             filePath = "DjTracklistApp/Helpers/DragHandler.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "performDrop(location:)"
             landmarkType = "7">
             <Locations>
@@ -1547,9 +1547,9 @@
             filePath = "DjTracklistApp/Helpers/GridHandler.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "validatePositionCenter(track:player:centralCoord:)"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "validatePosition(track:player:leadingCoord:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1563,9 +1563,9 @@
             filePath = "DjTracklistApp/Helpers/GridHandler.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "validatePositionCenter(track:player:centralCoord:)"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "validatePosition(track:player:leadingCoord:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -1611,8 +1611,8 @@
             filePath = "DjTracklistApp/UI/TrackCellVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "startOfDrag(start:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1787,8 +1787,8 @@
             filePath = "DjTracklistApp/UI/TrackDetailVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "createTrack()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1803,8 +1803,8 @@
             filePath = "DjTracklistApp/UI/TrackCellVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "changeWidthLeft(change:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2080,6 +2080,39 @@
             startingLineNumber = "113"
             endingLineNumber = "113"
             landmarkName = "searchTrackView()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E5C352A9-0DA0-44E4-999C-E53E15ECC9BC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DjTracklistApp/UI/TrackDetailVM.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "validateTrack()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3686E113-63B0-4029-9795-174B9343CEC1"
+            shouldBeEnabled = "No"
+            condition = "track.startTimeBars == 127"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DjTracklistApp/UI/TrackCellVM.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "changeWidthLeft(change:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
