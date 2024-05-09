@@ -61,9 +61,7 @@ struct TrackCell: View {
                     
                     
                 }
-                //.border(.green)
-                //.padding(.top, 4)
-                //Spacer()
+            
                 HStack {
                     timeInfo(timeInBars: viewModel.track.startTimeBars!)
                     
@@ -72,9 +70,6 @@ struct TrackCell: View {
                     timeInfo(timeInBars: viewModel.track.endTimeBars!)
                     
                 }
-                //.border(.red)
-                //.padding(.trailing, 6)
-                //.padding(.bottom, 4)
                 
             }
             .frame(height: UIConstants.shared.track.height)
@@ -85,24 +80,24 @@ struct TrackCell: View {
             resizeBarRight()
         }
         .frame(width: viewModel.width, height: UIConstants.shared.track.height, alignment: .leading)
-        .background(Color.cellBackground)
+        .background(Color.cellBackground
+            .onTapGesture {}
+            .gesture (
+                DragGesture(minimumDistance: 0, coordinateSpace: .named("players"))
+                    .onChanged { gesture in
+                        viewModel.drag = gesture.translation
+                        if !viewModel.dragging {
+                            viewModel.startOfDrag(start: gesture.startLocation)
+                        }
+                    }
+                    .onEnded { gesture in
+                        _ = DragHandler.shared.performDrop(location: CGPoint(x: gesture.location.x - viewModel.xOffset, y: gesture.location.y))
+                        viewModel.endDrag()
+                        
+                    }
+            ))
         .cornerRadius(10)
         .offset(viewModel.drag)
-        .onTapGesture {}
-        .gesture (
-            DragGesture(minimumDistance: 0, coordinateSpace: .named("players"))
-                .onChanged { gesture in
-                    viewModel.drag = gesture.translation
-                    if !viewModel.dragging {
-                        viewModel.startOfDrag(start: gesture.startLocation)
-                    }
-                }
-                .onEnded { gesture in
-                    _ = DragHandler.shared.performDrop(location: CGPoint(x: gesture.location.x - viewModel.xOffset, y: gesture.location.y))
-                    viewModel.endDrag()
-                    
-                }
-        )
     }
     /// Bar on the right side of the track cell, which can be dragged horizontally to make the cell bigger or smaller
     private func resizeBarRight() -> some View {
@@ -110,12 +105,33 @@ struct TrackCell: View {
             .fill(.ultraThickMaterial)
             .frame(width: UIConstants.shared.track.barSize, height: UIConstants.shared.track.height)
             .fixedSize()
-            .gesture(
-                LongPressGesture()
+            .overlay(alignment: .trailing) {
+                if viewModel.draggingRight {
+                    withAnimation(.linear) {
+                        Color.complementaryTimeline
+                            .opacity(0.8)
+                    }
+                } else {
+                    Image(systemName: "chevron.right")
+                        .foregroundStyle(.complementaryTimeline)
+                        .opacity(0.5)
+                }
+            }
+            .highPriorityGesture(
+                LongPressGesture(minimumDuration: 1)
+                    .onChanged({ _ in
+                        withAnimation(.snappy) {
+                            viewModel.draggingRight = true
+                        }
+                    })
                     .sequenced(before: DragGesture()
                         .onChanged({ value in
                             viewModel.changeWidthRight(change: value.translation.width)
-                        }))
+                        })
+                        .onEnded({ value in
+                            viewModel.draggingRight = false
+                        })
+                    )
             )
     }
     /// Bar on the left side of the track cell, which can be dragged horizontally to make the cell bigger or smaller
@@ -124,11 +140,31 @@ struct TrackCell: View {
             .fill(.ultraThickMaterial)
             .frame(width: UIConstants.shared.track.barSize, height: UIConstants.shared.track.height)
             .fixedSize()
+            .overlay(alignment: .leading) {
+                if viewModel.draggingLeft {
+                    withAnimation(.linear) {
+                        Color.complementaryTimeline
+                            .opacity(0.8)
+                    }
+                } else {
+                    Image(systemName: "chevron.left")
+                        .foregroundStyle(.complementaryTimeline)
+                        .opacity(0.5)
+                }
+            }
             .gesture(
-                LongPressGesture()
+                LongPressGesture(minimumDuration: 1)
+                    .onChanged({ _ in
+                        withAnimation(.snappy) {
+                            viewModel.draggingLeft = true
+                        }
+                    })
                     .sequenced(before: DragGesture()
                         .onChanged({ value in
                             viewModel.changeWidthLeft(change: -value.translation.width)
+                        })
+                        .onEnded({ value in
+                            viewModel.draggingLeft = false
                         }))
             )
     }

@@ -24,8 +24,10 @@ class TrackDetailVM {
     var errorShown: Bool = false
     var currentError: TrackInfoError?
     
-    var currentStartTimeBars: UInt?
-    var currentDurationBars: UInt?
+    var currentStartTimeBars: UInt = 0
+    var currentDurationBars: UInt = 64
+    
+    var showAdvancedOptions: Bool = false
     init(track: Track?, player: Player?, bpm: Float?) {
         self.track = track
         self.player = player
@@ -52,8 +54,8 @@ class TrackDetailVM {
                 track.originalDuration = scaledOriginalDuration
                 track.bpm = requiredBpm
                 
-                track.startTimeBars = currentStartTimeBars!
-                track.endTimeBars = currentStartTimeBars! + currentDurationBars!
+                track.startTimeBars = currentStartTimeBars
+                track.endTimeBars = currentStartTimeBars + currentDurationBars
                 
                 if let player = player, let tracks = player.tracks {
                     if tracks.contains(where: {$0.id == track.id }) {
@@ -86,7 +88,7 @@ class TrackDetailVM {
     
     
     func validateTrack() -> Bool {
-        if let bpm = bpm, let currentStart = currentStartTimeBars, let currentDuration = currentDurationBars {
+        if let bpm = bpm {
             if bpm <= 0 {
                 return showError(error: .negativeBpm)
             } else if name.isEmpty || artistNames.isEmpty {
@@ -103,15 +105,15 @@ class TrackDetailVM {
                     return showError(error: .negativeOffset)
                 } else if Double(totalDurationSeconds) - Double(startTimeOffsetSeconds) < UIConstants.shared.track.minimumBars.getTime(bpm: bpm, timeUnit: .seconds) {
                     return showError(error: .tooLongOffset)
-                } else if currentStart % 4 != 0 {
+                } else if currentStartTimeBars % 4 != 0 {
                     return showError(error: .barsNotDivisibleBy4)
-                } else if totalDurationBars - currentStart < UIConstants.shared.track.minimumBars {
+                } else if totalDurationBars < UIConstants.shared.track.minimumBars + currentStartTimeBars {
                     return showError(error: .tooShortDuration)
-                } else if currentDuration % 4 != 0 {
+                } else if currentDurationBars % 4 != 0 {
                     return showError(error: .barsNotDivisibleBy4)
-                } else if currentDuration < UIConstants.shared.track.minimumBars {
+                } else if currentDurationBars < UIConstants.shared.track.minimumBars {
                     return showError(error: .tooShortDuration)
-                } else if currentStart + currentDuration > totalDurationBars {
+                } else if currentStartTimeBars + currentDurationBars > totalDurationBars {
                     return showError(error: .tooLongDuration)
                 }
                 

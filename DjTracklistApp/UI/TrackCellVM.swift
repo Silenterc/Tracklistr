@@ -22,6 +22,8 @@ class TrackCellVM {
     }
     var drag: CGSize = .zero
     var dragging: Bool = false
+    var draggingLeft: Bool = false
+    var draggingRight: Bool = false
     var xOffset: CGFloat = 0
     var shorterUI: Bool {track.currentDuration! <= 48}
     init(track: Track) {
@@ -30,6 +32,7 @@ class TrackCellVM {
     }
     
     func changeWidthRight(change: CGFloat) {
+        draggingRight = true
         let newWidth = width + change
         if newWidth <= GridHandler.shared.minimalWidth || newWidth <= 0 {
             return
@@ -47,7 +50,6 @@ class TrackCellVM {
             return
         }
         track.endTimeBars! = UInt(newEndTimeBars)
-        //editedWidth = roundedNewWidth
         if GridHandler.shared.validatePosition(track: track, player: track.player!, leadingCoord: track.position) {
             
             editedWidth = roundedNewWidth
@@ -57,6 +59,7 @@ class TrackCellVM {
     }
     
     func changeWidthLeft(change: CGFloat) {
+        draggingLeft = true
         let newWidth = width + change
         if newWidth <= GridHandler.shared.minimalWidth {
             return
@@ -65,16 +68,16 @@ class TrackCellVM {
         let oldDurationBars = track.currentDuration!
         let newDurationBars = GridHandler.shared.getBarsFromWidth(width: roundedNewWidth)
         
-        let change: Int = Int(newDurationBars) - Int(oldDurationBars)
+        let changeBars: Int = Int(newDurationBars) - Int(oldDurationBars)
         let oldStartTimeBars = track.startTimeBars!
-        let newStartTimeBars = Int(oldStartTimeBars) - change
+        let newStartTimeBars = Int(oldStartTimeBars) - changeBars
         
         if newStartTimeBars < 0 {
             return
         }
         track.startTimeBars! = UInt(newStartTimeBars)
         let oldPosition = track.position
-        track.position = track.position - (change > 0 ? GridHandler.shared.getWidthFromBars(bars: UInt(change)) : -1 * GridHandler.shared.getWidthFromBars(bars: UInt(abs(change))))
+        track.position = track.position - (changeBars > 0 ? GridHandler.shared.getWidthFromBars(bars: UInt(changeBars)) : -1 * GridHandler.shared.getWidthFromBars(bars: UInt(abs(changeBars))))
         if GridHandler.shared.validatePosition(track: track, player: track.player!, leadingCoord: track.position) {
             editedWidth = roundedNewWidth
         } else {

@@ -38,7 +38,7 @@ class TracklistVM {
             tracklist = try tracklistService.fetchTracklist(id: tracklistID)
             
         } catch {
-            // TODO
+      
             print("oh oh")
         }
     }
@@ -47,7 +47,7 @@ class TracklistVM {
         do {
             players = try tracklistService.fetchPlayers(id: tracklistID)
         } catch {
-            // TODO
+         
             print("oh oh")
         }
     }

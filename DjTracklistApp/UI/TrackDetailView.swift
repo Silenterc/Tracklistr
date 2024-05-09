@@ -47,25 +47,36 @@ struct TrackDetailView: View {
                     .font(.custom(UIConstants.shared.font.regular, size: 18))
                     .keyboardType(.numberPad)
                     .textFieldStyle(.roundedBorder)
-                
-                fontedText(text: "Amount of seconds between the start of the track and the first bar")
-                TextField("seconds",value: $viewModel.startTimeOffsetSeconds, format: .number)
-                    .font(.custom(UIConstants.shared.font.regular, size: 18))
-                    .keyboardType(.decimalPad)
-                    .textFieldStyle(.roundedBorder)
-                
-                fontedText(text: "Number of bars elapsed from the track's start to the beginning of playback")
-                TextField("number of bars divisible by 4", value: $viewModel.currentStartTimeBars, format: .number)
-                    .font(.custom(UIConstants.shared.font.regular, size: 18))
-                    .keyboardType(.numberPad)
-                    .textFieldStyle(.roundedBorder)
-                
-                fontedText(text: "Number of bars for the playback duration")
-                TextField("number of bars divisible by 4", value: $viewModel.currentDurationBars, format: .number)
-                    .font(.custom(UIConstants.shared.font.regular, size: 18))
-                    .keyboardType(.numberPad)
-                    .textFieldStyle(.roundedBorder)
-                
+                Button(action: {
+                    withAnimation(.linear) {
+                        viewModel.showAdvancedOptions.toggle()
+                    }
+                }) {
+                    HStack {
+                        Spacer()
+                        fontedText(text: "Advanced")
+                        Image(systemName: viewModel.showAdvancedOptions ? "chevron.up" : "chevron.down")
+                    }
+                }
+                if viewModel.showAdvancedOptions {
+                    fontedText(text: "Amount of seconds between the start of the track and the first bar")
+                    TextField("seconds",value: $viewModel.startTimeOffsetSeconds, format: .number)
+                        .font(.custom(UIConstants.shared.font.regular, size: 18))
+                        .keyboardType(.decimalPad)
+                        .textFieldStyle(.roundedBorder)
+                    
+                    fontedText(text: "Number of bars elapsed from the track's start to the beginning of playback")
+                    TextField("number of bars divisible by 4", value: $viewModel.currentStartTimeBars, format: .number)
+                        .font(.custom(UIConstants.shared.font.regular, size: 18))
+                        .keyboardType(.numberPad)
+                        .textFieldStyle(.roundedBorder)
+                    
+                    fontedText(text: "Number of bars for the playback duration")
+                    TextField("number of bars divisible by 4", value: $viewModel.currentDurationBars, format: .number)
+                        .font(.custom(UIConstants.shared.font.regular, size: 18))
+                        .keyboardType(.numberPad)
+                        .textFieldStyle(.roundedBorder)
+                }
                 HStack {
                     Spacer()
                     Button {
@@ -73,7 +84,7 @@ struct TrackDetailView: View {
                             router.navigateNBack(n: 1)
                         }
                     } label: {
-                        Text("Submit")
+                        fontedText(text: "Submit")
                     }
                     Spacer()
                 }
@@ -86,9 +97,6 @@ struct TrackDetailView: View {
                 Button("OK") {}
             } message: {
                 Text(viewModel.currentError?.rawValue ?? "")
-            }
-            .onAppear {
-                print(viewModel.track?.bpm)
             }
         }
     }

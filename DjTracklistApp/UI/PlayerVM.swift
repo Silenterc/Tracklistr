@@ -17,7 +17,6 @@ class PlayerVM {
     }
     
     func deleteTrack(track: Track) {
-        //databaseService.removeTrack(track: track)
         if let index = player.tracks!.firstIndex(where: {$0.id == track.id}) {
             player.tracks!.remove(at: index)
         }
