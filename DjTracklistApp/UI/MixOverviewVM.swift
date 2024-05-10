@@ -41,5 +41,6 @@ class MixOverviewVM {
         for index in indexSet {
             databaseService.deleteTracklist(tracklist: tracklists[index])
         }
+        fetchTracklists()
     }
 }
