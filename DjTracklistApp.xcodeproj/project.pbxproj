@@ -406,21 +406,14 @@
 		422A75472B5DAA2800CD9E76 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				422A75482B5DAC0400CD9E76 /* MixOverviewView.swift */,
-				422A754B2B5DAC2000CD9E76 /* MixOverviewVM.swift */,
-				422A754E2B6005CB00CD9E76 /* TracklistView.swift */,
-				422A75502B6005FD00CD9E76 /* TracklistVM.swift */,
-				422A75712B6035B600CD9E76 /* TrackCell.swift */,
-				42A571C52B619E7C0041907E /* TrackCellVM.swift */,
-				422A75732B60392400CD9E76 /* TimeIndicationView.swift */,
-				42A571C92B6297BA0041907E /* TracklistInfoView.swift */,
-				42A571CB2B6297CC0041907E /* TracklistInfoVM.swift */,
-				429FF00E2B668FA00093AB75 /* AddTrackView.swift */,
-				429FF0102B668FCA0093AB75 /* AddTrackVM.swift */,
-				4251D9212B67FAF400CB7CA4 /* TrackDetailView.swift */,
-				4251D9252B68443F00CB7CA4 /* TrackDetailVM.swift */,
-				4251D9302B7F903D00CB7CA4 /* PlayerView.swift */,
-				4251D9322B7F906500CB7CA4 /* PlayerVM.swift */,
+				423A57562BF0FD39004540F8 /* MixOverview */,
+				423A57572BF0FD4B004540F8 /* TracklistView */,
+				423A57582BF0FD5D004540F8 /* TrackCell */,
+				423A57592BF0FD6B004540F8 /* TimeIndicationView */,
+				423A575A2BF0FD80004540F8 /* TracklistInfoView */,
+				423A575B2BF0FD99004540F8 /* AddTrackView */,
+				423A575C2BF0FDA5004540F8 /* TrackDetailView */,
+				423A575D2BF0FDB9004540F8 /* PlayerView */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -443,6 +436,77 @@
 				422A755C2B60233800CD9E76 /* Roboto-ThinItalic.ttf */,
 			);
 			path = RobotoFont;
+			sourceTree = "<group>";
+		};
+		423A57562BF0FD39004540F8 /* MixOverview */ = {
+			isa = PBXGroup;
+			children = (
+				422A75482B5DAC0400CD9E76 /* MixOverviewView.swift */,
+				422A754B2B5DAC2000CD9E76 /* MixOverviewVM.swift */,
+			);
+			path = MixOverview;
+			sourceTree = "<group>";
+		};
+		423A57572BF0FD4B004540F8 /* TracklistView */ = {
+			isa = PBXGroup;
+			children = (
+				422A754E2B6005CB00CD9E76 /* TracklistView.swift */,
+				422A75502B6005FD00CD9E76 /* TracklistVM.swift */,
+			);
+			path = TracklistView;
+			sourceTree = "<group>";
+		};
+		423A57582BF0FD5D004540F8 /* TrackCell */ = {
+			isa = PBXGroup;
+			children = (
+				422A75712B6035B600CD9E76 /* TrackCell.swift */,
+				42A571C52B619E7C0041907E /* TrackCellVM.swift */,
+			);
+			path = TrackCell;
+			sourceTree = "<group>";
+		};
+		423A57592BF0FD6B004540F8 /* TimeIndicationView */ = {
+			isa = PBXGroup;
+			children = (
+				422A75732B60392400CD9E76 /* TimeIndicationView.swift */,
+			);
+			name = TimeIndicationView;
+			sourceTree = "<group>";
+		};
+		423A575A2BF0FD80004540F8 /* TracklistInfoView */ = {
+			isa = PBXGroup;
+			children = (
+				42A571C92B6297BA0041907E /* TracklistInfoView.swift */,
+				42A571CB2B6297CC0041907E /* TracklistInfoVM.swift */,
+			);
+			path = TracklistInfoView;
+			sourceTree = "<group>";
+		};
+		423A575B2BF0FD99004540F8 /* AddTrackView */ = {
+			isa = PBXGroup;
+			children = (
+				429FF00E2B668FA00093AB75 /* AddTrackView.swift */,
+				429FF0102B668FCA0093AB75 /* AddTrackVM.swift */,
+			);
+			path = AddTrackView;
+			sourceTree = "<group>";
+		};
+		423A575C2BF0FDA5004540F8 /* TrackDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				4251D9212B67FAF400CB7CA4 /* TrackDetailView.swift */,
+				4251D9252B68443F00CB7CA4 /* TrackDetailVM.swift */,
+			);
+			path = TrackDetailView;
+			sourceTree = "<group>";
+		};
+		423A575D2BF0FDB9004540F8 /* PlayerView */ = {
+			isa = PBXGroup;
+			children = (
+				4251D9322B7F906500CB7CA4 /* PlayerVM.swift */,
+				4251D9302B7F903D00CB7CA4 /* PlayerView.swift */,
+			);
+			path = PlayerView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

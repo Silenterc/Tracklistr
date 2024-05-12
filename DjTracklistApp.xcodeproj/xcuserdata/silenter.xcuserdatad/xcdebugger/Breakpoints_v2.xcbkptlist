@@ -55,54 +55,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "32E34208-AF94-48A2-B120-51C59773B23F"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DjTracklistAppTests/Services/SpotifyServiceTests.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "testExample()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "32E34208-AF94-48A2-B120-51C59773B23F - d278686a6122b0e1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for DjTracklistAppTests.SpotifyServiceTests.testExample() async throws -&gt; ()"
-                  moduleName = "DjTracklistAppTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/silenter/Desktop/DjTracklistApp/DjTracklistAppTests/Services/SpotifyServiceTests.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "24"
-                  endingLineNumber = "24"
-                  offsetFromSymbolStart = "173">
-               </Location>
-               <Location
-                  uuid = "32E34208-AF94-48A2-B120-51C59773B23F - 68e5f46e9d06aa2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (DjTracklistAppTests.Track) -&gt; () in DjTracklistAppTests.SpotifyServiceTests.testExample() async throws -&gt; ()"
-                  moduleName = "DjTracklistAppTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/silenter/Desktop/DjTracklistApp/DjTracklistAppTests/Services/SpotifyServiceTests.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "24"
-                  endingLineNumber = "24"
-                  offsetFromSymbolStart = "40">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "3A977AC6-44F5-4238-AC5A-BE13DC4A1872"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -1921,8 +1873,8 @@
             filePath = "DjTracklistApp/UI/TrackCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
             landmarkName = "resizeBarRight()"
             landmarkType = "7">
          </BreakpointContent>

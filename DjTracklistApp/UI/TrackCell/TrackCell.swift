@@ -113,6 +113,8 @@ struct TrackCell: View {
                     }
                 } else {
                     Image(systemName: "chevron.right")
+                        .resizable()
+                        .frame(width: UIConstants.shared.track.barArrowWidth, height: UIConstants.shared.track.barArrowHeight)
                         .foregroundStyle(.complementaryTimeline)
                         .opacity(0.5)
                 }
@@ -148,8 +150,10 @@ struct TrackCell: View {
                     }
                 } else {
                     Image(systemName: "chevron.left")
+                        .resizable()
                         .foregroundStyle(.complementaryTimeline)
                         .opacity(0.5)
+                        .frame(width: UIConstants.shared.track.barArrowWidth, height: UIConstants.shared.track.barArrowHeight)
                 }
             }
             .gesture(

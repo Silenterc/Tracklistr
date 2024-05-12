@@ -18,11 +18,6 @@ final class SpotifyServiceTests: XCTestCase {
     }
 
     func testExample() async throws {
-        let service = SpotifyService(apiHandler: .init())
-        var result:[Track]
-        result = try await service.searchTracks(query: "Solar Sys")
-        let solarSystem = try await service.getTrackWithFeatures(id: result[0].id)
-        print(solarSystem.audioFeatures!.bpm)
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         // Any test you write for XCTest can be annotated as throws and async.

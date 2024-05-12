@@ -52,6 +52,8 @@ class UIConstants {
         let barSize: CGFloat = UIConstants.shared.screenSize.height * 0.025
         let addbarSize: CGFloat = UIConstants.shared.screenSize.height * 0.08
         let addButtonSize: CGFloat = UIConstants.shared.screenSize.height * 0.07
+        let barArrowWidth: CGFloat = UIConstants.shared.screenSize.height * 0.025 * 0.7
+        let barArrowHeight: CGFloat = UIConstants.shared.screenSize.height * 0.15 * 0.23
         struct Image {
             let width: CGFloat = UIConstants.shared.track.height * 0.55
             let height: CGFloat = UIConstants.shared.track.height * 0.55
