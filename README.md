@@ -16,8 +16,9 @@ Aplikace je implementována ve frameworku SwiftUI za pomoci databázového frame
 - [Link](https://drive.google.com/drive/folders/19O8gKHJS3VstlDIT920D9lCe6IlMq7pN?usp=sharing)
 
 <div align="center">
-![pic](Screenshots & More/3_iPhoneTracklistView.png?raw=true)
-Tracklistr na iPhone 15 Pro
+  
+  ![Alt text](Screenshots%20&%20More/3_iPhoneTracklistView.png)
+  Tracklistr na iPhone 15 Pro
 </div>
 
 
